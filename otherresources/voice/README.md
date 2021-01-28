@@ -316,6 +316,24 @@ jovo run --port 3301
 * Make a special request for something not supported
 	* Ask my bank advisor whether XYZ. -> Raise a support ticket with the transcript of the voice note.
 
+## Predefined bits and pieces we can ship
+
+* Intents
+	* on_yes
+	* on_no
+	* on_back(global)
+* types
+	* Currency
+	* First name
+	* Last name
+	* Email address
+	* Phone number
+* Scenes
+	* Send information to an email or mobile device —e.g. transaction queries, transaction details, card extracts
+	* Ask about satisfaction + as for feedback + ask to rate us
+	* Continue from phone
+	*
+
 ## Reconfiguration
 
 Jovo offers an option to create different configurations per environment by using a naming convention on the `config.js` file —e.g.:
@@ -326,6 +344,14 @@ Jovo offers an option to create different configurations per environment by usin
 
 Read more [here](https://www.jovo.tech/docs/config-js#staging)
 
+## Internationalisation
+
+Jovo can use i18n's per locale in the models folder.
+
+However, it seems that where Alexa supports models per country, Google Assistant only supports them per country. So where Alexa will pick up `en-US.json`, Google Assistant will only recognise `en.json`.
+
+https://youtu.be/cJZAT0JLABs
+
 ## To Do:
 
 The following are areas where we still need to research how best leverage Jovo capabilities.
@@ -333,8 +359,7 @@ The following are areas where we still need to research how best leverage Jovo c
 * Unit testing:
  * https://www.jovo.tech/templates/unit-testing
  * https://youtu.be/zmrgPNOeXgk
-* Internationalisation
- * https://youtu.be/cJZAT0JLABs
+
 
 ## Questions
 
@@ -350,5 +375,7 @@ The following are areas where we still need to research how best leverage Jovo c
 
 6. Jovo can also integrate with other platforms. Do we have an interest in these?
 
+7. Could we keep session state in Fabric? Keeping session state in Google Actions is cumbersome. Some things are stored as `$session.params['slot_name']` and others are stored as `$intent.params.['currency_from']`. It's also confusing and inconsistent. There's a `$intent.params.['currency_from'].(original|resolved)` but nothing equivalent for `$session.params['slot_name']`.
+
 * [Facebook Messenger](https://www.jovo.tech/marketplace/jovo-platform-facebookmessenger)
-* [Samsun Bixby](https://www.jovo.tech/marketplace/jovo-platform-bixby)
+* [Samsung Bixby](https://www.jovo.tech/marketplace/jovo-platform-bixby)

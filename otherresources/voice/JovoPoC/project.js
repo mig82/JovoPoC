@@ -7,7 +7,7 @@ module.exports = {
     nlu: 'alexa',
   },
   googleAction: {
-    nlu: 'dialogflow',
+    projectId: 'jovopoc',
   },
   endpoint: '${JOVO_WEBHOOK_URL}',
 };

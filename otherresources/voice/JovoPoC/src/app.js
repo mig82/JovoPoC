@@ -34,7 +34,7 @@ app.setHandler({
 
   MyNameIsIntent() {
     this.tell('Hey ' + this.$inputs.name.value + ', nice to meet you!');
-  },
+  }
 });
 
 module.exports = { app };

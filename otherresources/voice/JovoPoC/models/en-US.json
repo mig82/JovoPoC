@@ -1,58 +1,67 @@
 {
-  "invocation": "iron bank",
-  "intents": [
-    {
-      "name": "HelloWorldIntent",
-      "phrases": ["hello", "say hello", "say hello world"]
-    },
-    {
-      "name": "MyNameIsIntent",
-      "phrases": ["{name}", "my name is {name}", "i am {name}", "you can call me {name}"],
-      "inputs": [
-        {
-          "name": "name",
-          "type": {
-            "alexa": "AMAZON.US_FIRST_NAME",
-            "googleAssistant": "NameInputType"
-          }
-        }
-      ]
-    }
-  ],
-  "alexa": {
-    "interactionModel": {
-      "languageModel": {
-        "intents": [
-          {
-            "name": "AMAZON.CancelIntent",
-            "samples": []
-          },
-          {
-            "name": "AMAZON.HelpIntent",
-            "samples": []
-          },
-          {
-            "name": "AMAZON.StopIntent",
-            "samples": []
-          }
-        ]
-      }
-    }
-  },
-  "inputTypes": [
-    {
-      "name": "NameInputType",
-      "values": [
-        {
-          "value": "max"
-        },
-        {
-          "value": "jane"
-        },
-        {
-          "value": "joe"
-        }
-      ]
-    }
-  ]
+	"invocation": "iron bank",
+	"intents": [
+		{
+			"name": "HelloWorldIntent",
+			"phrases": [
+				"hello",
+				"say hello",
+				"say hello world"
+			]
+		},
+		{
+			"name": "MyNameIsIntent",
+			"phrases": [
+				"{name}",
+				"my name is {name}",
+				"i am {name}",
+				"you can call me {name}"
+			],
+			"inputs": [
+				{
+					"name": "name",
+					"type": {
+						"alexa": "AMAZON.US_FIRST_NAME",
+						"googleAssistant": "NameInputType"
+					}
+				}
+			]
+		}
+	],
+	"alexa": {
+		"interactionModel": {
+			"languageModel": {
+				"intents": [
+					{
+						"name": "AMAZON.CancelIntent",
+						"samples": []
+					},
+					{
+						"name": "AMAZON.HelpIntent",
+						"samples": []
+					},
+					{
+						"name": "AMAZON.StopIntent",
+						"samples": []
+					}
+				]
+			}
+		}
+	},
+	"inputTypes": [
+		{
+			"name": "NameInputType",
+			"values": [
+				{
+					"value": "max"
+				},
+				{
+					"value": "jane"
+				},
+				{
+					"value": "miguel"
+				}
+			]
+		}
+	]
 }

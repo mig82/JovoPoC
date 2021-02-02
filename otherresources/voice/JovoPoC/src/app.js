@@ -7,6 +7,8 @@ const { JovoDebugger } = require('jovo-plugin-debugger');
 const { FileDb } = require('jovo-db-filedb');
 const { kony } = require('kony-node')
 
+const PLAY_STATE = require('./states/play.js');
+
 // ------------------------------------------------------------------
 // APP INITIALIZATION
 // ------------------------------------------------------------------
@@ -25,17 +27,19 @@ app.use(
 // ------------------------------------------------------------------
 
 app.setHandler({
-  LAUNCH() {
-    return this.toIntent('HelloWorldIntent');
-  },
+	LAUNCH() {
+		//return this.toIntent('HelloWorldIntent');
+		this.toStateIntent('PLAY_STATE', 'PlayIntent')
+	},
 
-  HelloWorldIntent() {
-    this.ask("Hello World! What's your name?", 'Please tell me your name.');
-  },
+	HelloWorldIntent() {
+		this.ask("Hello World! What's your name?", 'Please tell me your name.');
+	},
 
-  MyNameIsIntent() {
-    this.tell('Hey ' + this.$inputs.name.value + ', nice to meet you!');
-  }
+	MyNameIsIntent() {
+		this.tell('Hey ' + this.$inputs.name.value + ', nice to meet you!');
+	},
+	PLAY_STATE
 });
 
 module.exports = { app };

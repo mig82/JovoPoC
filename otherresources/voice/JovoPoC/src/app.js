@@ -42,4 +42,15 @@ app.setHandler({
 	PLAY_STATE
 });
 
+app.setAlexaHandler({
+	// LAUNCH() {
+	// 	this.tell('Hello Alexa user!');
+	// }
+});
+app.setGoogleAssistantHandler({
+	// LAUNCH() {
+	// 	this.tell('Hello Google user!');
+	// }
+});
+
 module.exports = { app };

@@ -8,7 +8,8 @@
     "jovo-framework": "^3.3.1",
     "jovo-platform-alexa": "^3.3.1",
     "jovo-platform-googleassistantconv": "^3.3.2",
-    "jovo-plugin-debugger": "^3.3.2"
+    "jovo-plugin-debugger": "^3.3.2",
+    "kony-node": "file:../../../../../node/kony-node"
   },
   "devDependencies": {
     "gulp": "^4.0.2",

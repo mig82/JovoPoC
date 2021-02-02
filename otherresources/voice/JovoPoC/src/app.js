@@ -5,6 +5,7 @@ const { Alexa } = require('jovo-platform-alexa');
 const { GoogleAssistant } = require('jovo-platform-googleassistantconv');
 const { JovoDebugger } = require('jovo-plugin-debugger');
 const { FileDb } = require('jovo-db-filedb');
+const { kony } = require('kony-node')
 
 // ------------------------------------------------------------------
 // APP INITIALIZATION

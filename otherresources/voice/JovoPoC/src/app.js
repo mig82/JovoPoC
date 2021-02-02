@@ -39,7 +39,16 @@ app.setHandler({
 	MyNameIsIntent() {
 		this.tell('Hey ' + this.$inputs.name.value + ', nice to meet you!');
 	},
-	PLAY_STATE
+
+	PLAY_STATE,
+
+	Unhandled() {
+		// Do something
+	},
+
+	END() {
+		// do something
+	}
 });
 
 app.setAlexaHandler({

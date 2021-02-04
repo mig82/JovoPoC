@@ -1,5 +1,8 @@
 'use strict';
 
+//Visualizer already takes up the default port 3000.
+//process.env.JOVO_PORT = 4000
+
 const { App } = require('jovo-framework');
 const { Alexa } = require('jovo-platform-alexa');
 const { GoogleAssistant } = require('jovo-platform-googleassistantconv');

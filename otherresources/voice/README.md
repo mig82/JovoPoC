@@ -69,18 +69,29 @@ Where...
 
 ## 4. Run the Jovo project locally for development.
 
+Since Visualizer already uses the Jovo Debugger's default port 3000, we must set
+the environment varialbe `JOVO_PORT` to tell it where to run instead.
+This is also important so that the `npm test` script will look for the debugger
+at this port as well.
+
 ```
 cd JovoPoC
-jovo run --port 3301
+export JOVO_PORT=4000
+jovo run
 ```
 
 Add the `--watch` flag to automatically restart when changes to the app are made.
 
 ```
-jovo run --port 3301 --watch
+jovo run --watch
 ```
 
-**Note:** Visualizer already uses the default port 3000, so the `--port` option is necessary.
+Alternatively, we could set the variable in code. We'd have to do this in both `app.s`
+and the test scripts —e.g. `sample-test.js`— so that testing can find the server.
+
+```
+process.env.JOVO_PORT = 4000
+```
 
 ## 5. Build the Jovo project
 

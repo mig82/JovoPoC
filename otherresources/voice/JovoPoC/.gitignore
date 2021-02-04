@@ -4,3 +4,6 @@ bundle/
 bundle.zip
 .env
 /platforms
+
+.ask
+ask-resources.json

@@ -12,9 +12,20 @@ module.exports = {
 		'AMAZON.HelpIntent' : 'HelpIntent',
 	},
 
-  db: {
-    FileDb: {
-      pathToFile: '../db/db.json',
-    },
-  },
+	db: {
+		FileDb: {
+			pathToFile: '../db/db.json',
+		},
+	},
+
+	inputMap: {
+		'incomingInputName' : 'mappedInputName',
+		// E.g. map DialogFlow's out-of-the-box given-name to match a name input type.
+		// Allowing to write code across platforms, like this.tell('Hello ' + this.$inputs.name.value + '!');
+		// 'given-name' : 'name',
+	},
+
+	intentsToSkipUnhandled: [
+		'END'
+	],
 };

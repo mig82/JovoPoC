@@ -2,7 +2,7 @@
 	"invocation": "iron bank",
 	"intents": [
 		{
-			"name": "HelloWorldIntent",
+			"name": "HelloWorld",
 			"phrases": [
 				"hello",
 				"say hello",
@@ -10,7 +10,7 @@
 			]
 		},
 		{
-			"name": "MyNameIsIntent",
+			"name": "MyNameIs",
 			"phrases": [
 				"{name}",
 				"my name is {name}",

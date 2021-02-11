@@ -10,8 +10,6 @@ const { JovoDebugger } = require('jovo-plugin-debugger');
 const { FileDb } = require('jovo-db-filedb');
 const { kony } = require('kony-node')
 
-const PLAY_STATE = require('./states/play.js');
-
 // ------------------------------------------------------------------
 // APP INITIALIZATION
 // ------------------------------------------------------------------
@@ -25,34 +23,42 @@ app.use(
   new FileDb()
 );
 
+// Remember: Scopes for storing and accessing data.
+// Request: this.$data.key = value;
+// Session: this.$session.$data.key = value;
+// User: this.$user.$data.key = value;
+// App: this.$app.$data.key = value;
+
 // ------------------------------------------------------------------
-// APP LOGIC
+// Handlers
 // ------------------------------------------------------------------
+// TODO: Load handlers dynamically from the ./intents folder.
+// TODO: Load states dynamically and recursively from the ./states folder.
 
-app.setHandler({
-	LAUNCH() {
-		//return this.toIntent('HelloWorldIntent');
-		this.toStateIntent('PLAY_STATE', 'PlayIntent')
-	},
+// Core handlers
+// const LAUNCH = require("./_/LAUNCH")
+// const Unhandled = require("./_/Unhandled")
+// const END = require("./_/END")
 
-	HelloWorldIntent() {
-		this.ask("Hello World! What's your name?", 'Please tell me your name.');
-	},
+const handlers = {}
 
-	MyNameIsIntent() {
-		this.tell('Hey ' + this.$inputs.name.value + ', nice to meet you!');
-	},
+// Core handlers
+let coreHadler = ["LAUNCH", "END", "Unhandled"]
+coreHadler.forEach((name) => {
+	let handler = require(`./_/${name}`)
+	handlers[name] = handler
+})
 
-	PLAY_STATE,
+// App handlers
+let appHandlers = ["Welcome", "HelloWorld", "MyNameIs", "Play"]
+appHandlers.forEach((name) => {
+	let handler = require(`./intents/${name}`)
+	handlers[name] = handler
+})
 
-	Unhandled() {
-		// Do something
-	},
+console.log(handlers)
 
-	END() {
-		// do something
-	}
-});
+app.setHandler(handlers)
 
 app.setAlexaHandler({
 	// LAUNCH() {

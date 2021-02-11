@@ -3,11 +3,14 @@
 // ------------------------------------------------------------------
 
 module.exports = {
-  logging: true,
+	logging: true,
 
-  intentMap: {
-    'AMAZON.StopIntent': 'END',
-  },
+	// The intentMap is especially useful in scenarios where the names of
+	// certain intents differ across platforms.
+	intentMap: {
+		'AMAZON.StopIntent': 'END',
+		'AMAZON.HelpIntent' : 'HelpIntent',
+	},
 
   db: {
     FileDb: {

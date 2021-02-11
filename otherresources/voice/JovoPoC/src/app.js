@@ -1,7 +1,9 @@
-'use strict';
+'use strict'
 
 //Visualizer already takes up the default port 3000.
 //process.env.JOVO_PORT = 4000
+
+const path = require("path")
 
 const { App } = require('jovo-framework');
 const { Alexa } = require('jovo-platform-alexa');
@@ -9,6 +11,7 @@ const { GoogleAssistant } = require('jovo-platform-googleassistantconv');
 const { JovoDebugger } = require('jovo-plugin-debugger');
 const { FileDb } = require('jovo-db-filedb');
 const { kony } = require('kony-node')
+
 
 // ------------------------------------------------------------------
 // APP INITIALIZATION
@@ -32,30 +35,17 @@ app.use(
 // ------------------------------------------------------------------
 // Handlers
 // ------------------------------------------------------------------
-// TODO: Load handlers dynamically from the ./intents folder.
+
+let handlers = {}
+
+const $q = require("./quantum")
+
+handlers = $q.voice.loadHandlers(path.join(__dirname, "_"))
+handlers = $q.voice.loadHandlers(path.join(__dirname, "intents"), handlers)
+
 // TODO: Load states dynamically and recursively from the ./states folder.
 
-// Core handlers
-// const LAUNCH = require("./_/LAUNCH")
-// const Unhandled = require("./_/Unhandled")
-// const END = require("./_/END")
-
-const handlers = {}
-
-// Core handlers
-let coreHadler = ["LAUNCH", "END", "Unhandled"]
-coreHadler.forEach((name) => {
-	let handler = require(`./_/${name}`)
-	handlers[name] = handler
-})
-
-// App handlers
-let appHandlers = ["Welcome", "HelloWorld", "MyNameIs", "Play"]
-appHandlers.forEach((name) => {
-	let handler = require(`./intents/${name}`)
-	handlers[name] = handler
-})
-
+console.log("Handlers loaded:")
 console.log(handlers)
 
 app.setHandler(handlers)

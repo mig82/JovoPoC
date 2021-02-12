@@ -5,51 +5,10 @@
 
 const path = require("path")
 
-const { App } = require('jovo-framework');
-const { Alexa } = require('jovo-platform-alexa');
-const { GoogleAssistant } = require('jovo-platform-googleassistantconv');
-const { JovoDebugger } = require('jovo-plugin-debugger');
-const { FileDb } = require('jovo-db-filedb');
-const { kony } = require('kony-node')
+const createJovoApp = require('./quantum/voice/jovo').createApp
 
-
-// ------------------------------------------------------------------
-// APP INITIALIZATION
-// ------------------------------------------------------------------
-
-const app = new App();
-
-app.use(
-  new Alexa(),
-  new GoogleAssistant(),
-  new JovoDebugger(),
-  new FileDb()
-);
-
-// Remember: Scopes for storing and accessing data.
-// Request: this.$data.key = value;
-// Session: this.$session.$data.key = value;
-// User: this.$user.$data.key = value;
-// App: this.$app.$data.key = value;
-
-// ------------------------------------------------------------------
-// Handlers
-// ------------------------------------------------------------------
-
-let handlers = {}
-
-const $q = require("./quantum")
-
-handlers = $q.voice.loadHandlers(path.join(__dirname, "_"))
-handlers = $q.voice.loadHandlers(path.join(__dirname, "intents"), handlers)
-
-// TODO: Load states dynamically and recursively from the ./states folder.
-//handlers = $q.voice.loadHandlers(path.join(__dirname, "states"), handlers)
-
-console.log("Handlers loaded:")
-console.log(handlers)
-
-app.setHandler(handlers)
+const handlersPath = path.join(__dirname, "intents")
+const app = createJovoApp(handlersPath)
 
 app.setAlexaHandler({
 	// LAUNCH() {

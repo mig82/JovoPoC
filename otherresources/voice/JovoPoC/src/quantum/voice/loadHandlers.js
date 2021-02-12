@@ -14,22 +14,14 @@ function loadHandlers(absPath, handlers){
 	)
 	let subdirs = fs.readdirSync(absPath)
 
-	//console.debug("Contents found: " + subdirs.length)
-	//console.debug(subdirs)
-
-	subdirs = subdirs.filter(subdir => {
-		let subdirNormalisedPath = path.join(absPath,subdir)
-		//console.debug(`\t${subdirNormalisedPath}`)
-		return fs.statSync(subdirNormalisedPath).isDirectory()
-	})
-
-	console.log("Handlers directories found: " + subdirs.length)
+	console.log(`Handlers found in '${relPath}': ` + subdirs.length)
 	console.log(subdirs)
 
 	if(typeof handlers !== "object") handlers = {}
 
 	subdirs.forEach(function(handlerName) {
 		let modulePath = `./${relPath}/${handlerName}`
+		handlerName = handlerName.replace(/\.js/, "")
 		console.log(`\nRequiring: ${handlerName}`)
 		console.debug(`From: ${modulePath}`)
 		let handler = require(modulePath)

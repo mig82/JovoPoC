@@ -44,6 +44,7 @@ handlers = $q.voice.loadHandlers(path.join(__dirname, "_"))
 handlers = $q.voice.loadHandlers(path.join(__dirname, "intents"), handlers)
 
 // TODO: Load states dynamically and recursively from the ./states folder.
+//handlers = $q.voice.loadHandlers(path.join(__dirname, "states"), handlers)
 
 console.log("Handlers loaded:")
 console.log(handlers)

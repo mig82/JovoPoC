@@ -1,0 +1,7 @@
+{
+	"name": "MyFabricApp",
+	"version": "1.0",
+	"key": "100000123",
+	"secret": "xyzxyzxyzxyz",
+	"serviceUrl": "https://${account}.auth.konycloud.com/appconfig"
+}

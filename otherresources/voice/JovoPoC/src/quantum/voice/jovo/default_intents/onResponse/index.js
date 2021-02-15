@@ -1,5 +1,5 @@
 function onResponse(jovo) {
-	console.log("onResponse")
+	console.log("\n******************************** onResponse")
 	//TODO: Push event to Fabric analytics.
 	console.log(jovo.getResponseObject());
 }

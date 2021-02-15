@@ -1,5 +1,5 @@
 function ON_ERROR () {
-	console.log("ON_ERROR")
+	console.log("\n******************************** ON_ERROR")
 	//TODO: Push event to Fabric analytics.
 
 	// Triggered when there is an error

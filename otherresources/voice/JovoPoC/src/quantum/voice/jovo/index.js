@@ -7,9 +7,17 @@ const { Alexa } = require('jovo-platform-alexa');
 const { GoogleAssistant } = require('jovo-platform-googleassistantconv');
 const { JovoDebugger } = require('jovo-plugin-debugger');
 const { FileDb } = require('jovo-db-filedb');
-const { kony } = require('kony-node')
+const kony = require('kony-node')
 
 const requireFolder = require('../../util/requireFolder')
+
+const initSdk = async () => {
+	console.log(kony)
+	const sdk = await kony.sdk.getDefaultInstance()
+	let appConfig = sdk.getAppConfig()
+	console.log(appConfig)
+	//TODO: Do we really want a single instance across user sessions? or should we have one per user session attached on NEW_SESSION?
+}
 
 const createApp = (appHandlersPath) => {
 
@@ -49,7 +57,7 @@ const createApp = (appHandlersPath) => {
 	App: this.$app.$data.key = value;
 	*/
 
-	//initSdk()
+	initSdk()
 
 	return app
 }

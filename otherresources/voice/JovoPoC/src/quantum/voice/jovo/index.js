@@ -21,14 +21,6 @@ const createApp = (appHandlersPath) => {
 		new FileDb()
 	)
 
-	/*
-	Remember: Scopes for storing and accessing data.
-	Request: this.$data.key = value;
-	Session: this.$session.$data.key = value;
-	User: this.$user.$data.key = value;
-	App: this.$app.$data.key = value;
-	*/
-
 	const handlers = requireFolder(path.join(__dirname, DEFAULT_INTENTS_FOLDER))
 	console.log("\nCore handlers loaded:")
 	console.log(handlers)
@@ -37,10 +29,27 @@ const createApp = (appHandlersPath) => {
 	console.log("\nApp handlers loaded:")
 	console.log(appHandlers)
 
-	/* TODO: Rather than just merge the two sets of handlers, it would be better
-	 * to merge one by one. So that if the app defines its own ON_ERROR, we
-	 * call both. */
+	// TODO: Should we allow for the inbuilt handlers to be overridden?
+	//Check if any of the app handlers overrides a default handler.
+	for (const key in appHandlers) {
+		//Warn if the app handler has the same name as an existing built-in handler...
+		if(appHandlers.hasOwnProperty(key) && typeof handlers[key] !== "undefined"){
+			let defaultHandler = handlers[key]
+			let handlerOverride = appHandlers[key]
+			console.warn(`\nWARN: App handler '${key}' overrides default handler by the same name with\n${handlerOverride}\n`)
+		}
+	}
 	app.setHandler({...handlers, ...appHandlers})
+
+	/*
+	Remember: Scopes for storing and accessing data.
+	Request: this.$data.key = value;
+	Session: this.$session.$data.key = value;
+	User: this.$user.$data.key = value;
+	App: this.$app.$data.key = value;
+	*/
+
+	//initSdk()
 
 	return app
 }

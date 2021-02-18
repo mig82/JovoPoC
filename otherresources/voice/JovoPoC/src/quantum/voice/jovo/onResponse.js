@@ -1,7 +1,5 @@
-function onResponse(jovo) {
+module.exports = (jovo) => {
 	console.log("\n******************************** onResponse")
 	//TODO: Push event to Fabric analytics.
-	console.log(jovo.getResponseObject());
+	//console.log(jovo.getResponseObject());
 }
-
-module.exports = onResponse

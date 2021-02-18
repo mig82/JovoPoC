@@ -4,6 +4,7 @@
   "description": "A sample voice app that works with the Jovo Framework",
   "main": "src/index.js",
   "dependencies": {
+    "callsite": "^1.0.0",
     "jovo-db-filedb": "^3.3.1",
     "jovo-framework": "^3.3.1",
     "jovo-platform-alexa": "^3.3.1",
@@ -25,10 +26,7 @@
     "start": "cd src && node index.js --webhook",
     "launch": "npm start -- --launch"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jovotech/jovo-sample-voice-app-nodejs.git"
-  },
+  "repository": "git+https://github.com/jovotech/jovo-sample-voice-app-nodejs.git",
   "author": "Jovo",
   "license": "Apache-2.0",
   "bugs": {

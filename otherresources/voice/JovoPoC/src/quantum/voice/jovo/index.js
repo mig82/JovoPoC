@@ -17,7 +17,6 @@ const ON_REQUEST = require("./core_intents/ON_REQUEST")
 const ON_ERROR = require("./core_intents/ON_ERROR")
 const Unhandled = require("./core_intents/Unhandled")
 const END = require("./core_intents/END")
-
 const onResponse = require('./onResponse') //Note this is not an event hander. Just a function.
 
 const createApp = (appHandlersPath) => {

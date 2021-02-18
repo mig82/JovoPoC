@@ -1,5 +1,4 @@
-const attachSdkToSession = require('./attachSdkToSession')
-
+const initSessionSdk = require('../initSessionSdk')
 
 /**
  * You can use the NEW_SESSION intent instead of the LAUNCH intent if you want
@@ -11,7 +10,6 @@ async function NEW_SESSION(){
 	console.log("******************************** NEW_SESSION")
 	// TODO: Push event to Fabric analytics.
 
-	await attachSdkToSession(this.$session)
-
+	await initSessionSdk(this.$session)
 }
 module.exports = NEW_SESSION

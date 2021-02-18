@@ -21,6 +21,8 @@ const onResponse = require('./onResponse') //Note this is not an event hander. J
 
 const createApp = (appHandlersPath) => {
 
+	console.log("__dirname: "+ appHandlersPath)
+
 	const app = new App()
 	app.use(
 		new Alexa(),

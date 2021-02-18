@@ -26,6 +26,27 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "ExchangeRates",
+			"phrases": [
+				"what is the exchange rate from {ccyFrom} to {ccyTo}",
+				"exchange rate from {ccyFrom} to {ccyTo}",
+				"what is the rate from {ccyFrom} to {ccyTo}",
+				"convert from {ccyFrom} to {ccyTo}",
+				"convert {ccyFrom} to {ccyTo}",
+				"how many {ccyTo} is one {ccyFrom}"
+			],
+			"inputs": [
+				{
+					"name": "ccyFrom",
+					"type": "CurrencyType"
+				},
+				{
+					"name": "ccyTo",
+					"type": "CurrencyType"
+				}
+			]
 		}
 	],
 	"alexa": {
@@ -65,5 +86,29 @@
 				]
 			}
 		]
-	}
+	},
+	"inputTypes": [{
+		"name": "CurrencyType",
+		"values": [
+			{ "value": "EUR", "synonyms": [
+				"Euro", "European", "Europe", "EU"
+			]},
+			{ "value": "USD", "synonyms": [
+					"US", "Dollar", "US Dollar", "American"
+			]},
+			{ "value": "CHF", "synonyms": [
+					"Swiss Franc", "Swiss", "Switzerland", "Franc"
+			]},
+			{ "value": "GBP", "synonyms": [
+					"British Pound", "British", "Pound", "Sterling",
+					"Pound Sterling", "Britain", "STG", "UK"
+			]},
+			{ "value": "JPY", "synonyms": [
+					"Japanese Yen", "Yen", "Japanese"
+			]},
+			{ "value": "NOK", "synonyms": [
+					"Norwegian Krone", "Krone", "Norwegian", "Norway"
+			]}
+		]
+	}]
 }

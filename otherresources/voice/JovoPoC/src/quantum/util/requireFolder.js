@@ -23,16 +23,16 @@ function requireFolder(absPath){
 		let modulePath = `./${relPath}/${moduleName}`
 		moduleName = moduleName.replace(/\.js/, "")
 
-		console.debug(`\nRequiring: ${moduleName}`)
-		console.debug(`From: ${modulePath}`)
+		//console.debug(`\nRequiring: ${moduleName}`)
+		//console.debug(`From: ${modulePath}`)
 
 		try{
 			let handler = require(modulePath)
-			console.debug(`Ok`)
+			//console.debug(`Ok`)
 			modules[moduleName] = handler
 		}
 		catch(e){
-			console.error(`Error loading ${modulePath}: ${e.message}`)
+			console.error(`Error loading ${modulePath}\n${e.name}: ${e.message}\n${e.stack}` )
 		}
 	});
 	return modules

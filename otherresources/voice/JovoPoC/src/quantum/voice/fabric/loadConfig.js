@@ -4,8 +4,8 @@ function loadConfig(configPath){
 	configPath = configPath || './config.json'
 
 	const defaultConfig = require(configPath)
-	console.log(`\nConfig file path: '${configPath}'`)
-	console.log(defaultConfig)
+	console.debug(`\nConfig file path: '${configPath}'`)
+	console.debug(defaultConfig)
 
 	const env = {}
 	env.FABRIC_APP_NAME = process.env.FABRIC_APP_NAME
@@ -13,8 +13,8 @@ function loadConfig(configPath){
 	env.FABRIC_APP_KEY = process.env.FABRIC_APP_KEY
 	env.FABRIC_APP_SECRET = process.env.FABRIC_APP_SECRET
 	env.FABRIC_APP_SERVICE_URL = process.env.FABRIC_APP_SERVICE_URL
-	console.log("\nEnvironment variables:")
-	console.log(env)
+	console.debug("\nEnvironment variables:")
+	console.debug(env)
 
 	const config = {
 		name: env.FABRIC_APP_NAME || defaultConfig.name,

@@ -1,6 +1,7 @@
 const path = require('path')
 
 const findDirByCallerName = require("../../util/findDirByCallerName")
+const kony = require('kony-node')
 
 var initialised = false
 var defaultRoutesFile = './routes.json'
@@ -10,10 +11,10 @@ function init(routesFile){
 	if(!initialised){
 		let appRootPath = findDirByCallerName("app.js")
 		let routesPath = path.join(appRootPath, routesFile || defaultRoutesFile)
-		console.log("\nRoutes path: " + routesPath)
+		kony.log("\nRoutes path: " + routesPath)
 
 		routes = require(routesPath)
-		console.log(`Routes: ${JSON.stringify(routes, null, 4)}\n\n`)
+		kony.log(`Routes: ${JSON.stringify(routes, null, 4)}\n\n`)
 		initialised = true
 	}
 }
@@ -28,7 +29,7 @@ function goTo(that, from){
 	if(typeof to === "undefined"){
 		throw new Error("No navigation route to go from :" + from)
 	}
-	console.debug(`Routing: '${from}' -> '${to}'`)
+	kony.debug(`Routing: '${from}' -> '${to}'`)
 	return that.toIntent(to)
 }
 

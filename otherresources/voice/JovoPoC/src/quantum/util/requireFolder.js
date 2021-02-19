@@ -2,20 +2,21 @@
 
 const fs = require('fs')
 const path = require('path')
+const kony = require('kony-node')
 
 function requireFolder(absPath){
 
 	let relPath = path.relative(__dirname, absPath)
 
-	console.log(
+	kony.log(
 		`\nLoading modules from...\n` +
 		`\tabsolute path: '${absPath}'\n` +
 		`\trelative path: '${relPath}'\n`
 	)
 	let subdirs = fs.readdirSync(absPath)
 
-	console.log(`Modules found in '${relPath}': ` + subdirs.length)
-	console.log(subdirs)
+	kony.log(`Modules found in '${relPath}': ` + subdirs.length)
+	kony.log(subdirs)
 
 	let modules = {}
 
@@ -23,16 +24,16 @@ function requireFolder(absPath){
 		let modulePath = `./${relPath}/${moduleName}`
 		moduleName = moduleName.replace(/\.js/, "")
 
-		//console.debug(`\nRequiring: ${moduleName}`)
-		//console.debug(`From: ${modulePath}`)
+		//kony.debug(`\nRequiring: ${moduleName}`)
+		//kony.debug(`From: ${modulePath}`)
 
 		try{
 			let handler = require(modulePath)
-			//console.debug(`Ok`)
+			//kony.debug(`Ok`)
 			modules[moduleName] = handler
 		}
 		catch(e){
-			console.error(`Error loading ${modulePath}\n${e.name}: ${e.message}\n${e.stack}` )
+			kony.error(`Error loading ${modulePath}\n${e.name}: ${e.message}\n${e.stack}` )
 		}
 	});
 	return modules

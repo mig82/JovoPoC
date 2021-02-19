@@ -1,3 +1,4 @@
+const kony = require('kony-node')
 const initSessionSdk = require('../initSessionSdk')
 
 /**
@@ -7,7 +8,7 @@ const initSessionSdk = require('../initSessionSdk')
  * or NEW_SESSION are required.
  */
 async function NEW_SESSION(){
-	console.log("******************************** NEW_SESSION")
+	kony.log("******************************** NEW_SESSION")
 	// TODO: Push event to Fabric analytics.
 
 	await initSessionSdk(this.$session)

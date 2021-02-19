@@ -1,6 +1,8 @@
+const kony = require('kony-node')
+
 async function ExchangeRates() {
 	let sdk = this.$session.$data.sdk
-	console.log("Resolving ExchangeRates with SDK instance " + sdk.__id)
+	kony.log("Resolving ExchangeRates with SDK instance " + sdk.__id)
 	let service = sdk.getIntegrationService("EcbForex")
 	let resp = await service.invokeOperation("getLatest", {}, {
 		base: "NOK",

@@ -1,3 +1,4 @@
+const kony = require('kony-node')
 const router = require('../router')
 
 /**
@@ -8,7 +9,7 @@ const router = require('../router')
 */
 
 function LAUNCH (){
-	console.log("\n******************************** LAUNCH")
+	kony.log("\n******************************** LAUNCH")
 	//TODO: Push event to Fabric analytics.
 	//return this.toIntent('Welcome')
 	//return this.toIntent('HelloWorld')

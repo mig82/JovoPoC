@@ -1,10 +1,12 @@
+const kony = require('kony-node')
+
 function ON_ERROR () {
-	console.log("\n******************************** ON_ERROR")
+	kony.error("\n******************************** ON_ERROR")
 	//TODO: Push event to Fabric analytics.
 
 	// Triggered when there is an error
-	console.log(`Error: ${JSON.stringify(this.$alexaSkill.getError())}`);
-	console.log(`Request: ${JSON.stringify(this.$request)}`);
+	kony.error(`Error: ${JSON.stringify(this.$alexaSkill.getError())}`);
+	kony.error(`Request: ${JSON.stringify(this.$request)}`);
 
 	this.ask('There was an error. Can I help you in any other way?');
 }

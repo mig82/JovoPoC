@@ -1,5 +1,7 @@
+const kony = require('kony-node')
+
 module.exports = (jovo) => {
-	console.log("\n******************************** onResponse")
+	kony.log("\n******************************** onResponse")
 	//TODO: Push event to Fabric analytics.
-	//console.log(jovo.getResponseObject());
+	//kony.log(jovo.getResponseObject());
 }

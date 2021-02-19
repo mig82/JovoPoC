@@ -1,11 +1,13 @@
 "use strict"
 
+const kony = require('kony-node')
+
 function loadConfig(configPath){
 	configPath = configPath || './config.json'
 
 	const defaultConfig = require(configPath)
-	console.debug(`\nConfig file path: '${configPath}'`)
-	console.debug(defaultConfig)
+	kony.debug(`\nConfig file path: '${configPath}'`)
+	kony.debug(defaultConfig)
 
 	const env = {}
 	env.FABRIC_APP_NAME = process.env.FABRIC_APP_NAME
@@ -13,8 +15,8 @@ function loadConfig(configPath){
 	env.FABRIC_APP_KEY = process.env.FABRIC_APP_KEY
 	env.FABRIC_APP_SECRET = process.env.FABRIC_APP_SECRET
 	env.FABRIC_APP_SERVICE_URL = process.env.FABRIC_APP_SERVICE_URL
-	console.debug("\nEnvironment variables:")
-	console.debug(env)
+	kony.debug("\nEnvironment variables:")
+	kony.debug(env)
 
 	const config = {
 		name: env.FABRIC_APP_NAME || defaultConfig.name,
@@ -24,8 +26,8 @@ function loadConfig(configPath){
 		serviceUrl: env.FABRIC_APP_SERVICE_URL || defaultConfig.serviceUrl
 	}
 
-	console.log("\nFabric app configuration")
-	console.log(config)
+	kony.log("\nFabric app configuration")
+	kony.log(config)
 
 	return config
 }

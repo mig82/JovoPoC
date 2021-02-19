@@ -2,6 +2,7 @@
 
 const { ExpressJS, Lambda, Webhook } = require('jovo-framework');
 const { app } = require('./app.js');
+const kony = require('kony-node')
 
 // ------------------------------------------------------------------
 // HOST CONFIGURATION
@@ -13,7 +14,7 @@ if (process.argv.indexOf('--webhook') > -1) {
   Webhook.jovoApp = app;
 
   Webhook.listen(port, () => {
-    console.info(`Local server listening on port ${port}.`);
+    kony.info(`Local server listening on port ${port}.`);
   });
 
   Webhook.post('/webhook', async (req, res) => {

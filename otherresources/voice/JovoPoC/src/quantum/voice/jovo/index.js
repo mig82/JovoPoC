@@ -1,6 +1,7 @@
 const DEFAULT_INTENTS_FOLDER = "default_intents"
 
 const path = require("path")
+const kony = require('kony-node')
 
 const { App } = require('jovo-framework');
 const { Alexa } = require('jovo-platform-alexa');
@@ -9,7 +10,6 @@ const { JovoDebugger } = require('jovo-plugin-debugger');
 const { FileDb } = require('jovo-db-filedb');
 
 const requireFolder = require('../../util/requireFolder')
-
 const NEW_SESSION = require("./core_intents/NEW_SESSION")
 const LAUNCH = require("./core_intents/LAUNCH")
 const NEW_USER = require("./core_intents/NEW_USER")
@@ -23,7 +23,7 @@ const router = require("./router")
 const createApp = (appHandlersPath) => {
 
 	router.init()
-	console.log("__dirname: "+ appHandlersPath)
+	kony.debug("__dirname: "+ appHandlersPath)
 
 	const app = new App()
 	app.use(
@@ -34,12 +34,12 @@ const createApp = (appHandlersPath) => {
 	)
 
 	// const handlers = requireFolder(path.join(__dirname, DEFAULT_INTENTS_FOLDER))
-	// console.log("\nCore handlers loaded:")
-	// console.log(handlers)
+	// kony.log("\nCore handlers loaded:")
+	// kony.log(handlers)
 
 	const appHandlers = requireFolder(appHandlersPath)
-	console.log("\nApp handlers loaded:")
-	console.log(appHandlers)
+	kony.info("\nApp handlers loaded:")
+	kony.info(appHandlers)
 
 	const coreHandlers = {
 		NEW_SESSION,
@@ -51,8 +51,8 @@ const createApp = (appHandlersPath) => {
 		END
 	}
 	//TODO: If the app tries to override any of the core handlers, wrap the app's definition in the core one.
-	console.log("\nCore handlers loaded:")
-	console.log(coreHandlers)
+	kony.info("\nCore handlers loaded:")
+	kony.info(coreHandlers)
 
 	app.setHandler({...appHandlers, ...coreHandlers})
 	app.onResponse(onResponse)

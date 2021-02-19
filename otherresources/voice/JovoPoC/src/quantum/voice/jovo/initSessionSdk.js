@@ -6,16 +6,16 @@ const loadConfig = require('../fabric/loadConfig')
 const initSessionSdk = async ($session) => {
 
 	if(typeof $session.$data.sdk === "undefined"){
-		console.log("Attaching an SDK instance to this Jovo session")
+		kony.log("Attaching an SDK instance to this Jovo session")
 
 		const config = await loadConfig()
 		const sdk = new kony.sdk()
 		await sdk.init(config.key, config.secret, config.serviceUrl)
-		//console.debug(sdk.getAppConfig())
+		//kony.debug(sdk.getAppConfig())
 		$session.$data.sdk = sdk
 	}
 	else{
-		console.log("This Jovo session already has an SDK instance.")
+		kony.log("This Jovo session already has an SDK instance.")
 	}
 }
 

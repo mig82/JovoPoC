@@ -1,5 +1,7 @@
+const kony = require('kony-node')
+
 function Help(){
-	console.log("Help")
+	kony.log("Help")
 	//TODO: Push event to Fabric analytics.
 }
 module.exports = Help

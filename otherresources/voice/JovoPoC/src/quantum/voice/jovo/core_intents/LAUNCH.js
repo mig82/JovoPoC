@@ -13,7 +13,7 @@ function LAUNCH (){
 	//TODO: Push event to Fabric analytics.
 	//return this.toIntent('Welcome')
 	//return this.toIntent('HelloWorld')
-	return router.goTo(this, "LAUNCH")
+	return router.toNextIntent(this)
 	//this.toStateIntent('PLAY_STATE', 'PlayIntent')
 }
 module.exports = LAUNCH

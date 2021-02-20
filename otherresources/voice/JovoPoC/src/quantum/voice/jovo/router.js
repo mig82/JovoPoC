@@ -19,21 +19,44 @@ function init(routesFile){
 	}
 }
 
-/***
-* Where that is the instance of the AlexaSkill or GoogleAction from which this
-* the router is called.
-*/
-function goTo(that, from){
+/**
+ * goToNext - Go to the next intent from the current one, based on the router's
+ * configured routes.
+ *
+ * @param  {fromIntent} The intent that calls the router —i.e. the AlexaSkill or GoogleAction.
+ * @return {Intent}      The intent to redirect to.
+ */
+function toNextIntent(fromIntent){
 
-	let to = routes[from]
+	let from = fromIntent.getRoute().path
+
+	let to = routes[from]// || routes[mapped]
 	if(typeof to === "undefined"){
-		throw new Error("No navigation route to go from :" + from)
+		throw new Error("No navigation route to go from:" + from)
 	}
 	kony.debug(`Routing: '${from}' -> '${to}'`)
-	return that.toIntent(to)
+	return fromIntent.toIntent(to)
+}
+
+
+/**
+ * goTo - Go to a specific intent.
+ *
+ * @param  {fromIntent} The intent that calls the router —i.e. the AlexaSkill or GoogleAction.
+ * @param  {to} The name of the intent to redirect to.
+ * @return {Intent}      The intent to redirect to.
+ */
+function toIntent(fromIntent, to){
+
+	if(typeof to === "undefined"){
+		throw new Error("Cannot redirect to undefined")
+	}
+	kony.debug(`Routing: -> '${to}'`)
+	return fromIntent.toIntent(to)
 }
 
 module.exports = {
 	init,
-	goTo
+	toNextIntent,
+	toIntent
 }

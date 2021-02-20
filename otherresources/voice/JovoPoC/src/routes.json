@@ -1,3 +1,4 @@
 {
-	"LAUNCH": "HelloWorld"
+	"LAUNCH": "Welcome",
+	"Welcome": "Home"
 }

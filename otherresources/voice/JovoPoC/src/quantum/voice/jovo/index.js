@@ -22,7 +22,6 @@ const router = require("./router")
 
 const createApp = (appHandlersPath) => {
 
-	router.init()
 	kony.debug("__dirname: "+ appHandlersPath)
 
 	const app = new App()
@@ -32,6 +31,9 @@ const createApp = (appHandlersPath) => {
 		new JovoDebugger(),
 		new FileDb()
 	)
+
+	router.init()
+	app.$data.router = router
 
 	// const handlers = requireFolder(path.join(__dirname, DEFAULT_INTENTS_FOLDER))
 	// kony.log("\nCore handlers loaded:")

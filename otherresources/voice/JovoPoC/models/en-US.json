@@ -47,6 +47,23 @@
 					"type": "CurrencyType"
 				}
 			]
+		},
+		{
+			"name": "LogIn",
+			"phrases": [
+				"log in",
+				"go in",
+				"authenticate"
+			]
+		},
+		{
+			"name": "DontLogIn",
+			"phrases": [
+				"don't log in",
+				"do not go in",
+				"stay public",
+				"public"
+			]
 		}
 	],
 	"alexa": {

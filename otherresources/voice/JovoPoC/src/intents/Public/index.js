@@ -1,4 +1,4 @@
-function Home() {
+function Public() {
 
 	//TODO: Build this array from the list of intents available.
 	let intents = [
@@ -15,8 +15,9 @@ function Home() {
 		`If you need help, just say "help".`
 	)
 
+
 	this.ask(this.$speech)
 	//TODO: Add suggestions for Google Assistant.
 }
 
-module.exports = Home
+module.exports = Public

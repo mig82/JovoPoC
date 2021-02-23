@@ -1,5 +1,4 @@
 const kony = require('kony-node')
-const initSessionSdk = require('../initSessionSdk')
 
 /**
  * You can use the NEW_SESSION intent instead of the LAUNCH intent if you want
@@ -10,7 +9,5 @@ const initSessionSdk = require('../initSessionSdk')
 async function NEW_SESSION(){
 	kony.log("******************************** NEW_SESSION")
 	// TODO: Push event to Fabric analytics.
-
-	await initSessionSdk(this.$session)
 }
 module.exports = NEW_SESSION

@@ -4,11 +4,10 @@
 //process.env.JOVO_PORT = 4000
 
 const path = require("path")
-
-const createJovoApp = require('./quantum/voice/jovo').createApp
+const {QuantumJovoApp} = require('./quantum/voice/jovo')
 
 const handlersPath = path.join(__dirname, "intents")
-const app = createJovoApp(handlersPath)
+const app = new QuantumJovoApp(handlersPath)
 
 app.setAlexaHandler({
 	// LAUNCH() {

@@ -9,6 +9,8 @@ function Welcome() {
 	.addText('Welcome back', !this.$user.isNewUser())
 	.addText(`to ${entity}.`)
 	.addText(`${slogan}.`, 0.3)
+	//TODO: Add a sound effect from a config file.
+	//.addAudio('https://blah blah blah.mp3')
 	.addBreak('300ms')
 
 	/* Seems there's no way to say "welcome" and move on to another intent,

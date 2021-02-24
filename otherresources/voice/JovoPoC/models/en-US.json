@@ -107,24 +107,24 @@
 	"inputTypes": [{
 		"name": "CurrencyType",
 		"values": [
-			{ "value": "EUR", "synonyms": [
-				"Euro", "European", "Europe", "EU"
+			{ "value": "eur", "synonyms": [
+				"euro", "european", "europe", "eu", "european"
 			]},
-			{ "value": "USD", "synonyms": [
-					"US", "Dollar", "US Dollar", "American"
+			{ "value": "usd", "synonyms": [
+					"us", "dollar", "us dollar", "american"
 			]},
-			{ "value": "CHF", "synonyms": [
-					"Swiss Franc", "Swiss", "Switzerland", "Franc"
+			{ "value": "chf", "synonyms": [
+					"swiss franc", "swiss", "switzerland", "franc"
 			]},
-			{ "value": "GBP", "synonyms": [
-					"British Pound", "British", "Pound", "Sterling",
-					"Pound Sterling", "Britain", "STG", "UK"
+			{ "value": "gbp", "synonyms": [
+					"british pound", "british", "pound", "sterling",
+					"pound sterling", "britain", "stg", "uk", "sterling"
 			]},
-			{ "value": "JPY", "synonyms": [
-					"Japanese Yen", "Yen", "Japanese"
+			{ "value": "jpy", "synonyms": [
+					"japanese yen", "yen", "japanese"
 			]},
-			{ "value": "NOK", "synonyms": [
-					"Norwegian Krone", "Krone", "Norwegian", "Norway"
+			{ "value": "nok", "synonyms": [
+					"norwegian krone", "krone", "norwegian", "norway"
 			]}
 		]
 	}]

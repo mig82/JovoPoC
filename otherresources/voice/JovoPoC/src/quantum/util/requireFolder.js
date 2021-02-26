@@ -30,7 +30,20 @@ function requireFolder(absPath){
 		try{
 			let handler = require(modulePath)
 			//kony.debug(`Ok`)
-			modules[moduleName] = handler
+			if (typeof handler === "object" || typeof handler === "function"){
+
+				//Load the intents in this state as globals.
+				if(handler.unpack){
+					modules = {...modules, ...handler}
+				}
+				//The standard way of loading handlers.
+				else{
+					modules[moduleName] = handler
+				}
+			}
+			else{
+				kony.warn(`Unable to load handler '${moduleName}', of unsuported type '${typeof handler}'.`)
+			}
 		}
 		catch(e){
 			kony.error(`Error loading ${modulePath}\n${e.name}: ${e.message}\n${e.stack}` )

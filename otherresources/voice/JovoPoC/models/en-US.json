@@ -28,8 +28,27 @@
 			]
 		},
 		{
-			"name": "ExchangeRates",
+			"name": "ChooseForexService",
 			"phrases": [
+				"exchange rates",
+				"conversion rates",
+				"forex",
+				"forex rates",
+				"foreign exchange rates",
+				"currency rates",
+				"currency exchange rates",
+				"currency conversion",
+				"currency conversion rates",
+				"rates",
+				"conversion",
+				"exchange",
+				"currencies"
+			]
+		},
+		{
+			"name": "GetForexRate",
+			"phrases": [
+				"from {ccyFrom} to {ccyTo}",
 				"what is the exchange rate from {ccyFrom} to {ccyTo}",
 				"exchange rate from {ccyFrom} to {ccyTo}",
 				"what is the rate from {ccyFrom} to {ccyTo}",
@@ -49,20 +68,22 @@
 			]
 		},
 		{
-			"name": "LogIn",
+			"name": "YesIntent",
 			"phrases": [
-				"log in",
-				"go in",
-				"authenticate"
+				"yes", "yeah", "yeap", "yep", "yup", "aye", "yay", "sure",
+				"of course", "affirmative", "positive", "you bet",
+				"ok", "k", "okay", "okie dokie", "alright", "alrighty",
+				"sounds good", "for sure", "sure thing", "certainly",
+				"definitely", "gladly", "absolutely", "very well", "fine",
+				"obviously", "verily", "surely", "uh-huh"
 			]
 		},
 		{
-			"name": "DontLogIn",
+			"name": "NoIntent",
 			"phrases": [
-				"don't log in",
-				"do not go in",
-				"stay public",
-				"public"
+				"no", "nah", "nope", "nop", "nay", "ney", "not", "not now",
+				"not at the moment", "negative", "of course not",
+				"some other time", "nuh-uh"
 			]
 		}
 	],
@@ -107,24 +128,24 @@
 	"inputTypes": [{
 		"name": "CurrencyType",
 		"values": [
-			{ "value": "eur", "synonyms": [
-				"euro", "european", "europe", "eu", "european"
+			{ "value": "EUR", "synonyms": [
+				"eur", "euro", "european", "europe", "eu", "european"
 			]},
-			{ "value": "usd", "synonyms": [
-					"us", "dollar", "us dollar", "american"
+			{ "value": "USD", "synonyms": [
+				"usd", 	"us", "dollar", "us dollar", "american"
 			]},
 			{ "value": "chf", "synonyms": [
 					"swiss franc", "swiss", "switzerland", "franc"
 			]},
-			{ "value": "gbp", "synonyms": [
-					"british pound", "british", "pound", "sterling",
+			{ "value": "GBP", "synonyms": [
+				"gbp", 	"british pound", "british", "pound", "sterling",
 					"pound sterling", "britain", "stg", "uk", "sterling"
 			]},
-			{ "value": "jpy", "synonyms": [
-					"japanese yen", "yen", "japanese"
+			{ "value": "JPY", "synonyms": [
+				"jpy", 	"japanese yen", "yen", "japanese"
 			]},
-			{ "value": "nok", "synonyms": [
-					"norwegian krone", "krone", "norwegian", "norway"
+			{ "value": "NOK", "synonyms": [
+				"nok", 	"norwegian krone", "krone", "norwegian", "norway"
 			]}
 		]
 	}]

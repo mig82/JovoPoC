@@ -85,6 +85,26 @@
 				"not at the moment", "negative", "of course not",
 				"some other time", "nuh-uh"
 			]
+		},
+		{
+			"name": "LoginIntent",
+			"phrases": [
+				"log in", "authenticate", "enter", "go in", "sign in", "start session",
+				"access", "sign into my account", "log into my account", "access my account", "step in"
+			]
+		},
+		{
+			"name": "LogoutIntent",
+			"phrases": [
+				"log out", "drop out", "exit", "go out", "sign out", "end session", "terminate",
+				"terminate session", "get out", "leave", "cancel session", "step out", "quit"
+			]
+		},
+		{
+			"name": "test",
+			"phrases": [
+				"test"
+			]
 		}
 	],
 	"alexa": {

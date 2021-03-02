@@ -28,7 +28,7 @@
 			]
 		},
 		{
-			"name": "ChooseForexService",
+			"name": "GetForexRateChoice",
 			"phrases": [
 				"exchange rates",
 				"conversion rates",

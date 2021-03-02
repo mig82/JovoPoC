@@ -15,6 +15,8 @@ function Welcome() {
 	//.addAudio('https://blah blah blah.mp3')
 	.addBreak('500ms')
 
+	this.tell(this.$speech)
+
 	//TODO: Implement a unified router with a toNext function that can handle both intents and states.
 	//return router.toNext(this)
 	this.toIntent('OfferLogin.main')

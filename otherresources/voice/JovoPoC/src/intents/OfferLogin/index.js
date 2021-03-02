@@ -12,15 +12,14 @@ const OfferLogin = {
 			//TODO: Is there anything equivalent to suggetion chips for Alexa?
 		}
 		else if(this.isGoogleAction()){
-			kony.debug(this.$googleAction.constructor.name)
 			this.$googleAction.showSuggestions(["yes", "no"])
 		}
 
-		this.followUpState('OfferLogin.AwaitLoginDecision')
+		this.followUpState('OfferLogin.AwaitDecision')
 		this.ask(this.$speech, this.$reprompt)
 	},
 
-	AwaitLoginDecision: {
+	AwaitDecision: {
 		YesIntent() {
 			this.$speech.addText(['Ok!', 'Great!', 'Fantastic!'])
 			.addText(["Let's get you in.", "Let me open the door for you."])

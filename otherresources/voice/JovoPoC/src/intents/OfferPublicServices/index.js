@@ -19,42 +19,15 @@ const OfferPublicServices = {
 		)
 
 		if(this.isAlexaSkill()){
-			//...
+			//Add equivalent to suggestion chips in Alexa.
 		}
 		else if(this.isGoogleAction()){
 			this.$googleAction.showSuggestions(opts_array)
 		}
 
 		kony.debug("before: " + this.getState())
-		this.followUpState('OfferPublicServices.AwaitServiceChoice')
 		this.ask(this.$speech)
 		kony.debug("after: " + this.getState())
-		//TODO: Add suggestions for Google Assistant.
-	},
-
-	AwaitServiceChoice: {
-
-		//TODO: This is repetitive. Need a more suscinct way to write these handles.
-		ChooseForexService: function() {
-			this.$speech.addText(['Ok!', 'Great!'])
-			.addText(["Let's go to exchange rates."])
-			this.followUpState(null)
-			this.toIntent("ForexService.main")
-		},
-
-		ChooseNewsService() {
-			this.$speech.addText(['Ok!', 'Great!'])
-			.addText(["Let's check the news."])
-			this.followUpState(null)
-			this.toIntent("NewsService.main")
-		},
-
-		ChooseATMsService() {
-			this.$speech.addText(['Ok!', 'Great!'])
-			.addText(["Let's find an ATM for you."])
-			this.followUpState(null)
-			this.toIntent("ATMsService.main")
-		}
 	}
 }
 

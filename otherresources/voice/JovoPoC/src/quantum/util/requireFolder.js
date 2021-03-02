@@ -36,6 +36,11 @@ function requireFolder(absPath){
 				if(handler.unpack){
 					modules = {...modules, ...handler}
 				}
+				// else if(handler instanceof Array){
+				// 	handler.forEach(h => {
+				// 		modules = {...modules, h}
+				// 	})
+				// }
 				//The standard way of loading handlers.
 				else{
 					modules[moduleName] = handler

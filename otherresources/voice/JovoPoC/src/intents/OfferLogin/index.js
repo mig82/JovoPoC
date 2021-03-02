@@ -1,6 +1,6 @@
 const OfferLogin = {
 
-	main() {
+	START() {
 		this.$speech
 		.addText(`Would you like to log into your account? `)
 		.addBreak('300ms')
@@ -33,7 +33,7 @@ const OfferLogin = {
 			.addText(["We can still help you.", "There's still lots you can do."])
 
 			this.removeState()
-			this.toIntent("OfferPublicServices.main")
+			this.toStateIntent("OfferPublicServices", "START")
 		}
 	}
 }

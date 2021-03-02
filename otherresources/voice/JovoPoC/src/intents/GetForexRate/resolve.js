@@ -46,7 +46,7 @@ async function GetForexRate() {
 	//this.followUpState('ForexService.GoAgain')
 	this.tell(this.$speech)
 	// this.followUpState(null)
-	this.toIntent("GetForexRateAgain.main")
+	this.toStateIntent("GetForexRateAgain", "START")
 }
 
 module.exports = GetForexRate

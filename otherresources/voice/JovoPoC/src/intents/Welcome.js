@@ -19,7 +19,7 @@ function Welcome() {
 
 	//TODO: Implement a unified router with a toNext function that can handle both intents and states.
 	//return router.toNext(this)
-	this.toIntent('OfferLogin.main')
+	this.toStateIntent('OfferLogin', 'START')
 }
 
 module.exports = Welcome

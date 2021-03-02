@@ -1,7 +1,7 @@
 "use strict"
 
 const GetForexRateSlots = {
-	main(){
+	START(){
 		this.$speech.addText(`what currencies would you like to know the exchange rate for?`)
 		this.followUpState('GetForexRateSlots.AwaitSlots')
 		this.ask(this.$speech)

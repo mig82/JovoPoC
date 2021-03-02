@@ -1,7 +1,7 @@
 const kony = require('kony-node')
 
 const OfferPublicServices = {
-	main() {
+	START() {
 
 		//TODO: Build this array from the list of intents available.
 		let opts_array = [

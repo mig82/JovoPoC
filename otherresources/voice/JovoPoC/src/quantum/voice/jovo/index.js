@@ -1,6 +1,6 @@
 "use strict"
 
-const DEFAULT_INTENTS_FOLDER = "default_intents"
+const DEFAULT_HANDLERS_FOLDER = "handlers"
 
 const path = require("path")
 const kony = require('kony-node')
@@ -20,15 +20,16 @@ const Unhandled = require("./core_intents/Unhandled")
 const END = require("./core_intents/END")
 const onResponse = require('./onResponse') //Note this is not an event hander. Just a function.
 
-const requireFolder = require('../../util/requireFolder')
 const router = require("./router")
 const initSdk = require("./initSdk")
 const getSdk = require("./getSdk")
 
-class QuantumJovoApp extends App {
-	constructor(appHandlersPath){
+const requireFolder = require('../../util/requireFolder')
+const getAppRoot = require('../../util/getAppRoot')
 
-		kony.debug("__dirname: "+ appHandlersPath)
+class QuantumJovoApp extends App {
+	constructor(handlersDir){
+
 		super()
 
 		const app = this
@@ -39,14 +40,9 @@ class QuantumJovoApp extends App {
 			new FileDb()
 		)
 
-		router.init()
-		app.$data.router = router
+		app._initRouter()
 
-		// const handlers = requireFolder(path.join(__dirname, DEFAULT_INTENTS_FOLDER))
-		// kony.log("\nCore handlers loaded:")
-		// kony.log(handlers)
-
-		const appHandlers = requireFolder(appHandlersPath)
+		const appHandlers = app._loadHandlers(handlersDir)
 		kony.info("\nApp handlers loaded:")
 		kony.info(appHandlers)
 
@@ -74,13 +70,30 @@ class QuantumJovoApp extends App {
 			App: this.$app.$data.key = value;
 		*/
 
-		this.initSdk = initSdk
-		this.getSdk = getSdk
-
 		// initSdk is async, but it's ok to call it without await because it
 		// happens way before any handler will ever need it*/
-		this.initSdk()
+		app.initSdk()
 		return app
+	}
+
+	_initRouter(){
+		router.init()
+		this.$data.router = router
+	}
+
+	_loadHandlers(handlersDir){
+		const appRootPath = getAppRoot()
+		const handlersAbsPath = path.join(appRootPath, handlersDir || DEFAULT_HANDLERS_FOLDER)
+		const appHandlers = requireFolder(handlersAbsPath)
+		return appHandlers
+	}
+
+	initSdk(){
+		return initSdk.apply(this, arguments)
+	}
+
+	getSdk(){
+		return getSdk.apply(this, arguments)
 	}
 }
 

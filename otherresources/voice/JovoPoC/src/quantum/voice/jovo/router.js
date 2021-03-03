@@ -1,6 +1,6 @@
 const path = require('path')
 
-const findDirByCallerName = require("../../util/findDirByCallerName")
+const getAppRoot = require("../../util/getAppRoot")
 const kony = require('kony-node')
 
 var initialised = false
@@ -9,7 +9,7 @@ var routes = {}
 
 function init(routesFile){
 	if(!initialised){
-		let appRootPath = findDirByCallerName("app.js")
+		let appRootPath = getAppRoot()
 		let routesPath = path.join(appRootPath, routesFile || defaultRoutesFile)
 		kony.log("\nRoutes path: " + routesPath)
 

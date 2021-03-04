@@ -4,13 +4,13 @@
   "description": "A sample voice app that works with the Jovo Framework",
   "main": "src/index.js",
   "dependencies": {
-    "callsite": "^1.0.0",
     "jovo-db-filedb": "^3.3.1",
     "jovo-framework": "^3.3.1",
     "jovo-platform-alexa": "^3.3.1",
     "jovo-platform-googleassistantconv": "^3.3.2",
     "jovo-plugin-debugger": "^3.3.2",
-    "kony-node": "file:../../../../../node/kony-node"
+    "kony-node": "file:../../../../../node/kony-node",
+    "quantum-jovo": "file:../../../../../node/quantum-jovo"
   },
   "devDependencies": {
     "gulp": "^4.0.2",

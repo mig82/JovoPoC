@@ -3,7 +3,7 @@
 const kony = require('kony-node')
 const round = require('../../util/round')
 
-async function GetForexRate() {
+async function GetForexRateResolve() {
 
 	kony.debug(this.$inputs)
 	//TODO: if $inputs does not have all the mandatory fields, forward to slot filling.
@@ -49,4 +49,4 @@ async function GetForexRate() {
 	this.toStateIntent("GetForexRateAgain", "START")
 }
 
-module.exports = GetForexRate
+module.exports = GetForexRateResolve

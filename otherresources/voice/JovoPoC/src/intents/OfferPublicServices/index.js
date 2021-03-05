@@ -25,9 +25,7 @@ const OfferPublicServices = {
 			this.$googleAction.showSuggestions(opts_array)
 		}
 
-		kony.debug("before: " + this.getState())
 		this.ask(this.$speech)
-		kony.debug("after: " + this.getState())
 	}
 }
 

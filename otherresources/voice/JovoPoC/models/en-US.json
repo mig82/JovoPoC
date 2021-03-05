@@ -46,7 +46,7 @@
 			]
 		},
 		{
-			"name": "GetForexRate",
+			"name": "GetForexRateResolve",
 			"phrases": [
 				"from {ccyFrom} to {ccyTo}",
 				"what is the exchange rate from {ccyFrom} to {ccyTo}",
@@ -89,7 +89,7 @@
 		{
 			"name": "LoginIntent",
 			"phrases": [
-				"log in", "authenticate", "enter", "go in", "sign in", "start session",
+				"log in", "log on", "authenticate", "enter", "go in", "sign in", "sign on",  "start session",
 				"access", "sign into my account", "log into my account", "access my account", "step in"
 			]
 		},

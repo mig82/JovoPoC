@@ -1,3 +1,6 @@
+const { QuantumJovoRouter } = require('quantum-jovo')
+const router = QuantumJovoRouter.getInstance()
+
 const OfferLogin = {
 
 	START() {
@@ -24,16 +27,17 @@ const OfferLogin = {
 			this.$speech.addText(['Ok!', 'Great!', 'Fantastic!'])
 			.addText(["Let's get you in.", "Let me open the door for you."])
 
-			this.removeState()
-			this.toIntent("Private")
+			//this.toIntent("Private")
+			router.toNext(this)
 		},
 
 		NoIntent() {
 			this.$speech.addText(['Ok!', 'No problem.'])
 			.addText(["We can still help you.", "There's still lots you can do."])
 
-			this.removeState()
-			this.toStateIntent("OfferPublicServices", "START")
+			//this.removeState()
+			//this.toStateIntent("OfferPublicServices", "START")
+			router.toNext(this)
 		}
 	}
 }

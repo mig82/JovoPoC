@@ -1,5 +1,5 @@
 "use strict"
-
+const kony = require('kony-node')
 const GetForexRateSlots = {
 	START(){
 		this.$speech.addText(`what currencies would you like to know the exchange rate for?`)
@@ -8,9 +8,10 @@ const GetForexRateSlots = {
 	},
 
 	AwaitSlots: {
-		async GetForexRate(){
+		async GetForexRateResolve(){
 			this.removeState()
-			await this.toIntent("GetForexRate")
+			kony.warn("Forwarding to global GetForexRateResolve")
+			await this.toIntent("GetForexRateResolve")
 		},
 
 		Unhandled(){

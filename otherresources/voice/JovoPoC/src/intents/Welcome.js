@@ -1,4 +1,5 @@
-const kony = require('kony-node')
+const { QuantumJovoRouter } = require('quantum-jovo')
+const router = QuantumJovoRouter.getInstance()
 
 function Welcome() {
 
@@ -18,8 +19,8 @@ function Welcome() {
 	this.tell(this.$speech)
 
 	//TODO: Implement a unified router with a toNext function that can handle both intents and states.
-	//return router.toNext(this)
-	this.toStateIntent('OfferLogin', 'START')
+	router.toNext(this)
+	//this.toStateIntent('OfferLogin', 'START')
 }
 
 module.exports = Welcome

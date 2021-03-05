@@ -1,4 +1,6 @@
 {
 	"LAUNCH": "Welcome",
-	"Welcome": "Home"
+	"Welcome": "OfferLogin.START",
+	"OfferLogin.AwaitDecision.NoIntent": "OfferPublicServices.START",
+	"OfferLogin.AwaitDecision.YesIntent": "OfferPrivateServices.START"
 }

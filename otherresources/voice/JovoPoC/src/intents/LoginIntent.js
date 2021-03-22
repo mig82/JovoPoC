@@ -7,7 +7,8 @@ const kony = require('kony-node')
  */
 function LoginIntent(){
 	kony.debug('***********LoginIntent')
-	//this.toIntent('OfferLogin.AwaitDecision.YesIntent') // TODO: This won't work. Issue #906
+
+	//TODO: If the user is already logged in,
 	this.toStateIntent('OfferLogin', 'START')
 }
 

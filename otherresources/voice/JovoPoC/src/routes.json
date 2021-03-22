@@ -1,6 +1,8 @@
 {
 	"LAUNCH": "Welcome",
 	"Welcome": "OfferLogin.START",
-	"OfferLogin.AwaitDecision.NoIntent": "OfferPublicServices.START",
-	"OfferLogin.AwaitDecision.YesIntent": "OfferPrivateServices.START"
+	"OfferLogin.AwaitDecision.NoIntent": "OfferPublicServices",
+
+	"OfferLogin.AwaitDecision.YesIntent": "OfferPrivateServices",
+	"OfferPrivateServices": "LinkAccount"
 }

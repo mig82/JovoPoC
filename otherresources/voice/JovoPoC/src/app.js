@@ -6,15 +6,4 @@
 const {QuantumJovoApp} = require('quantum-jovo')
 const app = new QuantumJovoApp("./routes.json", "intents")
 
-app.setAlexaHandler({
-	// LAUNCH() {
-	// 	this.tell('Hello Alexa user!')
-	// }
-})
-app.setGoogleAssistantHandler({
-	// LAUNCH() {
-	// 	this.tell('Hello Google user!')
-	// }
-})
-
 module.exports = { app }

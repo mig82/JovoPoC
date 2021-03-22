@@ -1,9 +1,11 @@
 const { QuantumJovoRouter } = require('quantum-jovo')
 const router = QuantumJovoRouter.getInstance()
+const kony = require('kony-node')
 
 const OfferLogin = {
 
 	START() {
+
 		this.$speech
 		.addText(`Would you like to log into your account? `)
 		.addBreak('300ms')
@@ -26,7 +28,7 @@ const OfferLogin = {
 		YesIntent() {
 			this.$speech.addText(['Ok!', 'Great!', 'Fantastic!'])
 			.addText(["Let's get you in.", "Let me open the door for you."])
-
+			.addBreak('300ms')
 			//this.toIntent("Private")
 			router.toNext(this)
 		},
@@ -34,7 +36,7 @@ const OfferLogin = {
 		NoIntent() {
 			this.$speech.addText(['Ok!', 'No problem.'])
 			.addText(["We can still help you.", "There's still lots you can do."])
-
+			.addBreak('300ms')
 			//this.removeState()
 			//this.toStateIntent("OfferPublicServices", "START")
 			router.toNext(this)

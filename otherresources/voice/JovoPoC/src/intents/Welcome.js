@@ -11,7 +11,8 @@ function Welcome() {
 	.addText('Welcome to', this.$user.isNewUser())
 	.addText('Welcome back to', !this.$user.isNewUser())
 	.addText(entity)
-	.addText(`. ${slogan}.`, 0.3)
+	.addText(`.`)
+	.addText(` ${slogan}.`, 0.3)
 	//TODO: Add a sound effect from a config file.
 	//.addAudio('https://blah blah blah.mp3')
 	.addBreak('500ms')

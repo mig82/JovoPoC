@@ -1,5 +1,4 @@
 const { QuantumJovoRouter } = require('quantum-jovo')
-const router = QuantumJovoRouter.getInstance()
 
 function Welcome() {
 
@@ -19,8 +18,7 @@ function Welcome() {
 
 	this.tell(this.$speech)
 
-	//TODO: Implement a unified router with a toNext function that can handle both intents and states.
-	router.toNext(this)
+	this.toNext()
 	//this.toStateIntent('OfferLogin', 'START')
 }
 

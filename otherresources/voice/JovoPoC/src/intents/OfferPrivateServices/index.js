@@ -5,10 +5,19 @@ const router = require('quantum-jovo').QuantumJovoRouter.getInstance()
 
 function OfferPrivateServices() {
 
+console.log(`this.constructor: '${this.constructor.name}'`)
+console.log(`typeof this.$request.getAccessToken: '${typeof this.$request.getAccessToken}'`)
+console.log(`this.$request.getAccessToken(): '${this.$request.getAccessToken()}'`)
+
 	//TODO: The router is the one that should know when an intent requires authentication.
-	if (!this.$request.getAccessToken()){
+	if (
+		( this.isAlexaSkill()	&& !this.$request.getAccessToken()	) ||
+		( this.isGoogleAction() && !this.$googleAction.isAccountLinkingLinked() )
+		// WARN: Seems in Google Actions $request.getAccessToken() returns null, causing an infinite loop.
+		//( this.isGoogleAction()	&& !this.$request.getAccessToken()	)
+	){
 		kony.debug("The user is not logged in")
-		this.$speech.addText("Hmmm... It seems you've not linked your account yet.")
+		//this.$speech.addText("Hmmm... It seems you're not logged in yet.")
 		router.toNext(this)
 	}
 

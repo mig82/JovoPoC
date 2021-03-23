@@ -1,5 +1,5 @@
 const { QuantumJovoRouter } = require('quantum-jovo')
-const router = QuantumJovoRouter.getInstance()
+//const router = QuantumJovoRouter.getInstance()
 const kony = require('kony-node')
 
 const OfferLogin = {
@@ -30,7 +30,8 @@ const OfferLogin = {
 			.addText(["Let's get you in.", "Let me open the door for you."])
 			.addBreak('300ms')
 			//this.toIntent("Private")
-			router.toNext(this)
+			//router.toNext(this)
+			this.toNext()
 		},
 
 		NoIntent() {
@@ -39,7 +40,8 @@ const OfferLogin = {
 			.addBreak('300ms')
 			//this.removeState()
 			//this.toStateIntent("OfferPublicServices", "START")
-			router.toNext(this)
+			//router.toNext(this)
+			this.toNext()
 		}
 	}
 }

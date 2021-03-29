@@ -1,0 +1,4 @@
+"handlers":
+  - "name": "Jovo"
+"httpsEndpoint":
+  "baseUrl": "https://webhook.jovo.cloud/e073058b-dcd8-46d7-bb6a-3c3e3ef5385d"

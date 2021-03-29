@@ -3,7 +3,12 @@ db/
 bundle/
 bundle.zip
 .env
-/platforms
 
-.ask
-ask-resources.json
+# Google Actions
+/platforms/googleAction/actions
+/platforms/googleAction/custom
+
+# Alexa
+/platforms/alexaSkill/ask-resources.json
+/platforms/alexaSkill/ask-resources.json
+/platforms/alexaSkill/skill-package/interactionModels

@@ -1,0 +1,23 @@
+{
+  "accountLinkingResponse": {
+    "accessTokenScheme": "HTTP_BASIC",
+    "accessTokenUrl": "https://tpko-dev.konycloud.com/services/Oauth2Token/token",
+    "authorizationUrl": "https://100032668.auth.konycloud.com/oidc/authorize/IronBankOauth2",
+    "clientId": "jovopoc",
+    "domains": [],
+    "redirectUrls": [
+      "https://alexa.amazon.co.jp/api/skill/link/M3U4H9PKUD2YZZ",
+      "https://pitangui.amazon.com/api/skill/link/M3U4H9PKUD2YZZ",
+      "https://layla.amazon.com/api/skill/link/M3U4H9PKUD2YZZ"
+    ],
+    "scopes": [
+      "openid",
+      "email",
+      "profile",
+      "offline_access",
+      "phone"
+    ],
+    "skipOnEnablement": true,
+    "type": "AUTH_CODE"
+  }
+}

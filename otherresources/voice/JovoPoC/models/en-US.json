@@ -2,6 +2,25 @@
 	"invocation": "iron bank",
 	"intents": [
 		{
+			"name": "TransferStart",
+			"phrases": [
+				"transfer",
+				"transfers",
+				"pay",
+				"pay someone",
+				"payments",
+				"peer to peer",
+				"p to p",
+				"send money",
+				"send funds",
+				"wire transfer",
+				"wire funds",
+				"move money",
+				"move funds",
+				"order transfer"
+			]
+		},
+		{
 			"name": "GetForexRateStart",
 			"phrases": [
 				"exchange rates",

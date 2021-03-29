@@ -94,7 +94,7 @@
 			]
 		},
 		{
-			"name": "AccountLinkedIntent",
+			"name": "ACCOUNT_LINKED_INTENT",
 			"phrases": [
 				"done", "it's done", "it is done",
 				"linked", "it's linked", "it is linked",

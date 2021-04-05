@@ -5,6 +5,30 @@
 module.exports = {
 	alexaSkill: {
 		nlu: 'alexa',
+		manifest: {
+			publishingInformation: {
+				locales: {
+					"en-US": {
+						summary: "The Iron Bank of Braavos",
+						examplePhrases: [
+							"Alexa open Iron Bank"
+						],
+						keywords: [
+							"banking",
+							"financial services"
+						],
+						name: "Iron Bank",
+						description: "The Iron Bank's voice banking experience, with access to accounts, cards, personal finance mangement and more.",
+						smallIconUri: "https://quantum-demos1.s3.eu-central-1.amazonaws.com/ibb/logo_blue.png",
+						largeIconUri: "https://quantum-demos1.s3.eu-central-1.amazonaws.com/ibb/logo_blue.png"
+					}
+				},
+				isAvailableWorldwide: true,
+				testingInstructions: "Test username: user@foo.com\nTest password: Pw!123456",
+				category: "BUSINESS_AND_FINANCE",
+				distributionCountries: []
+			}
+		}
 	},
 	googleAction: {
 		projectId: 'jovopoc',
@@ -33,7 +57,7 @@ module.exports = {
 					tokenUrl: 'https://tpko-dev.konycloud.com/services/Oauth2Token/token',
 					useBasicAuthHeader: true,
 				},
-				testingInstructions: "user@foo.com\nPw!123456"
+				testingInstructions: "Test username: user@foo.com\nTest password: Pw!123456"
 			}
 		},
 	},

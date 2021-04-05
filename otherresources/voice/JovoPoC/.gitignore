@@ -10,6 +10,7 @@ bundle.zip
 /platforms/googleAction/custom
 
 # Alexa
+/platforms/alexaSkill/skill-package/skill.json
 /platforms/alexaSkill/ask-resources.json
 /platforms/alexaSkill/ask-resources.json
 /platforms/alexaSkill/skill-package/interactionModels

@@ -5,6 +5,7 @@ bundle.zip
 .env
 
 # Google Actions
+/platforms/googleAction/settings/**/settings.yaml
 /platforms/googleAction/actions
 /platforms/googleAction/custom
 

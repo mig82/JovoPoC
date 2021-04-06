@@ -1,10 +1,9 @@
-const router = require('quantum-jovo').QuantumJovoRouter.getInstance()
 const kony = require('kony-node')
 
 //TODO: Move this to QuantumJovoApp as a core handler.
-function LinkAccountStart(){
+function LINK_ACCOUNT(){
 
-	kony.debug("*************** LinkAccountStart")
+	kony.debug("*************** LINK_ACCOUNT")
 
 	if(this.isAlexaSkill()){
 		this.$speech.addText(
@@ -32,4 +31,4 @@ function LinkAccountStart(){
 	}
 }
 
-module.exports = LinkAccountStart
+module.exports = LINK_ACCOUNT

@@ -1,8 +1,10 @@
 {
 	"LAUNCH": "Welcome",
 	"Welcome": "OfferLogin.START",
+	"HelpIntent": "OfferLogin.START",
 	"OfferLogin.AwaitDecision.NoIntent": "OfferPublicServices",
 	"OfferLogin.AwaitDecision.YesIntent": "OfferPrivateServices",
-	"OfferPrivateServices": "/LinkAccountStart",
-	"ON_SIGN_IN": "OfferPrivateServices"
+	"OfferPrivateServices": "LINK_ACCOUNT",
+	"ON_SIGN_IN": "AfterSignIn",
+	"AfterSignIn": "OfferPrivateServices"
 }

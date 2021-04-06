@@ -17,7 +17,8 @@ async function GetForexRateResolve() {
 	const payload = { base, symbols }
 
 	//It's silly to have the service name hardcoded here. Need a config file for this.
-	const service = this.$app.getSdk().getIntegrationService("EcbForex")
+	//const service = this.$app.getSdk().getIntegrationService("EcbForex")
+	const service = this.getSdk().getIntegrationService("EcbForex")
 	const resp = await service.invokeOperation("getLatest", {}, payload)
 	kony.debug(JSON.stringify(resp))
 

@@ -9,8 +9,9 @@ google_pull:
 
 alexa_pull:
 	cd platforms/alexaSkill && \
+	ask smapi export-package --skill-id $(alexa_skill_id) --stage development && \
 	ask smapi get-account-linking-info --skill-id $(alexa_skill_id) > acct-linking.json
-	# ask smapi export-package --skill-id $(alexa_skill_id) --stage development && \
+	#ask smapi get-skill-manifest --skill-id $(alexa_skill_id) && \
 
 alexa_push:
 	cd platforms/alexaSkill && \

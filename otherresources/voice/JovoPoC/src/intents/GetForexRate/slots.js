@@ -10,14 +10,13 @@ const GetForexRateSlots = {
 	AwaitSlots: {
 		async GetForexRateResolve(){
 			this.removeState()
-			kony.warn("Forwarding to global GetForexRateResolve")
 			await this.toIntent("GetForexRateResolve")
 		},
 
 		Unhandled(){
 			this.tell("Sorry, let's try again")
 			this.removeState()
-			this.toIntent("GetForexRateSlots")
+			this.toIntent("GetForexRateSlots.START")
 		}
 	}
 }

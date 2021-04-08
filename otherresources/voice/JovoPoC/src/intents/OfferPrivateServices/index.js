@@ -5,6 +5,7 @@ const router = require('quantum-jovo').QuantumJovoRouter.getInstance()
 
 function OfferPrivateServices() {
 
+	kony.debug("******************* OfferPrivateServices")
 	//TODO: The router is the one that should know when an intent requires authentication.
 	// if (
 	// 	( this.isAlexaSkill()	&& !this.$request.getAccessToken()	) ||

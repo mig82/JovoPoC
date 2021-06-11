@@ -1,10 +1,6 @@
 {
     "@class": "com.kony.gen.viz.model.component.KVizLabel",
     "DNDConfig": null,
-    "_bottom_": {
-        "type": "string",
-        "value": "10dp"
-    },
     "_height_": {
         "type": "ref",
         "value": "preferred"
@@ -27,6 +23,10 @@
     ],
     "_skin_": "s8521313910d429ebfa0671fe0bd4850",
     "_text_": "...",
+    "_top_": {
+        "type": "string",
+        "value": "0dp"
+    },
     "_width_": {
         "type": "ref",
         "value": "preferred"
@@ -55,7 +55,7 @@
     },
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "hc3772184e9945f69571c2f1db90818a",
+    "kuid": "d93f5148b5ae44119932544b3e6badc9",
     "maxwidth": {
         "type": "string",
         "value": "100%"
@@ -69,7 +69,7 @@
         "value": "50dp"
     },
     "name": "kony.ui.Label",
-    "parent": "dialogueScroll",
+    "parent": "outFlex",
     "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

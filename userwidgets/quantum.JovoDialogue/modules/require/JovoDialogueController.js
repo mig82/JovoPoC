@@ -1,33 +1,45 @@
-define(["./JovoProxy"], function(jovo) {
-//define([], function() {
+"use strict"
 
-	// Static stuff
+define(["./JovoProxy", "./createDialogueLoad",
+		"./createOutSpeech", "./createInSpeech"],
+	   function(jovo, createDialogueLoad, createOutSpeech, createInSpeech) {
+
 	let count = 0;
 	const LAUNCH_DELAY = 1
+	const SPACING = "10dp" //The space between conversation items.
 
 	// Stuff specific to each instance of this component.
 	return {
+		getDialogueSize: function(){
+			return this.view.dialogueScroll.widgets().length
+		},
+
+		add: function(dialogueItem){
+			delete dialogueItem.top
+			dialogueItem.bottom = SPACING
+			this.view.dialogueScroll.addAt(dialogueItem, 0)
+		},
+
 		send: function(){
 			let text = this.view.input.text
 			if(text) text = text.trim()
 			if(text) {
 				jovo.sendText(text)
-				this.view.inText.text = text
+				this.add(createInSpeech(text))
 			}
 			this.view.input.text = ""
 		},
 
 		preShow: function(){
-			kony.print(`JovoDialogue preShow`)
+			kony.print(`flag JovoDialogue preShow`)
 		},
 
 		postShow: async function(){
-
 			await jovo.init()
-
+			//Three buttons for the purpose of debugging.
 			this.view.recordButton.onTouchStart = async () => { await jovo.record() }
 			this.view.recordButton.onTouchEnd = async () => { await jovo.stop() }
-			//this.view.launchButton.onClick = async () => { await jovo.launch() }
+			this.view.launchButton.onClick = async () => { await jovo.launch() }
 			kony.timer.schedule2(jovo.launch, LAUNCH_DELAY)
 			this.view.abortButton.onClick = async () => { await jovo.abort() }
 
@@ -43,8 +55,7 @@ define(["./JovoProxy"], function(jovo) {
 			})
 
 			jovo.onSpeech((speech) => {
-				//TODO: Add a bubble for each sentence.
-				this.view.outText.text = speech
+				this.add(createOutSpeech(speech))
 			}, true)
 
 			jovo.onSuggestions((suggestions) => {

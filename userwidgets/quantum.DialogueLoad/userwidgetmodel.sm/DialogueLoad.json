@@ -1,12 +1,8 @@
 {
     "DNDConfig": null,
-    "_bottom_": {
-        "type": "string",
-        "value": "10dp"
-    },
     "_height_": {
         "type": "string",
-        "value": "60dp"
+        "value": "100%"
     },
     "_left_": {
         "type": "string",
@@ -26,40 +22,32 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "sd711e7a3ebb44a789d6a5d75718020a",
+    "_skin_": "s8641ebade9a4510b0c5dfd47532e348",
+    "_top_": {
+        "type": "string",
+        "value": "0dp"
+    },
     "_width_": {
         "type": "string",
-        "value": "80dp"
+        "value": "100%"
     },
     "allboxes": [],
     "autogrowmode": 0,
     "canUpdateUI": true,
     "children": [
-        "loadImg"
+        "loadFlex"
     ],
     "clipbounds": true,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "loadFlex",
+    "id": "DialogueLoad",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "id2d0459d0ed4248bd913b988ff88dbd",
+    "kuid": "b776e5fb93b945b4acf75c9a130fc59c",
     "layouttype": 2,
-    "maxwidth": {
-        "type": "string",
-        "value": "100%"
-    },
-    "minheight": {
-        "type": "string",
-        "value": "60dp"
-    },
-    "minwidth": {
-        "type": "string",
-        "value": "50dp"
-    },
     "name": "kony.ui.FlexContainer",
-    "parent": "dialogueScroll",
+    "parent": "userwidgetmodel",
     "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

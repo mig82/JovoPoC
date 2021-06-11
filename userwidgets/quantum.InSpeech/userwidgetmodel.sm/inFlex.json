@@ -2,7 +2,11 @@
     "DNDConfig": null,
     "_bottom_": {
         "type": "string",
-        "value": "140dp"
+        "value": "0dp"
+    },
+    "_height_": {
+        "type": "ref",
+        "value": "preferred"
     },
     "_left_": {
         "type": "string",
@@ -22,51 +26,39 @@
         0
     ],
     "_percent_": true,
-    "_skin_": "s99cf6ce4fa043028281b8c7219f6a13",
-    "_top_": {
-        "type": "string",
-        "value": "0dp"
-    },
+    "_skin_": "s8641ebade9a4510b0c5dfd47532e348",
     "_width_": {
         "type": "string",
         "value": "100%"
     },
     "allboxes": [],
-    "allowhorizontalbounce": false,
-    "allowverticalbounce": true,
-    "bounces": true,
+    "autogrowmode": 1,
     "canUpdateUI": true,
     "children": [
-        "inSpeech1",
-        "outSpeech1",
-        "dialogueLoad1"
+        "inText"
     ],
-    "clipbounds": true,
+    "clipbounds": false,
     "containerweight": 100,
-    "decelerat": false,
-    "dragg": false,
     "enablescrolling": true,
-    "horizontalscrollindicator": true,
-    "id": "dialogueScroll",
+    "id": "inFlex",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "j3980799d6ee4bdda3b343a29a32528c",
-    "layouttype": 4,
-    "name": "kony.ui.FlexScrollContainer",
-    "pagingenabled": false,
-    "parent": "JovoDialogue",
+    "kuid": "c965607a9e964804b0b66d2e4afb64d6",
+    "layouttype": 2,
+    "minheight": {
+        "type": "string",
+        "value": "60dp"
+    },
+    "name": "kony.ui.FlexContainer",
+    "parent": "InSpeech",
     "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,
-    "reverselayoutdirection": true,
-    "scrolldirection": 2,
     "snapgridsize": 10,
     "snaptogrid": true,
-    "track": false,
-    "verticalscrollindicator": true,
-    "wType": "FlexScrollContainer",
+    "wType": "FlexContainer",
     "widgetalignment": 1,
     "zindex": 1
 }

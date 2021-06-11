@@ -22,7 +22,7 @@
         0
     ],
     "_skin_": "s59ac2b134d841d59bc45ec81bfd2746",
-    "_text_": "Init",
+    "_text_": "Launch",
     "_top_": {
         "type": "string",
         "value": "0dp"
@@ -36,7 +36,7 @@
     "contentalignment": 5,
     "displaytext": true,
     "focusskin": "s3c7130856704bb998de621e8832966d",
-    "id": "initButton",
+    "id": "launchButton",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,

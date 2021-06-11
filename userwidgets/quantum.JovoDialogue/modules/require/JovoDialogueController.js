@@ -11,9 +11,12 @@ define(["./JovoProxy"], function(jovo) {
 			kony.print(`JovoDialogue preShow`)
 		},
 
-		postShow: function(){
-			this.view.initButton.onClick = async () => {
-				await jovo.init()
+		postShow: async function(){
+
+			await jovo.init()
+
+			this.view.launchButton.onClick = async () => {
+				await jovo.launch()
 			}
 			this.view.recordButton.onTouchStart = async () => {
 				await jovo.record()
@@ -24,8 +27,14 @@ define(["./JovoProxy"], function(jovo) {
 			this.view.abortButton.onClick = async () => {
 				await jovo.abort()
 			}
+			this.view.sendButton.onClick = () => {
+				const text = this.view.input.text
+				if(text) jovo.sendText(text)
+				this.view.input.text = ""
+			}
 
 			jovo.onSpeech((speech) => {
+				//TODO: Add a bubble for each sentence.
 				this.view.outText.text = speech
 			})
 

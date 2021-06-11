@@ -37,8 +37,9 @@
     "bounces": true,
     "canUpdateUI": true,
     "children": [
-        "inBubble",
-        "outBubble"
+        "inText",
+        "outText",
+        "loadFlex"
     ],
     "clipbounds": true,
     "containerweight": 100,

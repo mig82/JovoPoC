@@ -1,6 +1,10 @@
 {
     "@class": "com.kony.gen.viz.model.component.KVizLabel",
     "DNDConfig": null,
+    "_bottom_": {
+        "type": "string",
+        "value": "10dp"
+    },
     "_height_": {
         "type": "ref",
         "value": "preferred"
@@ -12,20 +16,20 @@
         1
     ],
     "_padding_": [
-        0,
-        0,
-        0,
-        0
+        5,
+        2,
+        5,
+        2
     ],
     "_right_": {
         "type": "string",
-        "value": "5%"
+        "value": "0%"
     },
     "_skin_": "sa1b7d74c23749589090b5a8e2ae5dfc",
-    "_text_": "Label",
+    "_text_": "...",
     "_width_": {
-        "type": "string",
-        "value": "90%"
+        "type": "ref",
+        "value": "preferred"
     },
     "_wrapping_": 2,
     "android": {
@@ -37,7 +41,7 @@
     "canUpdateUI": true,
     "centery": {
         "type": "string",
-        "value": "50%"
+        "value": "20dp"
     },
     "containerweight": 100,
     "contentalignment": 6,
@@ -56,8 +60,20 @@
     "iscustomlayout": false,
     "isvisible": true,
     "kuid": "fa60215adc9f4ac4a904b3cfed27a83f",
+    "maxwidth": {
+        "type": "string",
+        "value": "100%"
+    },
+    "minheight": {
+        "type": "string",
+        "value": "60dp"
+    },
+    "minwidth": {
+        "type": "string",
+        "value": "50dp"
+    },
     "name": "kony.ui.Label",
-    "parent": "inBubble",
+    "parent": "dialogueScroll",
     "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

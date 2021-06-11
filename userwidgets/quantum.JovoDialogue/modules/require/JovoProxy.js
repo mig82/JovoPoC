@@ -23,6 +23,9 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 	let onSuggestionsCallback = doNothing
 // 	let onCustomCallback = doNothing
 
+	//Whether to split speech by sentences or not.
+	let splitSpeech = false
+
 	if(typeof window === "undefined"){
 		throw Error(`Component quantum.JovoDialogue can only be used in web applications`)
 	}
@@ -70,12 +73,17 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 
 			kony.print(`flag-30.A: Received speech \n'${value}'`)
 
-			//TODO: Implement a split by ., ?, ! that doesn't delete the special character.
-			const sentences = value.split('.')
+			if(splitSpeech){
+				//TODO: Implement a split by ., ?, ! that doesn't delete the special character.
+				const sentences = value.split('.')
 
-			for(let k = 0; k < sentences.length; k++){
-				let sentence = sentences[k].trim()// + "."
-				if(sentence) onSpeechCallback(sentence.trim())
+				for(let k = 0; k < sentences.length; k++){
+					let sentence = sentences[k].trim()// + "."
+					if(sentence) onSpeechCallback(sentence.trim())
+				}
+			}
+			else{
+				onSpeechCallback(value.trim())
 			}
 		}
 
@@ -128,8 +136,9 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 		await client.abortInputRecording()
 	}
 
-	function onSpeech(callback){
+	function onSpeech(callback, split){
 		onSpeechCallback = callback
+		splitSpeech = split
 	}
 
 	function onSuggestions(callback){

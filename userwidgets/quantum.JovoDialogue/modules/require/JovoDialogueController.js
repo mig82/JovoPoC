@@ -3,9 +3,19 @@ define(["./JovoProxy"], function(jovo) {
 
 	// Static stuff
 	let count = 0;
+	const LAUNCH_DELAY = 1
 
 	// Stuff specific to each instance of this component.
 	return {
+		send: function(){
+			let text = this.view.input.text
+			if(text) text = text.trim()
+			if(text) {
+				jovo.sendText(text)
+				this.view.inText.text = text
+			}
+			this.view.input.text = ""
+		},
 
 		preShow: function(){
 			kony.print(`JovoDialogue preShow`)
@@ -15,28 +25,27 @@ define(["./JovoProxy"], function(jovo) {
 
 			await jovo.init()
 
-			this.view.launchButton.onClick = async () => {
-				await jovo.launch()
-			}
-			this.view.recordButton.onTouchStart = async () => {
-				await jovo.record()
-			}
-			this.view.recordButton.onTouchEnd = async () => {
-				await jovo.stop()
-			}
-			this.view.abortButton.onClick = async () => {
-				await jovo.abort()
-			}
-			this.view.sendButton.onClick = () => {
-				const text = this.view.input.text
-				if(text) jovo.sendText(text)
-				this.view.input.text = ""
-			}
+			this.view.recordButton.onTouchStart = async () => { await jovo.record() }
+			this.view.recordButton.onTouchEnd = async () => { await jovo.stop() }
+			//this.view.launchButton.onClick = async () => { await jovo.launch() }
+			kony.timer.schedule2(jovo.launch, LAUNCH_DELAY)
+			this.view.abortButton.onClick = async () => { await jovo.abort() }
+
+			// Send the text when either the send button is clicked or Enter
+			// is pressed on the keyboard.
+			this.view.sendButton.onClick = this.send
+
+			/*global document*/
+			document.addEventListener('keydown', (e) => {
+				if(e.code === "Enter"){
+					this.send()
+				}
+			})
 
 			jovo.onSpeech((speech) => {
 				//TODO: Add a bubble for each sentence.
 				this.view.outText.text = speech
-			})
+			}, true)
 
 			jovo.onSuggestions((suggestions) => {
 				//TODO: Iterate over sentences and add a bubble for each sentence.

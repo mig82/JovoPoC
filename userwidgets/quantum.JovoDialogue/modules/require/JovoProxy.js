@@ -19,6 +19,8 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 	const Custom = JovoWebClient.ActionType.Custom
 
 	const doNothing = ()=>{/*empty placeholder function*/}
+	let onRequestCallback = doNothing
+	let onResponseCallback = doNothing
 	let onSpeechCallback = doNothing
 	let onSuggestionsCallback = doNothing
 // 	let onCustomCallback = doNothing
@@ -54,10 +56,12 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 
 	client.on( Request, (request) => {
 		kony.print(`flag-10 onRequest fired: ${JSON.stringify(request)}`)
+		onRequestCallback()
 	})
 
 	client.on( Response, (response) => {
 		kony.print(`flag-20 onResponse fired ${JSON.stringify(response)}`)
+		onResponseCallback()
 	})
 
 	client.on( Action, (action) => {
@@ -136,6 +140,14 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 		await client.abortInputRecording()
 	}
 
+	function onRequest(callback){
+		onRequestCallback = callback
+	}
+
+	function onResponse(callback){
+		onResponseCallback = callback
+	}
+
 	function onSpeech(callback, split){
 		onSpeechCallback = callback
 		splitSpeech = split
@@ -159,6 +171,8 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 		record,
 		stop,
 		abort,
+		onRequest,
+		onResponse,
 		onSpeech,
 		onSuggestions,
 		sendText

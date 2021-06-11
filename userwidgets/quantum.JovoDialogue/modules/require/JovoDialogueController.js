@@ -2,7 +2,8 @@
 
 define(["./JovoProxy", "./createDialogueLoad",
 		"./createOutSpeech", "./createInSpeech"],
-	   function(jovo, createDialogueLoad, createOutSpeech, createInSpeech) {
+	function(jovo, createDialogueLoad,
+			createOutSpeech, createInSpeech) {
 
 	let count = 0;
 	const LAUNCH_DELAY = 1
@@ -18,6 +19,9 @@ define(["./JovoProxy", "./createDialogueLoad",
 			delete dialogueItem.top
 			dialogueItem.bottom = SPACING
 			this.view.dialogueScroll.addAt(dialogueItem, 0)
+			this.view.dialogueScroll.doLayout = () => {
+				this.view.dialogueScroll.scrollToEnd()
+			}
 		},
 
 		send: function(){
@@ -26,16 +30,34 @@ define(["./JovoProxy", "./createDialogueLoad",
 			if(text) {
 				jovo.sendText(text)
 				this.add(createInSpeech(text))
+				this.add(createDialogueLoad())
+				this.view.input.placeholder = ""
 			}
 			this.view.input.text = ""
 		},
 
+		removeLoader: function(){
+			const widgets = this.view.dialogueScroll.widgets()
+				if(widgets.length > 0 && widgets[0].id.startsWith("DialogueLoad")){
+					this.view.dialogueScroll.removeAt(0)
+				}
+		},
+
 		preShow: function(){
 			kony.print(`flag JovoDialogue preShow`)
+			this.view.dialogueScroll.removeAll()
 		},
 
 		postShow: async function(){
+
+			//Show loading gif while the initialisation and LAUNCH occur.
+			this.add(createDialogueLoad())
 			await jovo.init()
+
+			//Don't really need this for now.
+			//jovo.onRequest(() => {})
+			//jovo.onResponse(() => {})
+
 			//Three buttons for the purpose of debugging.
 			this.view.recordButton.onTouchStart = async () => { await jovo.record() }
 			this.view.recordButton.onTouchEnd = async () => { await jovo.stop() }
@@ -55,10 +77,12 @@ define(["./JovoProxy", "./createDialogueLoad",
 			})
 
 			jovo.onSpeech((speech) => {
+				this.removeLoader()
 				this.add(createOutSpeech(speech))
 			}, true)
 
 			jovo.onSuggestions((suggestions) => {
+				this.removeLoader()
 				//TODO: Iterate over sentences and add a bubble for each sentence.
 				if(suggestions.length > 1){
 					this.view.input.placeholder = "Answer " + suggestions.slice(0, -1).join(", ") + " or " + suggestions.slice(-1)

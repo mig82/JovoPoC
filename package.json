@@ -1,0 +1,14 @@
+{
+  "name": "JovoPoC",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:mig82/JovoPoC.git",
+  "author": "mig82 <miguelangelxfm@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "kronin": "^2.0.0-rc5"
+  },
+  "scripts": {
+    "prepare": "make copy"
+  }
+}

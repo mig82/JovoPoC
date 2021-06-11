@@ -1,35 +1,36 @@
 {
     "NativeFunctionAPI": {
         "iOS": {
-            "11.0": {
-                "Kony_FileStorage-iOS-11.0": {
+            "11.0": {},
+            "14.3": {
+                "Kony_FileStorage-iOS-14.3": {
                     "title": "Kony_FileStorage",
                     "platform": "iOS",
-                    "os": "11.0",
+                    "os": "14.3",
                     "ci": true,
                     "isDefault": true,
-                    "filename": "Kony_FileStorage-iOS-11.0.zip",
-                    "nfiversion": "2.0",
+                    "filename": "Kony_FileStorage-iOS-14.3.zip",
+                    "nfiversion": "3.0",
                     "enable": true
                 },
-                "Kony_SyncV2-iOS-11.0": {
+                "Kony_SyncV2-iOS-14.3": {
                     "title": "Kony_SyncV2",
                     "platform": "iOS",
-                    "os": "11.0",
+                    "os": "14.3",
                     "ci": true,
                     "isDefault": true,
-                    "filename": "Kony_SyncV2-iOS-11.0.zip",
-                    "nfiversion": "2.0",
+                    "filename": "Kony_SyncV2-iOS-14.3.zip",
+                    "nfiversion": "3.0",
                     "enable": true
                 },
-                "Kony_SDKCommons-iOS-11.0": {
+                "Kony_SDKCommons-iOS-14.3": {
                     "title": "Kony_SDKCommons",
                     "platform": "iOS",
-                    "os": "11.0",
+                    "os": "14.3",
                     "ci": true,
                     "isDefault": true,
-                    "filename": "Kony_SDKCommons-iOS-11.0.zip",
-                    "nfiversion": "2.0",
+                    "filename": "Kony_SDKCommons-iOS-14.3.zip",
+                    "nfiversion": "3.0",
                     "enable": true
                 }
             }
@@ -68,7 +69,7 @@
     },
     "Metadata": {
         "Version": {
-            "iOS": "2.0"
+            "iOS": "3.0"
         }
     }
 }

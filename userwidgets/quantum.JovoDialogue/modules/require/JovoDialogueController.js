@@ -30,6 +30,7 @@ define(["./JovoProxy", "./createDialogueLoad",
 			text = text || this.view.input.text || ""
 			if(text) text = text.trim()
 			if(text) {
+				this.removeSuggestions()
 				jovo.sendText(text)
 				this.add(createInSpeech(text))
 				this.add(createDialogueLoad())
@@ -38,13 +39,13 @@ define(["./JovoProxy", "./createDialogueLoad",
 			this.view.input.text = ""
 		},
 
-		onSuggestionPressed: function(button){
-			kony.print(`Clicked suggestion '${button.text}'.`)
+		// TODO: removeSuggestions and removeLoader are duplicates. Implement a generic one
+		// where the class of the item to be removed is a parameter.
+		removeSuggestions: function(){
 			const conversation = this.view.dialogueScroll.widgets()
 			if(conversation.length > 0 && conversation[0].id.startsWith("Suggestions")){
 				this.view.dialogueScroll.removeAt(0)
 			}
-			this.send(button.text)
 		},
 
 		removeLoader: function(){
@@ -120,7 +121,9 @@ define(["./JovoProxy", "./createDialogueLoad",
 					this.view.input.placeholder = "Answer " + suggestions[0]
 				}
 				//this.add(createSuggestions(suggestions.join(",")))
-				this.add(createSuggestions(suggestions, this.onSuggestionPressed))
+				this.add(createSuggestions(suggestions, (button) => {
+					this.send(button.text)
+				}))
 			})
 
 			//TODO: Implement what to do when a custom action is received.

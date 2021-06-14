@@ -2,10 +2,10 @@
 
 define(["./JovoProxy", "./createDialogueLoad",
 		"./createOutSpeech", "./createInSpeech",
-		"./splitSpeech"],
+		"./createSuggestions", "./splitSpeech"],
 	function(jovo, createDialogueLoad,
 			createOutSpeech, createInSpeech,
-			splitSpeech) {
+			createSuggestions, splitSpeech) {
 
 	let count = 0;
 	const LAUNCH_DELAY = 1
@@ -26,8 +26,8 @@ define(["./JovoProxy", "./createDialogueLoad",
 			this.view.dialogueScroll.addAt(dialogueItem, 0)
 		},
 
-		send: function(){
-			let text = this.view.input.text
+		send: function(text){
+			text = text || this.view.input.text || ""
 			if(text) text = text.trim()
 			if(text) {
 				jovo.sendText(text)
@@ -38,11 +38,20 @@ define(["./JovoProxy", "./createDialogueLoad",
 			this.view.input.text = ""
 		},
 
+		onSuggestionPressed: function(button){
+			kony.print(`Clicked suggestion '${button.text}'.`)
+			const conversation = this.view.dialogueScroll.widgets()
+			if(conversation.length > 0 && conversation[0].id.startsWith("Suggestions")){
+				this.view.dialogueScroll.removeAt(0)
+			}
+			this.send(button.text)
+		},
+
 		removeLoader: function(){
-			const widgets = this.view.dialogueScroll.widgets()
-				if(widgets.length > 0 && widgets[0].id.startsWith("DialogueLoad")){
-					this.view.dialogueScroll.removeAt(0)
-				}
+			const conversation = this.view.dialogueScroll.widgets()
+			if(conversation.length > 0 && conversation[0].id.startsWith("DialogueLoad")){
+				this.view.dialogueScroll.removeAt(0)
+			}
 		},
 
 		preShow: function(){
@@ -86,7 +95,7 @@ define(["./JovoProxy", "./createDialogueLoad",
 
 			//Add each sentence in the returned speech, one by one, and with a delay.
 			jovo.onSpeech((speech) => {
-
+				kony.print(`flag onSpeech.`)
 				const sentences = splitSpeech(speech)
 				this.removeLoader()
 				for(let k = 0; k < sentences.length; k++){
@@ -101,6 +110,7 @@ define(["./JovoProxy", "./createDialogueLoad",
 			})
 
 			jovo.onSuggestions((suggestions) => {
+				kony.print(`flag onSuggestions.`)
 				this.removeLoader()
 				//TODO: Iterate over sentences and add a bubble for each sentence.
 				if(suggestions.length > 1){
@@ -109,6 +119,8 @@ define(["./JovoProxy", "./createDialogueLoad",
 				else if(suggestions.length === 1){
 					this.view.input.placeholder = "Answer " + suggestions[0]
 				}
+				//this.add(createSuggestions(suggestions.join(",")))
+				this.add(createSuggestions(suggestions, this.onSuggestionPressed))
 			})
 
 			//TODO: Implement what to do when a custom action is received.

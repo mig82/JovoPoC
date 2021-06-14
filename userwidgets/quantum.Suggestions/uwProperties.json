@@ -1,0 +1,84 @@
+{
+    "classname": "Suggestions",
+    "definitions": {
+        "apis": {
+            "custom": [],
+            "passthrough": []
+        },
+        "events": {
+            "custom": [
+                {
+                    "group": "General",
+                    "kuid": "d2da4f1fd1c9421b8969a40fc7a0e4c0",
+                    "paramList": [
+                        {
+                            "name": "button"
+                        }
+                    ],
+                    "propertyIndex": 1,
+                    "propertyKey": "onPressed",
+                    "pw": {
+                        "displayName": "onPressed",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "a0f32eba74cd47498c7f1fd0ce08d84e",
+                    "type": "event"
+                }
+            ],
+            "passthrough": []
+        },
+        "groups": {
+            "apis": [
+                "General"
+            ],
+            "events": [],
+            "properties": [],
+            "widgets": []
+        },
+        "properties": {
+            "custom": [
+                {
+                    "access": "Write",
+                    "defaultValue": "foo, bar, qux, zed",
+                    "group": "General",
+                    "kuid": "a052b0f5f21b4ac3a16aec6a8fe9ac0c",
+                    "originalPropertyKey": "tags",
+                    "propertyIndex": 1,
+                    "propertyKey": "tags",
+                    "pw": {
+                        "displayName": "Tag Values",
+                        "uiRepresentation": "Label-Textbox"
+                    },
+                    "srcWgtKUID": "a0f32eba74cd47498c7f1fd0ce08d84e",
+                    "type": "string",
+                    "value": ""
+                }
+            ],
+            "passthrough": [
+                {
+                    "access": "Enable",
+                    "group": "General",
+                    "kuid": "d52d534db12e4e5cbc98bea10318a4ae",
+                    "originalPropertyKey": "skin",
+                    "propertyIndex": 2,
+                    "propertyKey": "tagSkin",
+                    "pw": {
+                        "access": "readwrite",
+                        "category": "skin",
+                        "dependentKeysKUIDs": null,
+                        "displayName": "Tag Skin",
+                        "srcWidget": "tag0",
+                        "wType": "Button"
+                    },
+                    "srcWgtKUID": "e1c9f4776657454aab03111c7dc3e805"
+                }
+            ]
+        },
+        "widgets": {
+            "expose": [],
+            "passthrough": []
+        }
+    },
+    "namespace": "quantum",
+    "version": "1.0.0"
+}

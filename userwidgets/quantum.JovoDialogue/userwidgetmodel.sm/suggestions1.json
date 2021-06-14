@@ -1,0 +1,54 @@
+{
+    "@class": "com.kony.gen.viz.model.component.KVizUserWidget",
+    "DNDConfig": null,
+    "_bottom_": {
+        "type": "string",
+        "value": "10dp"
+    },
+    "_children_": [],
+    "_height_": {
+        "type": "ref",
+        "value": "preferred"
+    },
+    "_left_": {
+        "type": "string",
+        "value": "0dp"
+    },
+    "_margin_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_orientation_": 1,
+    "_padding_": [
+        0,
+        0,
+        0,
+        0
+    ],
+    "_percent_": true,
+    "_skin_": "s8641ebade9a4510b0c5dfd47532e348",
+    "_width_": {
+        "type": "string",
+        "value": "100%"
+    },
+    "canUpdateUI": true,
+    "containerweight": 0,
+    "data": {},
+    "id": "suggestions1",
+    "info": null,
+    "iscustomlayout": false,
+    "isvisible": true,
+    "kuid": "d251ac1e87cc4e1eae263cf263b8b040",
+    "masterType": 1,
+    "name": "kony.ui.UserWidgetInstance",
+    "parent": "dialogueScroll",
+    "pf": "userwidgetmodel",
+    "retaincontentalignment": false,
+    "retainflexpositionproperties": false,
+    "retainflowhorizontalalignment": false,
+    "sourceUserWidget": "a0f32eba74cd47498c7f1fd0ce08d84e",
+    "wType": "UserWidgetInstance",
+    "zindex": 1
+}

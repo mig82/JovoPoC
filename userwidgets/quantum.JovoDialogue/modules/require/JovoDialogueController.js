@@ -1,12 +1,16 @@
 "use strict"
 
 define(["./JovoProxy", "./createDialogueLoad",
-		"./createOutSpeech", "./createInSpeech"],
+		"./createOutSpeech", "./createInSpeech",
+		"./splitSpeech"],
 	function(jovo, createDialogueLoad,
-			createOutSpeech, createInSpeech) {
+			createOutSpeech, createInSpeech,
+			splitSpeech) {
 
 	let count = 0;
 	const LAUNCH_DELAY = 1
+	const SENTENCE_DELAY = 0.4
+	const WORDS_PER_SEC = 2.5
 	const SPACING = "10dp" //The space between conversation items.
 
 	// Stuff specific to each instance of this component.
@@ -17,11 +21,9 @@ define(["./JovoProxy", "./createDialogueLoad",
 
 		add: function(dialogueItem){
 			delete dialogueItem.top
+			//dialogueItem.opacity =  0
 			dialogueItem.bottom = SPACING
 			this.view.dialogueScroll.addAt(dialogueItem, 0)
-			this.view.dialogueScroll.doLayout = () => {
-				this.view.dialogueScroll.scrollToEnd()
-			}
 		},
 
 		send: function(){
@@ -58,11 +60,17 @@ define(["./JovoProxy", "./createDialogueLoad",
 			//jovo.onRequest(() => {})
 			//jovo.onResponse(() => {})
 
-			//Three buttons for the purpose of debugging.
+			//Record
 			this.view.recordButton.onTouchStart = async () => { await jovo.record() }
+
+			//Stop recording
 			this.view.recordButton.onTouchEnd = async () => { await jovo.stop() }
+
+			//LAUNCH
 			this.view.launchButton.onClick = async () => { await jovo.launch() }
 			kony.timer.schedule2(jovo.launch, LAUNCH_DELAY)
+
+			//Abort
 			this.view.abortButton.onClick = async () => { await jovo.abort() }
 
 			// Send the text when either the send button is clicked or Enter
@@ -76,10 +84,21 @@ define(["./JovoProxy", "./createDialogueLoad",
 				}
 			})
 
+			//Add each sentence in the returned speech, one by one, and with a delay.
 			jovo.onSpeech((speech) => {
+
+				const sentences = splitSpeech(speech)
 				this.removeLoader()
-				this.add(createOutSpeech(speech))
-			}, true)
+				for(let k = 0; k < sentences.length; k++){
+					const current = sentences[k]
+					//the duration of the prior sentence is the count of words divided by the speech rate, plus the delay.
+					const previous_duration = k > 0 ? sentences[k-1].split(/\s+/).length/WORDS_PER_SEC : 0
+					//kony.print(`flag k ${k}, waiting ${previous_duration}`)
+					kony.timer.schedule2(()=>{
+						this.add(createOutSpeech(current))
+					}, SENTENCE_DELAY + previous_duration)
+				}
+			})
 
 			jovo.onSuggestions((suggestions) => {
 				this.removeLoader()

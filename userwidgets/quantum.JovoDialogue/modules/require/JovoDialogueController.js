@@ -10,7 +10,7 @@ define(["./JovoProxy", "./createDialogueLoad",
 	let count = 0;
 	const LAUNCH_DELAY = 1
 	const SENTENCE_DELAY = 0.4
-	const WORDS_PER_SEC = 2.5
+	const WORDS_PER_SEC = 3.2
 	const SPACING = "10dp" //The space between conversation items.
 
 	// Stuff specific to each instance of this component.
@@ -99,14 +99,16 @@ define(["./JovoProxy", "./createDialogueLoad",
 				kony.print(`flag onSpeech.`)
 				const sentences = splitSpeech(speech)
 				this.removeLoader()
+				let accumulated_delay = 0
 				for(let k = 0; k < sentences.length; k++){
 					const current = sentences[k]
 					//the duration of the prior sentence is the count of words divided by the speech rate, plus the delay.
-					const previous_duration = k > 0 ? sentences[k-1].split(/\s+/).length/WORDS_PER_SEC : 0
-					//kony.print(`flag k ${k}, waiting ${previous_duration}`)
+					//const previous_duration = k > 0 ? sentences[k-1].split(/\s+/).length/WORDS_PER_SEC : 0
+					accumulated_delay += k > 0 ? sentences[k-1].split(/\s+/).length/WORDS_PER_SEC : 0
+					kony.print(`flag k ${k}, waiting ${accumulated_delay}`)
 					kony.timer.schedule2(()=>{
 						this.add(createOutSpeech(current))
-					}, SENTENCE_DELAY + previous_duration)
+					}, SENTENCE_DELAY + accumulated_delay)
 				}
 			})
 

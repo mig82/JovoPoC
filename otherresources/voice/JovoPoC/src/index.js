@@ -2,6 +2,7 @@
 
 const { ExpressJS, Lambda, Webhook } = require('jovo-framework');
 const { app } = require('./app.js');
+const cors = require('cors')
 const kony = require('kony-node')
 
 // ------------------------------------------------------------------
@@ -12,6 +13,9 @@ const kony = require('kony-node')
 if (process.argv.indexOf('--webhook') > -1) {
   const port = process.env.JOVO_PORT || 3000;
   Webhook.jovoApp = app;
+
+  // For Jovo to accept CORS and work locally.
+  Webhook.use(cors())
 
   Webhook.listen(port, () => {
     kony.info(`Local server listening on port ${port}.`);

@@ -13,6 +13,7 @@ const OfferLogin = {
 
 		this.$reprompt.addText(`Would you like to sign in?`)
 
+		//TODO: Implement a uniform function for suggestion chips across platforms.
 		if(this.isAlexaSkill()){
 			//TODO: Is there anything equivalent to suggetion chips for Alexa?
 			this.$alexaSkill.showStandardCard(
@@ -26,6 +27,9 @@ const OfferLogin = {
 		}
 		else if(this.isGoogleAction()){
 			this.$googleAction.showSuggestions(["yes", "no"])
+		}
+		else if(typeof this.$webApp !== "undefined"){
+			this.$webApp?.showQuickReplies(['Yes', 'No'])
 		}
 
 		this.followUpState('OfferLogin.AwaitDecision')

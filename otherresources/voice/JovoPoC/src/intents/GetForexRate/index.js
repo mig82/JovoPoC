@@ -1,6 +1,5 @@
 "use strict"
 
-const kony = require('kony-node')
 const GetForexRateStart = require("./start")
 const GetForexRateSlots = require("./slots")
 const GetForexRateResolve = require("./resolve")

@@ -21,7 +21,6 @@ const GetForexRateAgain = {
 			//TODO: Delegate to the router where to go when the user does not want to go again.
 			this.toStateIntent("OfferPublicServices", "START")
 		}
-
 	}
 }
 

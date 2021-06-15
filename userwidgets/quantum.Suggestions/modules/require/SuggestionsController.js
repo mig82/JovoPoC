@@ -1,5 +1,7 @@
-define(["./cloneRow", "./cloneSuggestion", "./parseTagsToArray"],
-	   function(cloneRow, cloneSuggestion, parseTagsToArray) {
+"use strict"
+
+define(["./cloneRow", "./cloneSuggestion", "./parseTagsToArray", "./addTo"],
+	   function(cloneRow, cloneSuggestion, parseTagsToArray, addTo) {
 
 	let count = 0
 
@@ -17,10 +19,10 @@ define(["./cloneRow", "./cloneSuggestion", "./parseTagsToArray"],
 			this.view.row0.removeAll();
 		},
 
-		buildTags: function(){
+		buildTags: async function(){
 			var maxWidth = this.view.frame.width;
-			var units = this.view.defaultUnit;
-			kony.print(`flag Max width: ${maxWidth}, Units: ${units}`);
+			//var units = this.view.defaultUnit;
+			//kony.print(`flag Max width: ${maxWidth}, Units: ${units}`);
 
 			var width = 0;
 			var row = this.view.row0;
@@ -31,8 +33,7 @@ define(["./cloneRow", "./cloneSuggestion", "./parseTagsToArray"],
 				var text = tags[k];
 				if(text.trim() !== ""){
 					//tagButtons.push(clone(tagModel, `tag${k}`, text));
-					let tagId = `${row.id}tag${k}`;
-					kony.print(`flag Creating tag ${tagId} with text '${text}' in row ${row.id}`);
+					let tagId = `${row.id}tag${k}`
 
 					var tag = cloneSuggestion(
 						this.tagModel,
@@ -40,7 +41,7 @@ define(["./cloneRow", "./cloneSuggestion", "./parseTagsToArray"],
 						text,
 						//Add a gutter only after the first tag and onward.
 						k>0?this.gutter:null
-					);
+					)
 
 					tag.onClick = (button)=>{
 						//console.log(arguments)
@@ -51,28 +52,30 @@ define(["./cloneRow", "./cloneSuggestion", "./parseTagsToArray"],
 							kony.print(`There's no onPressed callback assigned to these suggestions. Use the onPressed function to assign it.`)
 						}
 					}
-					//We have to add the tag first, so the frame width will be calculated.
-					row.add(tag);
-					width += tag.frame.width;
 
-					kony.print(`flag Width: ${width}`);
+					//Add the tag to the row, so the frame will be calculated.
+					const frame = await addTo(tag, row)
+					const tagWidth = frame.width
+					width += tagWidth
 
+					//kony.print(`flag Width: ${width}`);
+					//Check if the accumulated width of the tags added so far requires wrapping to the next row.
 					if(width > maxWidth){
 						kony.print(`Remove this last tag ${tagId}:${tag.text} from ${row.id} and create new row`);
 						row.removeAt(row.widgets().length-1);
 
 						//TODO: Expose a parameter for the gutter between rows.
-						row = cloneRow(this.rowModel, "row" + nextRowId++, "5dp");
+						row = cloneRow(this.rowModel, "row" + nextRowId++);
 						//The first tag in each row does not need a gutter.
 						tag.left = "0dp";
 						row.add(tag);
 						this.view.add(row);
-						width = tag.frame.width;
+						//In a new row the accumulated width starts over with the first one added.
+						width = tagWidth
 					}
 					width += parseInt(this.gutter);
 				}
 			}
-			//this.view.add(tagButtons);
 		},
 
 		preShow: function(){
@@ -104,8 +107,8 @@ define(["./cloneRow", "./cloneSuggestion", "./parseTagsToArray"],
 		},
 
 		initGettersSetters: function() {
-			defineGetter(this, "tags", () => {return this._tags;});
-			defineSetter(this, "tags", (tags) => {this._tags = tags;});
+			defineGetter(this, "tags", () => {return this._tags;})
+			defineSetter(this, "tags", (tags) => {this._tags = tags;})
 		}
 	};
 });

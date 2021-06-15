@@ -1,14 +1,12 @@
 define(function () {
 
-	function cloneRow(cloned, id, top){
+	function cloneRow(cloned, id){
 		var config = {
 			id: id,
 			isVisible: true,
 			skin: cloned.skin,
 			height: cloned.height
 		}
-
-		if(top){config.top = top}
 
 		var layout = {
 			containerWeight: cloned.containerWeight,

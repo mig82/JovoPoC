@@ -7,7 +7,8 @@ define(function () {
 			skin: cloned.skin,
 			focusSkin: cloned.focusSkin,
 			text: text,
-			height: cloned.height
+			height: cloned.height,
+			width: cloned.width
 		}
 
 		if(left){config.left = left}

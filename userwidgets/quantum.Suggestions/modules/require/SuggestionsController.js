@@ -1,64 +1,8 @@
-define(function() {
+define(["./cloneRow", "./cloneSuggestion", "./parseTagsToArray"],
+	   function(cloneRow, cloneSuggestion, parseTagsToArray) {
 
 	let count = 0
 
-	function cloneRow(cloned, id, top){
-		var config = {
-			id: id,
-			isVisible: true,
-			skin: cloned.skin
-		};
-
-		if(top){config.top = top;}
-
-		var layout = {
-			containerWeight: cloned.containerWeight,
-			padding: cloned.padding,
-			margin: cloned.margin
-		};
-
-		var platformConfig = {};
-
-		var newRow = new kony.ui.FlexContainer(config, layout, platformConfig);
-		newRow.layoutType = kony.flex.FLOW_HORIZONTAL;
-		return newRow;
-	}
-
-	function cloneTag(cloned, id, text, left){
-		var config = {
-			id: id,
-			isVisible: true,
-			skin: cloned.skin,
-			focusSkin: cloned.focusSkin,
-			text: text
-		};
-
-		if(left){config.left = left;}
-
-		var layout = {
-			containerWeight: cloned.containerWeight,
-			padding: cloned.padding,
-			margin: cloned.margin,
-			displayText: true
-		};
-
-		var platformConfig = {};
-
-		var newTag = new kony.ui.Button(config, layout, platformConfig);
-		return newTag;
-	}
-
-	function parseTagsToArray(tags){
-		if(typeof tags === "string"){
-			return tags.split(",").map((tag) => {return tag.trim()})
-		}
-		else if (tags instanceof Array){
-			return tags
-		}
-		else{
-			throw Error("Unsupported type for tags property in quantum.Suggestions component.")
-		}
-	}
 	return {
 
 		//tagModel, left, row
@@ -90,7 +34,7 @@ define(function() {
 					let tagId = `${row.id}tag${k}`;
 					kony.print(`flag Creating tag ${tagId} with text '${text}' in row ${row.id}`);
 
-					var tag = cloneTag(
+					var tag = cloneSuggestion(
 						this.tagModel,
 						tagId,
 						text,

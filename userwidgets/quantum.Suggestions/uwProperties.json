@@ -46,7 +46,8 @@
                     "propertyIndex": 1,
                     "propertyKey": "tags",
                     "pw": {
-                        "displayName": "Tag Values",
+                        "dependencyConditions": {},
+                        "displayName": "Suggestions",
                         "uiRepresentation": "Label-Textbox"
                     },
                     "srcWgtKUID": "a0f32eba74cd47498c7f1fd0ce08d84e",
@@ -65,12 +66,90 @@
                     "pw": {
                         "access": "readwrite",
                         "category": "skin",
+                        "dependencyConditions": {},
                         "dependentKeysKUIDs": null,
-                        "displayName": "Tag Skin",
+                        "displayName": "Suggestion Skin",
+                        "isHiddenInTool": false,
                         "srcWidget": "tag0",
                         "wType": "Button"
                     },
                     "srcWgtKUID": "e1c9f4776657454aab03111c7dc3e805"
+                },
+                {
+                    "access": "Enable",
+                    "group": "General",
+                    "kuid": "b638e5c7770a481aad5580ba35e59516",
+                    "originalPropertyKey": "height",
+                    "propertyIndex": 3,
+                    "propertyKey": "tagHeight",
+                    "pw": {
+                        "access": "readwrite",
+                        "category": "look",
+                        "defaultValue": {
+                            "type": "string",
+                            "value": ""
+                        },
+                        "dependencyConditions": {},
+                        "dependentKeysKUIDs": null,
+                        "displayName": "Suggestion Height",
+                        "forkablePlatforms": {
+                            "desktop": [
+                                "desktopweb",
+                                "kiosk"
+                            ],
+                            "mobile": [
+                                "iphone",
+                                "android",
+                                "winphone8",
+                                "spaip",
+                                "spaan",
+                                "spawinphone8"
+                            ],
+                            "tablet": [
+                                "ipad",
+                                "android",
+                                "windows8",
+                                "spaipad",
+                                "spaandroidtablet",
+                                "spawindowstablet"
+                            ]
+                        },
+                        "isHiddenInTool": false,
+                        "srcWidget": "row0",
+                        "toolTip": "The height of the suggestion chips shown. Should there be enough suggestions to wrap, a new line of the same height will be added.",
+                        "type": "object",
+                        "uiConfig": {
+                            "Combobox": {
+                                "masterData": [
+                                    [
+                                        "Dp",
+                                        "dp"
+                                    ],
+                                    [
+                                        "Px",
+                                        "px"
+                                    ],
+                                    [
+                                        "%",
+                                        "%"
+                                    ],
+                                    [
+                                        "Default",
+                                        "Default"
+                                    ],
+                                    [
+                                        "Preferred",
+                                        "preferred"
+                                    ]
+                                ]
+                            },
+                            "Label": {},
+                            "Textbox": {}
+                        },
+                        "uiRepresentation": "Label-Textbox-Combobox",
+                        "wType": "FlexContainer"
+                    },
+                    "srcWgtKUID": "bd596d88bc1141219d7f978ee116b704"
                 }
             ]
         },

@@ -86,9 +86,7 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 			kony.print(`flag-30.C: Received custom action ${action.command}`)
 			switch (action.command) {
 				case 'redirect':
-					setTimeout(() => {
-						window.open(action.value)
-					}, 800)
+					setTimeout(() => { window.open(action.value) }, 800)
 					break
 				default:
 					kony.print(`flag-30.C.1: No reaction defined for custom action ${action.command}`)
@@ -125,21 +123,17 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 		await client.abortInputRecording()
 	}
 
-	function onRequest(callback){
-		onRequestCallback = callback
-	}
+// 	function onRequest(callback){
+// 		onRequestCallback = callback
+// 	}
 
-	function onResponse(callback){
-		onResponseCallback = callback
-	}
+// 	function onResponse(callback){
+// 		onResponseCallback = callback
+// 	}
 
-	function onSpeech(callback){
-		onSpeechCallback = callback
-	}
+	function onSpeech(callback){ onSpeechCallback = callback }
 
-	function onSuggestions(callback){
-		onSuggestionsCallback = callback
-	}
+	function onSuggestions(callback){ onSuggestionsCallback = callback }
 
 	function sendText(text){
 		kony.print(`flag: sendText: '${text}'`)
@@ -155,10 +149,11 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 		record,
 		stop,
 		abort,
-		onRequest,
-		onResponse,
+		//onRequest,
+		//onResponse,
 		onSpeech,
 		onSuggestions,
+		//onCustom
 		sendText
 	};
 });

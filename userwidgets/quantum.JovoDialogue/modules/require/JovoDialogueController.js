@@ -67,8 +67,8 @@ define(["./JovoProxy", "./createDialogueLoad",
 			await jovo.init()
 
 			//Don't really need this for now.
-			//jovo.onRequest(() => {})
-			//jovo.onResponse(() => {})
+			//jovo.onRequest = () => {}
+			//jovo.onResponse = () => {}
 
 			//Record
 			this.view.recordButton.onTouchStart = async () => { await jovo.record() }

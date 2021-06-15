@@ -85,7 +85,7 @@ define(["./JovoProxy", "./createDialogueLoad",
 
 			// Send the text when either the send button is clicked or Enter
 			// is pressed on the keyboard.
-			this.view.sendButton.onClick = this.send
+			this.view.sendButton.onClick = ()=>{ this.send() }
 
 			/*global document*/
 			document.addEventListener('keydown', (e) => {

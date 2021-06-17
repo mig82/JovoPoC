@@ -35,9 +35,9 @@
     "autogrowmode": 0,
     "canUpdateUI": true,
     "children": [
-        "outFlex"
+        "textFlex"
     ],
-    "clipbounds": true,
+    "clipbounds": false,
     "containerweight": 100,
     "enablescrolling": true,
     "id": "OutSpeech",

@@ -35,12 +35,13 @@
     "autogrowmode": 1,
     "canUpdateUI": true,
     "children": [
-        "outText"
+        "calloutImg",
+        "textLabel"
     ],
     "clipbounds": false,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "outFlex",
+    "id": "textFlex",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,

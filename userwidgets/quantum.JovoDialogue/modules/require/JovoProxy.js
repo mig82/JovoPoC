@@ -5,8 +5,17 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 
 	const Client = JovoWebClient.Client
 
-	//JovoWebClient.RequestType.*
-	const Text = JovoWebClient.RequestType.Text
+	/*JovoWebClient.RequestType includes
+		Audio: "AUDIO"
+		End: "END"
+		Error: "ERROR"
+		Event: "EVENT"
+		Intent: "INTENT"
+		Launch: "LAUNCH"
+		Text: "TEXT"
+		TranscribedText: "TRANSCRIBED_TEXT"
+	*/
+	const RequestType = JovoWebClient.RequestType
 
 	//JovoWebClient.ClientEvent.*
 	const Request = JovoWebClient.ClientEvent.Request
@@ -138,7 +147,8 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 	function sendText(text){
 		kony.print(`flag: sendText: '${text}'`)
 		client.createRequest({
-			type: Text,
+			type: RequestType.Text,
+			//type: RequestType.Intent,
 			body: { text }
 		}).send()
 	}

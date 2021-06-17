@@ -41,7 +41,7 @@
     "canUpdateUI": true,
     "containerweight": 100,
     "contentalignment": 4,
-    "id": "outText",
+    "id": "textLabel",
     "info": null,
     "ipad": {
         "psp": {
@@ -56,10 +56,6 @@
     "iscustomlayout": false,
     "isvisible": true,
     "kuid": "d93f5148b5ae44119932544b3e6badc9",
-    "maxwidth": {
-        "type": "string",
-        "value": "100%"
-    },
     "minheight": {
         "type": "string",
         "value": "60dp"
@@ -69,7 +65,7 @@
         "value": "50dp"
     },
     "name": "kony.ui.Label",
-    "parent": "outFlex",
+    "parent": "textFlex",
     "pf": "userwidgetmodel",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,

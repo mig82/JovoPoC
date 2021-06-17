@@ -15,6 +15,16 @@ define(["./JovoProxy", "./createDialogueLoad",
 
 	// Stuff specific to each instance of this component.
 	return {
+
+		scrollToEnd: function(){
+			kony.timer.schedule2(() => {
+				//TODO: Implement a smooth scroll like this instead:
+				//https://www.w3schools.com/cssref/tryit.asp?filename=trycss_scroll_behavior
+				//this.view.dialogueScroll.scrollToEnd()
+				this.view.dialogueScroll.forceLayout()
+			}, 0.2)
+		},
+
 		getDialogueSize: function(){
 			return this.view.dialogueScroll.widgets().length
 		},
@@ -24,6 +34,7 @@ define(["./JovoProxy", "./createDialogueLoad",
 			//dialogueItem.opacity =  0
 			dialogueItem.bottom = SPACING
 			this.view.dialogueScroll.addAt(dialogueItem, 0)
+			this.scrollToEnd()
 		},
 
 		send: function(text){

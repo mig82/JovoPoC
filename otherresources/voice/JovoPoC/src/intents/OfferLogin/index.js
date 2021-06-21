@@ -14,23 +14,7 @@ const OfferLogin = {
 		this.$reprompt.addText(`Would you like to sign in?`)
 
 		//TODO: Implement a uniform function for suggestion chips across platforms.
-		if(this.isAlexaSkill()){
-			//TODO: Is there anything equivalent to suggetion chips for Alexa?
-			this.$alexaSkill.showStandardCard(
-				`Sign into Iron Bank?`,
-				'Say yes or no.',
-				{
-					smallImageUrl: 'https://via.placeholder.com/720x480',
-					largeImageUrl: 'https://via.placeholder.com/1200x800',
-				}
-			)
-		}
-		else if(this.isGoogleAction()){
-			this.$googleAction.showSuggestions(["yes", "no"])
-		}
-		else if(typeof this.$webApp !== "undefined"){
-			this.$webApp?.showQuickReplies(['Yes', 'No'])
-		}
+		this.showSuggestions2(["Yes", "No"], "Sign in?")
 
 		this.followUpState('OfferLogin.AwaitDecision')
 		this.ask(this.$speech, this.$reprompt)

@@ -30,13 +30,11 @@ function OfferPrivateServices() {
 		]
 		let opts_string = opts_array.slice(0, -1).join(", ") + ", or " + opts_array.slice(-1)
 
-		if(this.isGoogleAction()){
-			this.$googleAction.showSuggestions(opts_array)
-		}
+		this.showSuggestions2(opts_array, "What would you like to do?")
 
 		this.$speech.addText(
 			`What would you like to do? You can ask about ${opts_string}.`,
-			`We're still here. Please choose ${opts_string}.` +
+			`Please choose ${opts_string}.` +
 			`If you need help, just say "help".`
 		)
 

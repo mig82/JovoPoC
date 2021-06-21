@@ -2,6 +2,65 @@
 	"invocation": "iron bank",
 	"intents": [
 		{
+			"name": "SwitchTheme",
+			"phrases": [
+				"{theme}",
+				"switch to {theme} mode",
+				"{theme} mode",
+				"enable {theme} mode",
+				"{theme} theme",
+				"switch to the {theme} theme",
+				"I want the {theme} theme"
+			],
+			"inputs": [
+				{
+					"name": "theme",
+					"type": "ThemeType"
+				}
+			]
+		},
+		{
+			"name": "LoremIpsumStart",
+			"phrases": [
+				"lorem",
+				"lorem ipsum",
+				"say something",
+				"say whatever",
+				"give me some lorem",
+				"say some lorem ipsum",
+				"speak lorem",
+				"speak lorem ipsum",
+				"speak latin",
+				"say some latin"
+			]
+		},
+		{
+			"name": "LoremIpsumResolve",
+			"phrases": [
+				"say {wordCount} words",
+				"speak {wordCount} lorem words",
+				"say {wordCount} lorem ipsum words",
+				"speak {wordCount} latin words",
+				"say {wordCount} words",
+				"say {wordCount} words in latin",
+				"speak {wordCount} words in latin",
+				"say {wordCount} latin words",
+				"speak {wordCount} latin words",
+				"speak {wordCount} words of lorem ipsum",
+				"give me {wordCount} words in latin"
+			],
+			"inputs": [
+				{
+					"name": "wordCount",
+					"type": {
+						"alexa": "AMAZON.NUMBER",
+						"googleAssistant": "actions.type.Number",
+						"nlpjs": "number"
+					}
+				}
+			]
+		},
+		{
 			"name": "TransferStart",
 			"phrases": [
 				"transfer",
@@ -63,42 +122,94 @@
 		{
 			"name": "YesIntent",
 			"phrases": [
-				"yes", "yeah", "yeap", "yep", "yup", "aye", "yay", "sure",
-				"of course", "affirmative", "positive", "you bet",
-				"ok", "k", "okay", "okie dokie", "alright", "alrighty",
-				"sounds good", "for sure", "sure thing", "certainly",
-				"definitely", "gladly", "absolutely", "very well", "fine",
-				"obviously", "verily", "surely", "uh-huh", "proceed"
+				"yes",
+				"yeah",
+				"yeap",
+				"yep",
+				"yup",
+				"aye",
+				"yay",
+				"sure",
+				"of course",
+				"affirmative",
+				"positive",
+				"you bet",
+				"ok",
+				"k",
+				"okay",
+				"okie dokie",
+				"alright",
+				"alrighty",
+				"sounds good",
+				"for sure",
+				"sure thing",
+				"certainly",
+				"definitely",
+				"gladly",
+				"absolutely",
+				"very well",
+				"fine",
+				"obviously",
+				"verily",
+				"surely",
+				"uh-huh",
+				"proceed"
 			]
 		},
 		{
 			"name": "NoIntent",
 			"phrases": [
-				"no", "nah", "nope", "nop", "nay", "ney", "not", "not now",
-				"not at the moment", "negative", "of course not",
-				"some other time", "nuh-uh", "i don't think so", "not for now"
+				"no",
+				"nah",
+				"nope",
+				"nop",
+				"nay",
+				"ney",
+				"not",
+				"not now",
+				"not at the moment",
+				"negative",
+				"of course not",
+				"some other time",
+				"nuh-uh",
+				"i don't think so",
+				"not for now"
 			]
 		},
 		{
 			"name": "LoginIntent",
 			"phrases": [
-				"log in", "log on", "authenticate", "enter", "go in", "sign in", "sign on",  "start session",
-				"access", "sign into my account", "log into my account", "access my account", "step in"
+				"log in",
+				"log on",
+				"authenticate",
+				"enter",
+				"go in",
+				"sign in",
+				"sign on",
+				"start session",
+				"access",
+				"sign into my account",
+				"log into my account",
+				"access my account",
+				"step in"
 			]
 		},
 		{
 			"name": "LogoutIntent",
 			"phrases": [
-				"log out", "drop out", "exit", "go out", "sign out", "end session", "terminate",
-				"terminate session", "get out", "leave", "cancel session", "step out", "quit"
-			]
-		},
-		{
-			"name": "ACCOUNT_LINKED_INTENT",
-			"phrases": [
-				"done", "it's done", "it is done",
-				"linked", "it's linked", "it is linked",
-				"account linked", "the account is linked"
+				"log out",
+				"drop out",
+				"exit",
+				"go out",
+				"sign out",
+				"end session",
+				"terminate",
+				"terminate session",
+				"get out",
+				"leave",
+				"cancel session",
+				"step out",
+				"quit"
 			]
 		},
 		{
@@ -133,9 +244,15 @@
 			{
 				"name": "NameInputType",
 				"values": [
-					{ "value": "max" },
-					{ "value": "jane" },
-					{ "value": "miguel" }
+					{
+						"value": "max"
+					},
+					{
+						"value": "jane"
+					},
+					{
+						"value": "miguel"
+					}
 				]
 			}
 		],
@@ -145,7 +262,9 @@
 					"conditionalEvents": [
 						{
 							"condition": "user.verificationStatus != \"VERIFIED\"",
-							"handler": { "webhookHandler": "Jovo" }
+							"handler": {
+								"webhookHandler": "Jovo"
+							}
 						},
 						{
 							"condition": "user.verificationStatus == \"VERIFIED\"",
@@ -154,7 +273,9 @@
 					],
 					"intentEvents": [
 						{
-							"handler": { "webhookHandler": "Jovo" },
+							"handler": {
+								"webhookHandler": "Jovo"
+							},
 							"intent": "YesIntent"
 						}
 					]
@@ -163,61 +284,141 @@
 					"conditionalEvents": [
 						{
 							"condition": "session.params.AccountLinkingSlot == \"LINKED\"",
-							"handler": { "webhookHandler": "Jovo" }
+							"handler": {
+								"webhookHandler": "Jovo"
+							}
 						},
 						{
 							"condition": "session.params.AccountLinkingSlot == \"ERROR\"",
-							"handler": { "webhookHandler": "Jovo" }
+							"handler": {
+								"webhookHandler": "Jovo"
+							}
 						},
 						{
 							"condition": "session.params.AccountLinkingSlot == \"REJECTED\"",
-							"handler": { "webhookHandler": "Jovo" }
+							"handler": {
+								"webhookHandler": "Jovo"
+							}
 						}
 					],
 					"slots": [
 						{
-							"commitBehavior": { "writeSessionParam": "AccountLinkingSlot" },
+							"commitBehavior": {
+								"writeSessionParam": "AccountLinkingSlot"
+							},
 							"config": {
 								"@type": "type.googleapis.com/google.actions.conversation.v3.SignInSpec",
 								"opt_context": ""
 							},
-							"defaultValue": { "sessionParam": "AccountLinkingSlot" },
+							"defaultValue": {
+								"sessionParam": "AccountLinkingSlot"
+							},
 							"name": "AccountLinkingSlot",
 							"required": true,
-							"type": { "name": "actions.type.AccountLinking" }
+							"type": {
+								"name": "actions.type.AccountLinking"
+							}
 						}
 					]
 				}
 			},
 			"global": {
 				"actions.intent.MAIN": {
-					"handler": { "webhookHandler": "Jovo" }
+					"handler": {
+						"webhookHandler": "Jovo"
+					}
 				}
 			}
 		}
 	},
-	"inputTypes": [{
-		"name": "CurrencyType",
-		"values": [
-			{ "value": "EUR", "synonyms": [
-				"eur", "euro", "european", "europe", "eu", "european"
-			]},
-			{ "value": "USD", "synonyms": [
-				"usd", 	"us", "dollar", "us dollar", "american"
-			]},
-			{ "value": "chf", "synonyms": [
-					"swiss franc", "swiss", "switzerland", "franc"
-			]},
-			{ "value": "GBP", "synonyms": [
-				"gbp", 	"british pound", "british", "pound", "sterling",
-					"pound sterling", "britain", "stg", "uk", "sterling"
-			]},
-			{ "value": "JPY", "synonyms": [
-				"jpy", 	"japanese yen", "yen", "japanese"
-			]},
-			{ "value": "NOK", "synonyms": [
-				"nok", 	"norwegian krone", "krone", "norwegian", "norway"
-			]}
-		]
-	}]
+	"inputTypes": [
+		{
+			"name": "ThemeType",
+			"values": [
+				{
+					"value": "dark",
+					"synonyms": [
+						"obscure",
+						"black"
+					]
+				},
+				{
+					"value": "light",
+					"synonyms": [
+						"clear",
+						"white"
+					]
+				}
+			]
+		},
+		{
+			"name": "CurrencyType",
+			"values": [
+				{
+					"value": "EUR",
+					"synonyms": [
+						"eur",
+						"euro",
+						"european",
+						"europe",
+						"eu",
+						"european"
+					]
+				},
+				{
+					"value": "USD",
+					"synonyms": [
+						"usd",
+						"us",
+						"dollar",
+						"us dollar",
+						"american"
+					]
+				},
+				{
+					"value": "CHF",
+					"synonyms": [
+						"swiss franc",
+						"swiss",
+						"switzerland",
+						"franc"
+					]
+				},
+				{
+					"value": "GBP",
+					"synonyms": [
+						"gbp",
+						"british pound",
+						"british",
+						"pound",
+						"sterling",
+						"pound sterling",
+						"britain",
+						"stg",
+						"uk",
+						"sterling"
+					]
+				},
+				{
+					"value": "JPY",
+					"synonyms": [
+						"jpy",
+						"japanese yen",
+						"yen",
+						"japanese"
+					]
+				},
+				{
+					"value": "NOK",
+					"synonyms": [
+						"nok",
+						"norwegian krone",
+						"krone",
+						"norwegian",
+						"norway"
+					]
+				}
+			]
+		}
+	]
 }

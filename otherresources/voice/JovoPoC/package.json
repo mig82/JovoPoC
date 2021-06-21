@@ -6,6 +6,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "jovo-framework": "^3.5.2",
+    "jovo-model-nlpjs": "^3.0.0",
+    "jovo-platform-alexa": "^3.5.4",
     "kony-node": "file:../../../../../node/kony-node",
     "quantum-jovo": "file:../../../../../node/quantum-jovo"
   },

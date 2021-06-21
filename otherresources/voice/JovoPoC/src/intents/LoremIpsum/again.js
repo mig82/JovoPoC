@@ -1,10 +1,10 @@
 "use strict"
 
-const GetForexRateAgain = {
+const LoremIpsumAgain = {
 	START(){
-		this.$speech.addText(`Would you like to ask for another rate?`)
-		this.$reprompt.addText(`Sorry, would you like ot ask for another exchange rate?`)
-		this.followUpState('GetForexRateAgain.AwaitDecision')
+		this.$speech.addText(`Would you like to ask for more lorem ipsum?`)
+		this.$reprompt.addText(`Sorry, would you like ot ask for more lorem ipsum?`)
+		this.followUpState('LoremIpsumAgain.AwaitDecision')
 		this.ask(this.$speech)
 	},
 	AwaitDecision: {
@@ -12,7 +12,7 @@ const GetForexRateAgain = {
 		YesIntent(){
 			this.$speech.addText(`Ok! let's go again.`)
 			this.removeState()
-			this.toStateIntent("GetForexRateSlots", "START")
+			this.toStateIntent("LoremIpsumSlots", "START")
 		},
 
 		NoIntent(){
@@ -24,4 +24,4 @@ const GetForexRateAgain = {
 	}
 }
 
-module.exports = GetForexRateAgain
+module.exports = LoremIpsumAgain

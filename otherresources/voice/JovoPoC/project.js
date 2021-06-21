@@ -44,7 +44,7 @@ module.exports = {
 						fullDescription: "The Iron Bank's voice banking experience, with access to accounts, cards, personal finance mangement and more.",
 						privacyPolicyUrl: '',
 						shortDescription: "The Iron Bank's voice banking experience.",
-						smallLogoImage: 'https://quantum-demos1.s3.eu-central-1.amazonaws.com/ibb/logo_blue.png',
+						// smallLogoImage: 'https://quantum-demos1.s3.eu-central-1.amazonaws.com/ibb/logo_blue.png',
 						termsOfServiceUrl: ''
 					}
 				},

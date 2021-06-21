@@ -13,13 +13,14 @@ function OfferPublicServices() {
 	//this.ask(
 	this.$speech.addText(
 		`You can ask about ${opts_string}.`,
-		`We're still here. Please choose ${opts_string}.` +
+		`Please choose ${opts_string}.` +
 		`If you need help, just say "help".`
 	)
 
-	if(this.isGoogleAction()){
-		this.$googleAction.showSuggestions(opts_array)
-	}
+	this.showSuggestions2(opts_array, "What would you like to do?")
+	// if(this.isGoogleAction()){
+	// 	this.$googleAction.showSuggestions(opts_array)
+	// }
 
 	this.ask(this.$speech)
 }

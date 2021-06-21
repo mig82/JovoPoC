@@ -14,7 +14,7 @@ if (process.argv.indexOf('--webhook') > -1) {
   const port = process.env.JOVO_PORT || 3000;
   Webhook.jovoApp = app;
 
-  // For Jovo to accept CORS and work locally.
+  // Accept CORS and work locally with JovoWebClient lib.
   Webhook.use(cors())
 
   Webhook.listen(port, () => {

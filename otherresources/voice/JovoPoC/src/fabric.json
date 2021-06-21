@@ -1,0 +1,6 @@
+{
+	"version": "1.0",
+	"key": "jovopoc",
+	"secret": "jovopoc12345",
+	"serviceUrl": "https://100032668.auth.konycloud.com/appconfig"
+}

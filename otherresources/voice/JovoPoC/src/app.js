@@ -4,6 +4,6 @@
 //process.env.JOVO_PORT = 4000
 
 const {QuantumJovoApp} = require('quantum-jovo')
-const app = new QuantumJovoApp("./routes.json", "intents")
+const app = new QuantumJovoApp("./routes.json", "./intents")
 
 module.exports = { app }

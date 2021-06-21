@@ -9,10 +9,7 @@ module.exports = {
 	unpack: true, //Load these as global handlers, rather than as a state.
 	GetForexRateStart,
 	GetForexRateResolve,
-	// GetForexRate:{
-	// 	GetForexRateSlots,
-	// 	GetForexRateAgain
-	// }
 	GetForexRateSlots,
-	GetForexRateAgain
+	GetForexRateAgain,
+	public: true //Whether to offer this intent without login.
 }

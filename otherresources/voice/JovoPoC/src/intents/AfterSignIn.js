@@ -10,12 +10,12 @@ async function AfterSignIn() {
 	//kony.debug(JSON.stringify(profile, undefined, 4))
 	//TODO: Fetch the user's first name from the Fabric Identity profile.
 	const firstName = profile.username || profile.given_name || "dear user"
-	kony.warn("firstName: " + firstName)
+	kony.debug(`AfterSignIn idp.getProfile() returned first name: ${firstName}`)
 
 	//TODO: Use SSML tag to say "welcome" with excitement.
 	this.tell(`Welcome ${firstName}!`)
 
-	await this.toNext()
+	return await this.toNext()
 }
 
 module.exports = AfterSignIn

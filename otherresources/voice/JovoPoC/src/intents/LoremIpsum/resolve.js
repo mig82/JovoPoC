@@ -18,8 +18,11 @@ function getLoremIpsum(wordCount){
 
 async function LoremIpsumResolve() {
 
-	kony.warn(`LoremIpsumResolve Inputs: ${JSON.stringify(this.$inputs, undefined, 4)}`)
-	kony.warn(JSON.stringify(this.$nlu, null, 4))
+	// kony.debug(`LoremIpsumResolve Inputs: ${JSON.stringify(this.$inputs, undefined, 4)}`)
+	// kony.debug(`typeof this.$nlu ` + typeof this.$nlu)
+	// kony.debug(`this.$nlu.prototype ` + this.$nlu.prototype)
+	// kony.debug(`this.$nlu.constructor ` + this.$nlu.constructor)
+	// kony.debug(JSON.stringify(this.$nlu, null, 4))
 
 	const slots = ["wordCount"]
 	if(this.includesInputs(slots)){

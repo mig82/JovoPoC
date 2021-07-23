@@ -21,25 +21,25 @@ const OfferLogin = {
 	},
 
 	AwaitDecision: {
-		YesIntent() {
-			const from = this.getRoute().path
+		async YesIntent() {
+			//const from = this.getRoute().path
 
 			this.$speech.addText(['Ok!', 'Great!', 'Fantastic!'])
-			.addText(["Let's get you in.", "Let me open the door for you."])
-			.addBreak('300ms')
+				.addText(["Let's get you in.", "Let me open the door for you."])
+				.addBreak('300ms')
 			//this.toIntent("Private")
 			//router.toNext(this)
-			this.toNext()
+			await this.toNext()
 		},
 
-		NoIntent() {
+		async NoIntent() {
 			this.$speech.addText(['Ok!', 'No problem.'])
-			.addText(["We can still help you.", "There's still lots you can do."])
-			.addBreak('300ms')
+				.addText(["We can still help you.", "There's still lots you can do."])
+				.addBreak('300ms')
 			//this.removeState()
 			//this.toStateIntent("OfferPublicServices", "START")
 			//router.toNext(this)
-			this.toNext()
+			await this.toNext()
 		}
 	}
 }

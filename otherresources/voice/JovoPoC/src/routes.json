@@ -1,10 +1,13 @@
 {
-	"LAUNCH": "Welcome",
-	"Welcome": "OfferLogin.START",
-	"HelpIntent": "OfferLogin.START",
-	"OfferLogin.AwaitDecision.NoIntent": "OfferPublicServices",
-	"OfferLogin.AwaitDecision.YesIntent": "OfferPrivateServices",
-	"OfferPrivateServices": "LINK_ACCOUNT",
-	"ON_SIGN_IN": "AfterSignIn",
-	"AfterSignIn": "OfferPrivateServices"
+	"LAUNCH": "/Welcome",
+	"Welcome": "/OfferLogin.START",
+	"HelpIntent": "/OfferLogin.START",
+
+	"OfferLogin.AwaitDecision.NoIntent": "/OfferPublicServices",
+	"____OfferLogin.AwaitDecision.YesIntent": "/OfferPrivateServices",
+	"OfferLogin.AwaitDecision.YesIntent": "/LINK_ACCOUNT",
+
+	"____OfferPrivateServices": "/LINK_ACCOUNT",
+	"ON_SIGN_IN": "/AfterSignIn",
+	"AfterSignIn": "/OfferPrivateServices"
 }

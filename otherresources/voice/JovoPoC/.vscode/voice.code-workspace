@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../../../../node/quantum-jovo"
+		},
+		{
+			"path": "../../../../../../node/kony-node"
+		}
+	],
+	"settings": {}
+}

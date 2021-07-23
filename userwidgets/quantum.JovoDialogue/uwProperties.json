@@ -6,7 +6,22 @@
             "passthrough": []
         },
         "events": {
-            "custom": [],
+            "custom": [
+                {
+                    "group": "General",
+                    "kuid": "d4624f0fdcdc4f61aeb6c9a4c8dc3133",
+                    "paramList": [],
+                    "propertyIndex": 1,
+                    "propertyKey": "onCustomAction",
+                    "pw": {
+                        "displayName": "onCustomAction",
+                        "toolTip": "Handle custom actions sent by the Jovo app.",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "f2cc36f3fbf84a68a81be7a72c36ae01",
+                    "type": "event"
+                }
+            ],
             "passthrough": []
         },
         "groups": {

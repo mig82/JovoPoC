@@ -140,7 +140,14 @@ define(["./JovoProxy", "./createDialogueLoad",
 			})
 
 			//TODO: Implement what to do when a custom action is received.
-			//jovo.onCustom
+			jovo.onCustom((command, value) => {
+				if(typeof this.onCustomAction === "function"){
+					this.onCustomAction(command, value)
+				}
+				else{
+					throw new Error("JovoDialogueController.onCustom is not assigned an action.")
+				}
+			})
 		},
 
 		onHide: function(){

@@ -6,7 +6,8 @@
   "author": "mig82 <miguelangelxfm@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "kronin": "^2.0.0-rc5"
+    "kronin": "^2.0.0-rc5",
+    "quantum-jovo": "file:../../node/quantum-jovo"
   },
   "scripts": {
     "prepare": "make copy"

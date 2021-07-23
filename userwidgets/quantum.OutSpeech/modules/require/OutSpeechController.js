@@ -56,7 +56,7 @@ define(function() {
 						widget.width = this.maxWidth
 					}
 					else{
-						kony.print(`flag label ${widget.text} is smaller than chantbox. No need to resize.`)
+						kony.print(`flag label ${widget.text} is smaller than chatbox. No need to resize.`)
 					}
 
 					//Having adjusted the width means the height now needs adjusting too.

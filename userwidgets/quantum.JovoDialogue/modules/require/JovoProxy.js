@@ -1,6 +1,5 @@
 "use strict"
 
-/*globals window, setTimeout*/
 define(["./JovoWebClient"], function (JovoWebClient) {
 
 	const Client = JovoWebClient.Client
@@ -32,7 +31,7 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 	let onResponseCallback = doNothing
 	let onSpeechCallback = doNothing
 	let onSuggestionsCallback = doNothing
-// 	let onCustomCallback = doNothing
+	let onCustomCallback = doNothing
 
 	if(typeof window === "undefined"){
 		throw Error(`Component quantum.JovoDialogue can only be used in web applications`)
@@ -45,7 +44,7 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 	//TODO: Get these from a Fabric service or from input parameters.
 	const protocol = "http"
 	const host = "localhost"
-	const port = 4000
+	const port = 3000
 	const hook = `${protocol}://${host}:${port}/webhook`
 	const sampleRate = 8000
 
@@ -93,13 +92,7 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 
 		else if (action.type === Custom) {
 			kony.print(`flag-30.C: Received custom action ${action.command}`)
-			switch (action.command) {
-				case 'redirect':
-					setTimeout(() => { window.open(action.value) }, 800)
-					break
-				default:
-					kony.print(`flag-30.C.1: No reaction defined for custom action ${action.command}`)
-			}
+			onCustomCallback(action.command, action.value)
 		}
 	})
 
@@ -144,12 +137,30 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 
 	function onSuggestions(callback){ onSuggestionsCallback = callback }
 
+	function onCustom(callback){ onCustomCallback = callback }
+
 	function sendText(text){
 		kony.print(`flag: sendText: '${text}'`)
+		sendRequest(RequestType.Text, text)
+	}
+
+	function sendIntent(text){
+		kony.print(`flag: sendIntent: '${text}'`)
+		sendRequest(RequestType.Intent, text)
+	}
+
+	function sendRequest(type, text){
+
+		//If the user is logged in, share the token with the Jovo app, so it can make Fabric requests on behalf o the user.
+		const sdk = kony.sdk.getDefaultInstance() || kony.sdk.getCurrentInstance()
+		const claims_token =  sdk?sdk.currentClaimToken:null
+
 		client.createRequest({
-			type: RequestType.Text,
-			//type: RequestType.Intent,
-			body: { text }
+			type, //RequestType.Intent, RequestType.Text, etc.
+			body: {
+				text,
+				claims_token
+			}
 		}).send()
 	}
 
@@ -163,7 +174,8 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 		//onResponse,
 		onSpeech,
 		onSuggestions,
-		//onCustom
-		sendText
+		onCustom,
+		sendText,
+		sendIntent
 	};
 });

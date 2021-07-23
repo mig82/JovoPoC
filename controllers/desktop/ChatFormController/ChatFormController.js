@@ -1,5 +1,22 @@
 define([], function(){
 
+	function onCustomAction(command, value){
+		switch (command) {
+			case 'redirect':
+				/*globals window, setTimeout*/
+				setTimeout(() => { window.open(value) }, 800)
+				break
+			case 'signin': //fall through.
+			case 'login':
+				//TODO: surface an onCustom, or a more specific onRequestLogin callback for the
+				//app to define how to sign in the user.
+				//alert("Must sign the user in!")
+				kony.router.goTo("login")
+				break
+			default:
+				kony.print(`flag-30.C.1: Don't know how to handle custom action '${command}' yet.`)
+		}
+	}
 
 	return{
 		init: function(){
@@ -12,6 +29,7 @@ define([], function(){
 		postShow: function(){
 			//Call services to populate screen.
 			//Animate stuff back into sight.
+			this.view.JovoDialogue.onCustomAction = onCustomAction
 		},
 		onHide: function(){
 			//Make sure you destroy/empty large variables that won't be needed anymore.

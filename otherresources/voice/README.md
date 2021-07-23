@@ -461,3 +461,18 @@ app.use(
     //... other plugins
 )
 ```
+
+# Testing Account Linking from Chatbot
+
+Ideally, the web application should sign in on its own. Then, the `quantum.JovoDialogue` component included in this project uses
+`kony.sdk.getDefaultInstance().currentClaimToken` to get the claims token and pass it in each request to the Jovo app.
+
+**Note:** I would have liked to send this as a header, but I've found no way to send a custom header from Jovo's `JovoWebClient` class,... and no way to read it from the Jovo app anyway.
+
+At the time of writing this, the Visualizer Preview is failing to initialise the SDK correctly. I'm not sure why so, as a hack, open the debugger console and run this.
+
+```js
+new kony.sdk().init("jovopoc", "jovopoc12345", "https://100032668.auth.konycloud.com/appconfig", ()=>{alert("done")}, (e)=>{alert(e)})
+kony.sdk.getDefaultInstance().getIdentityService("IronBankAuthN").login({userid: "jon.snow@foo.com", password: "Test!12345"}, ()=>{alert("done")}, ()=>{alert("error")})
+kony.sdk.getDefaultInstance().currentClaimToken
+```

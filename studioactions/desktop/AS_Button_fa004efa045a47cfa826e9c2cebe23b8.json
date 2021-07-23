@@ -1,0 +1,167 @@
+{
+    "AS_Button_fa004efa045a47cfa826e9c2cebe23b8": {
+        "id": "AS_Button_fa004efa045a47cfa826e9c2cebe23b8",
+        "type": "ACTION_SEQUENCE",
+        "params": [{
+            "datatype": "collection",
+            "name": "eventobject"
+        }],
+        "contextObj": {
+            "name": "LoginForm",
+            "type": "forms",
+            "platform": null,
+            "KUID": "d86c290c2efa453786dc0b2a098b66ae"
+        },
+        "language": "js",
+        "actions": [{
+            "id": "LOADING_INDICATOR_e65ba896a58b4958bf3f4f5bb107e9e9",
+            "selectedOption": "show",
+            "type": "LOADING_INDICATOR",
+            "skin": "none",
+            "position": "constants.LOADING_SCREEN_POSITION_FULL_SCREEN",
+            "isBlocked": "true",
+            "showProgressIndicator": "true"
+        }, {
+            "id": "INVOKE_IDENTITY_SERVICE_c07e9630473f42f889e3e2626f516162",
+            "type": "INVOKE_IDENTITY_SERVICE",
+            "mappings": {
+                "ME_Mapping_cb7cd5ea8e52448aa2d9d439994ece1c": {
+                    "channel": "desktop",
+                    "id": "ME_Mapping_cb7cd5ea8e52448aa2d9d439994ece1c",
+                    "type": "MAPPING",
+                    "callbackType": null,
+                    "rectified": true,
+                    "source": {
+                        "type": "Forms",
+                        "propertyName": "text",
+                        "widgetId": "tbxuserid",
+                        "widgetPath": "this.view.tbxuserid",
+                        "widgetType": "TextField",
+                        "dataType": "string",
+                        "itemId": "LoginForm",
+                        "widgetKUID": "b984a4c4388f42d8aa38d03cdc1350ec",
+                        "itemKUID": "d86c290c2efa453786dc0b2a098b66ae",
+                        "forkedPlatform": "all"
+                    },
+                    "target": {
+                        "type": "Services",
+                        "propertyName": "userid",
+                        "dataType": "string",
+                        "forkedPlatform": "all",
+                        "serviceconfig": {
+                            "servicename": "IronBankAuthN",
+                            "type": "identity",
+                            "operationname": "login",
+                            "serviceid": "00c19529-a3ca-4b5a-8f82-4dd2bd5bc5c0",
+                            "login_type": "basic",
+                            "isDeepLinkRequired": false
+                        }
+                    }
+                },
+                "ME_Mapping_c0f943aa010f4831b2bd103cac3ee48d": {
+                    "channel": "desktop",
+                    "id": "ME_Mapping_c0f943aa010f4831b2bd103cac3ee48d",
+                    "type": "MAPPING",
+                    "callbackType": null,
+                    "rectified": true,
+                    "source": {
+                        "type": "Forms",
+                        "propertyName": "text",
+                        "widgetId": "tbxpassword",
+                        "widgetPath": "this.view.tbxpassword",
+                        "widgetType": "TextField",
+                        "dataType": "string",
+                        "itemId": "LoginForm",
+                        "widgetKUID": "i59ef7c2ed474412b4fd22ca41348684",
+                        "itemKUID": "d86c290c2efa453786dc0b2a098b66ae",
+                        "forkedPlatform": "all"
+                    },
+                    "target": {
+                        "type": "Services",
+                        "propertyName": "password",
+                        "dataType": "string",
+                        "forkedPlatform": "all",
+                        "serviceconfig": {
+                            "servicename": "IronBankAuthN",
+                            "type": "identity",
+                            "operationname": "login",
+                            "serviceid": "00c19529-a3ca-4b5a-8f82-4dd2bd5bc5c0",
+                            "login_type": "basic",
+                            "isDeepLinkRequired": false
+                        }
+                    }
+                }
+            },
+            "mappingsOrder": ["ME_Mapping_cb7cd5ea8e52448aa2d9d439994ece1c", "ME_Mapping_c0f943aa010f4831b2bd103cac3ee48d"],
+            "serviceconfig": {
+                "servicename": "IronBankAuthN",
+                "type": "identity",
+                "operationname": "login",
+                "serviceid": "00c19529-a3ca-4b5a-8f82-4dd2bd5bc5c0",
+                "login_type": "basic",
+                "isDeepLinkRequired": false
+            },
+            "enableMappingEditor": true,
+            "useDeviceBrowser": false,
+            "isDeepLinkRequired": false
+        }, {
+            "id": "LOADING_INDICATOR_f095dad0190548c9a916eb17d4e5176b",
+            "selectedOption": "dismiss",
+            "parentId": "INVOKE_IDENTITY_SERVICE_c07e9630473f42f889e3e2626f516162",
+            "type": "LOADING_INDICATOR",
+            "callbackType": "Success",
+            "skin": "none",
+            "position": "constants.LOADING_SCREEN_POSITION_FULL_SCREEN",
+            "isBlocked": "true",
+            "showProgressIndicator": "true"
+        }, {
+            "id": "LOADING_INDICATOR_e9eec0755e23479cae9b7586e6dead92",
+            "selectedOption": "dismiss",
+            "parentId": "INVOKE_IDENTITY_SERVICE_c07e9630473f42f889e3e2626f516162",
+            "type": "LOADING_INDICATOR",
+            "callbackType": "Failure",
+            "skin": "none",
+            "position": "constants.LOADING_SCREEN_POSITION_FULL_SCREEN",
+            "isBlocked": "true",
+            "showProgressIndicator": "true"
+        }, {
+            "id": "SHOW_ALERT_c3c8b7c7edce478eb3bb31473cf11be0",
+            "type": "SHOW_ALERT",
+            "alertType": "constants.ALERT_TYPE_INFO",
+            "alertTitle": null,
+            "yesLabel": null,
+            "noLabel": null,
+            "alertIcon": null,
+            "alertMessage": "You have successfully logged in.",
+            "messageType": "constant",
+            "alertHandler": null,
+            "parentId": "INVOKE_IDENTITY_SERVICE_c07e9630473f42f889e3e2626f516162",
+            "callbackType": "Success",
+            "alertTitlei18n": null,
+            "yesLabeli18n": null,
+            "noLabeli18n": null,
+            "alertMessagei18n": null,
+            "iconPosition": "constants.ALERT_ICON_POSITION_LEFT",
+            "disabled": null
+        }, {
+            "id": "SHOW_ALERT_jc731fc0fbee4932bea542851a70cfdc",
+            "type": "SHOW_ALERT",
+            "alertType": "constants.ALERT_TYPE_INFO",
+            "alertTitle": null,
+            "yesLabel": null,
+            "noLabel": null,
+            "alertIcon": null,
+            "alertMessage": "Login failed. Please try again.",
+            "messageType": "constant",
+            "alertHandler": null,
+            "parentId": "INVOKE_IDENTITY_SERVICE_c07e9630473f42f889e3e2626f516162",
+            "callbackType": "Failure",
+            "alertTitlei18n": null,
+            "yesLabeli18n": null,
+            "noLabeli18n": null,
+            "alertMessagei18n": null,
+            "iconPosition": "constants.ALERT_ICON_POSITION_LEFT",
+            "disabled": null
+        }]
+    }
+}

@@ -75,6 +75,7 @@ define(["./JovoProxy", "./createDialogueLoad",
 
 			//Show loading gif while the initialisation and LAUNCH occur.
 			this.add(createDialogueLoad())
+
 			await jovo.init()
 
 			//Don't really need this for now.
@@ -89,6 +90,8 @@ define(["./JovoProxy", "./createDialogueLoad",
 
 			//LAUNCH
 			this.view.launchButton.onClick = async () => { await jovo.launch() }
+			//TODO: If the current claims token is not anoymous, tell the Jovo client to fire ON_SIGN_IN rather than LAUNCH?
+			//decode(kony.sdk.getDefaultInstance().currentClaimToken)
 			kony.timer.schedule2(jovo.launch, LAUNCH_DELAY)
 
 			//Abort

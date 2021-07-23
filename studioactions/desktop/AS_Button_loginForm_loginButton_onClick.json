@@ -2,6 +2,7 @@
     "AS_Button_fa004efa045a47cfa826e9c2cebe23b8": {
         "id": "AS_Button_fa004efa045a47cfa826e9c2cebe23b8",
         "type": "ACTION_SEQUENCE",
+        "name": "AS_Button_loginForm_loginButton_onClick",
         "params": [{
             "datatype": "collection",
             "name": "eventobject"
@@ -115,6 +116,18 @@
             "isBlocked": "true",
             "showProgressIndicator": "true"
         }, {
+            "id": "NAVIGATE_TO_FORM__d872b636d49f4a59a73dfee7faeaf2ab",
+            "type": "NAVIGATE_TO_FORM",
+            "formId": "ChatForm",
+            "formKUID": "fccd9d26844546ad8f78ebb8cef8dee9",
+            "mappings": {},
+            "mappingsOrder": [],
+            "parentId": "INVOKE_IDENTITY_SERVICE_c07e9630473f42f889e3e2626f516162",
+            "callbackType": "Success",
+            "enableMappingEditor": true,
+            "package": "",
+            "isCustomInput": false
+        }, {
             "id": "LOADING_INDICATOR_e9eec0755e23479cae9b7586e6dead92",
             "selectedOption": "dismiss",
             "parentId": "INVOKE_IDENTITY_SERVICE_c07e9630473f42f889e3e2626f516162",
@@ -124,25 +137,6 @@
             "position": "constants.LOADING_SCREEN_POSITION_FULL_SCREEN",
             "isBlocked": "true",
             "showProgressIndicator": "true"
-        }, {
-            "id": "SHOW_ALERT_c3c8b7c7edce478eb3bb31473cf11be0",
-            "type": "SHOW_ALERT",
-            "alertType": "constants.ALERT_TYPE_INFO",
-            "alertTitle": null,
-            "yesLabel": null,
-            "noLabel": null,
-            "alertIcon": null,
-            "alertMessage": "You have successfully logged in.",
-            "messageType": "constant",
-            "alertHandler": null,
-            "parentId": "INVOKE_IDENTITY_SERVICE_c07e9630473f42f889e3e2626f516162",
-            "callbackType": "Success",
-            "alertTitlei18n": null,
-            "yesLabeli18n": null,
-            "noLabeli18n": null,
-            "alertMessagei18n": null,
-            "iconPosition": "constants.ALERT_ICON_POSITION_LEFT",
-            "disabled": null
         }, {
             "id": "SHOW_ALERT_jc731fc0fbee4932bea542851a70cfdc",
             "type": "SHOW_ALERT",

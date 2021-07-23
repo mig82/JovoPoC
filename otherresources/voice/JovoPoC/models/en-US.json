@@ -55,7 +55,7 @@
 					"type": {
 						"alexa": "AMAZON.NUMBER",
 						"googleAssistant": "actions.type.Number",
-						"nlpjs": "number"
+						"dialogflow": "@sys.cardinal"
 					}
 				}
 			]
@@ -111,11 +111,19 @@
 			"inputs": [
 				{
 					"name": "ccyFrom",
-					"type": "CurrencyType"
+					"type": {
+						"alexa": "CurrencyType",
+						"googleAssistant": "CurrencyType",
+						"dialogflow": "@sys.currency-name"
+					}
 				},
 				{
 					"name": "ccyTo",
-					"type": "CurrencyType"
+					"type": {
+						"alexa": "CurrencyType",
+						"googleAssistant": "CurrencyType",
+						"dialogflow": "@sys.currency-name"
+					}
 				}
 			]
 		},

@@ -14,3 +14,8 @@ bundle.zip
 /platforms/alexaSkill/ask-resources.json
 /platforms/alexaSkill/ask-resources.json
 /platforms/alexaSkill/skill-package/interactionModels
+
+# Dialogflow
+/secure
+/platforms/googleAction/dialogflow
+/platforms/googleAction/dialogflow_agent.zip

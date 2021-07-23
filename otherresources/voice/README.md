@@ -390,3 +390,74 @@ The following are areas where we still need to research how best leverage Jovo c
 
 * [Facebook Messenger](https://www.jovo.tech/marketplace/jovo-platform-facebookmessenger)
 * [Samsung Bixby](https://www.jovo.tech/marketplace/jovo-platform-bixby)
+
+
+# How do we design intents in Visualizer?
+
+In order to create a new intent:
+
+* Create a folder by the name of the intent.
+* Create an `index.js`, `start.js`, `slots.js`, `resolve.js`, `again.js`
+  * Can we code that just loads this as configuration instead? ie. `start.yaml`, `slots.yaml`, `resolve.yaml`, and `again.yaml`.
+* Create a folder called `models` for the voice models of `start` and `resolve` —which are the two global ones.
+* Create the models as `en-US.yaml`, `es-ES.yaml`. Each can have a different section `---` for each of `start` and `resolve`.
+* When the voice  models are loaded, they must be added to the final model by a name that matches the `start` and `resolve` intents.
+* Load the `start` and `again` of each intent as global handlers.
+* Add an indicator for the intent to be `public` or not. If public, it won't require a user session.
+* Watch the `intents` folder, and every time there's a change, build and copy into the actual Jovo project.
+* Create a `types` folder with one YAML file per type.
+
+
+# NLP.js Integration for Web
+
+**NOTE:** Jovo's v3 integration for using NLP.js as the NLU for the Web platform presents problems when trying to extract basic data types such as `number` —and potentially also `date`. See [this issue](https://github.com/jovotech/jovo-starter-web-standalone/issues/5) on their Github repo. Jovo plans to fix this in the upcoming v4 release, but at the time of writing this, the v4 release is still in Alpha stage.
+
+For the built-in entity (numbers, dates, etc) extraction to work we have to install the `@nlpjs/builtin-default` package and an additional package for each targetted locale —e.g.
+
+```
+npm i @nlpjs/builtin-default @nlpjs/lang-en
+```
+
+Read: https://github.com/jovotech/jovo-starter-web-standalone/issues/5
+
+Also read NLP.js's docs on adding multiple languages.
+https://github.com/axa-group/nlp.js/blob/master/docs/v4/quickstart.md#adding-multilanguage
+
+# Dialogflow Integration for Web
+
+Using [Dialogflow as the NLU](https://www.jovo.tech/marketplace/jovo-nlu-dialogflow) for the Web platform requires the creation of a JSON file inside the `src` directory of the project, and padding the relative path to it as the `credentialsFile` property of the `DialogflowNlu` plugin.
+
+The process of setting up the credentials for the Jovo CLI to deploy Dialogflow models and for the Jovo app to be able to authenticate requests to Dialogflow using this `credentialsFile` is outlined [here](https://www.jovo.tech/tutorials/deploy-dialogflow-agent#step-1:-setting-up-authentication)
+
+The file must look like this:
+
+`src/path/to/dialogflow_service_acct_key.json`
+```json
+{
+	"type": "service_account",
+    "project_id": "dialogflow-agent-id",
+	"private_key_id": "13177******************************3251e",
+	"private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvg...I9+sjSC\n-----END PRIVATE KEY-----\n",
+	"client_email": "my-service-account-name@dialogflow-agent-id.iam.gserviceaccount.com",
+	"client_id": "11300************1093",
+	"auth_uri": "https://accounts.google.com/o/oauth2/auth",
+	"token_uri": "https://oauth2.googleapis.com/token",
+	"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+	"client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/my-service-account-name%40dialogflow-agent-id.iam.gserviceaccount.com"
+}
+```
+
+It can be created from the [Google Cloud Platform's console](https://console.cloud.google.com). You can also get there from the [Dialogflow Console](https://dialogflow.cloud.google.com) by clicking the gear icon next to the Dialogflow Agent's name, and then clicking the `Project ID` from the `General` tab.
+
+Once in the GCP Console, search for [IAM Permissions](https://console.cloud.google.com/iam-admin), go to [Service Accounts](https://console.cloud.google.com/iam-admin/serviceaccounts?project=jovopoc-p9by), create a new **Service Account**, create a new **key** for it and assign it the ***Dialogflow API Admin*** role to it. Download the file in JSON format and place it in the `src` directory of the project —e.g. `src/secure/dialogflow_service_acct_key.json`. Then set `credentialsFile` property like so.
+
+```js
+app.use(
+	new WebPlatform().use(
+		new DialogflowNlu({
+			credentialsFile: '../secure/dialogflow_service_acct_key.json'
+		})
+	),
+    //... other plugins
+)
+```

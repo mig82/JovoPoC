@@ -7,11 +7,13 @@
 define(function () {
 
 	//const PUNCTUATION_EN = /[^\.!\?]+[\.!\?]+/g
-	const PUNCTUATION_ES = /[¡¿]*[^\.!\?]+[\.!\?]+/g
+	//This second version ignores pucturation when not followed by a space.
+	const PUNCTUATION_EN = /(?:[^\n.!?;:]|[\n.!?;:](?!\s))+[\n.!?;:]+/g
+	//const PUNCTUATION_ES = /[¡¿]*[^\.!\?]+[\.!\?]+/g
 
 	function splitSpeech(speech){
 		//TODO: Implement characters to split by depending on locale —e.g. Spanish has opening question/exclamation marks.
-		let sentences = speech.match( PUNCTUATION_ES )
+		let sentences = speech.match( PUNCTUATION_EN )
 		sentences = sentences.map(c=>c.trim())
 		return sentences
 	}

@@ -1,5 +1,5 @@
 "use strict"
-const kony = require('kony-node')
+//const kony = require('kony-node')
 const GetForexRateSlots = {
 	START(){
 		const prompt = `what exchange rate would you like to know?`

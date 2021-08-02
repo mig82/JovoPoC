@@ -1,9 +1,6 @@
 "use strict"
 
-const kony = require('kony-node')
-const round = require('../../util/round')
-const util = require("util")
-
+//const kony = require('kony-node')
 
 function getLoremIpsum(wordCount){
 	const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do " +

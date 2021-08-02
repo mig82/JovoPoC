@@ -12,7 +12,7 @@ async function GetForexRateResolve() {
 	//{ccyTo:	{ id: 'GBP', value: 'Sterling',	key: 'GBP', name: 'ccyTo' },
 	// ccyFrom:	{ id: 'EUR', value: 'Euro', 	key: 'EUR', name: 'ccyFrom' }}
 
-	kony.warn(`Inputs: ${JSON.stringify(this.$inputs, undefined, 4)}`)
+	kony.debug(`Inputs: ${JSON.stringify(this.$inputs, undefined, 4)}`)
 
 	const slots = ["ccyFrom", "ccyTo"]
 	if(this.includesInputs(slots)){

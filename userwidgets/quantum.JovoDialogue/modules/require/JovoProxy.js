@@ -104,7 +104,7 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 
 	async function launch(){
 		kony.print(`flag-01: Calling Jovo LAUNCH`)
-		await client.createRequest({ type: 'LAUNCH' }).send()
+		await sendRequest(RequestType.Launch)
 	}
 
 	async function record(){
@@ -139,29 +139,28 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 
 	function onCustom(callback){ onCustomCallback = callback }
 
-	function sendText(text){
+	async function sendText(text){
 		kony.print(`flag: sendText: '${text}'`)
-		sendRequest(RequestType.Text, text)
+		await sendRequest(RequestType.Text, text)
 	}
 
-	function sendIntent(text){
+	async function sendIntent(text){
 		kony.print(`flag: sendIntent: '${text}'`)
-		sendRequest(RequestType.Intent, text)
+		await sendRequest(RequestType.Intent, text)
 	}
 
-	function sendRequest(type, text){
+	async function sendRequest(type, text){
 
 		//If the user is logged in, share the token with the Jovo app, so it can make Fabric requests on behalf o the user.
 		const sdk = kony.sdk.getDefaultInstance() || kony.sdk.getCurrentInstance()
-		const claims_token =  sdk?sdk.currentClaimToken:null
+		const claims_token =  sdk?sdk.currentClaimToken:undefined
 
-		client.createRequest({
+		await client.createRequest({
 			type, //RequestType.Intent, RequestType.Text, etc.
-			body: {
-				text,
-				claims_token
-			}
-		}).send()
+			body: { text }
+		}).send({
+			headers: { claims_token }
+		})
 	}
 
 	return {

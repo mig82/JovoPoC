@@ -471,9 +471,28 @@ Ideally, the web application should sign in on its own. Then, the `quantum.JovoD
 
 At the time of writing this, the Visualizer Preview is failing to initialise the SDK correctly. I'm not sure why so, as a hack, open the debugger console and run this.
 
+Switch the local preview to `localhost`.
 ```js
 this.location="http://localhost:9989/JovoPoC/kdw#_ChatForm"
-new kony.sdk().init("jovopoc", "jovopoc12345", "https://100032668.auth.konycloud.com/appconfig", ()=>{alert("done")}, (e)=>{alert(e)})
-kony.sdk.getDefaultInstance().getIdentityService("IronBankAuthN").login({userid: "jon.snow@foo.com", password: "Test!12345"}, ()=>{alert("done")}, ()=>{alert("error")})
+```
+
+Init and SDK instance.
+```js
+new kony.sdk().init("jovopoc", "jovopoc12345", "https://100032668.auth.konycloud.com/appconfig", 
+    ()=>{alert("done")},
+    (e)=>{alert(e)}
+)
+```
+
+Sign the user in.
+```js
+kony.sdk.getDefaultInstance().getIdentityService("IronBankAuthN").login({
+    userid: "jon.snow@foo.com", 
+    password: "Test!12345"
+}, ()=>{alert("done")}, ()=>{alert("error")})
+```
+
+Get the current claims token.
+```js
 kony.sdk.getDefaultInstance().currentClaimToken
 ```

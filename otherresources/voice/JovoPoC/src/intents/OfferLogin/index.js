@@ -4,20 +4,26 @@ const kony = require('kony-node')
 
 const OfferLogin = {
 
-	START() {
+	async START() {
 
-		this.$speech
-		.addText(`Would you like to sign into your account? `)
-		.addBreak('300ms')
-		.addText(`Say no if you just want to browse our public services.`)
+		if(await this.getAccessToken()){
+			this.$speech.addText(`You're already logged in.`)
+			return await this.toNext()
+		}
+		else{
+			this.$speech
+				.addText(`Would you like to sign into your account? `)
+				.addBreak('300ms')
+				.addText(`Say no if you just want to browse our public services.`)
 
-		this.$reprompt.addText(`Would you like to sign in?`)
+			this.$reprompt.addText(`Would you like to sign in?`)
 
-		//TODO: Implement a uniform function for suggestion chips across platforms.
-		this.showSuggestions2(["Yes", "No"], "Sign in?")
+			//TODO: Implement a uniform function for suggestion chips across platforms.
+			this.showSuggestions2(["Yes", "No"], "Sign in?")
 
-		this.followUpState('OfferLogin.AwaitDecision')
-		this.ask(this.$speech, this.$reprompt)
+			this.followUpState('OfferLogin.AwaitDecision')
+			this.ask(this.$speech, this.$reprompt)
+		}
 	},
 
 	AwaitDecision: {

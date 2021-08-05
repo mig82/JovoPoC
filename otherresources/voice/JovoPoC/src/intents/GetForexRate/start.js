@@ -1,6 +1,6 @@
 function GetForexRateStart() {
-	this.$speech.addText(['Ok!', 'Great!'])
-	.addText(["Let's go to exchange rates."])
+	this.say(['Ok!', 'Great!'])
+	this.say(["Let's go to exchange rates."])
 	this.removeState()
 	this.toStateIntent("GetForexRateSlots", "START")
 }

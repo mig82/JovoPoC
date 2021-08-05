@@ -2,7 +2,7 @@
 
 const kony = require('kony-node')
 const round = require('../../util/round')
-const util = require("util")
+//const util = require("util")
 
 async function GetForexRateResolve() {
 

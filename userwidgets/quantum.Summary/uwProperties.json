@@ -1,0 +1,48 @@
+{
+    "classname": "Summary",
+    "definitions": {
+        "apis": {
+            "custom": [
+                {
+                    "group": "General",
+                    "kuid": "fd47dda1e57645d1b34a9aa8c9ea40b1",
+                    "paramList": [
+                        {
+                            "name": "content"
+                        }
+                    ],
+                    "propertyKey": "setContent",
+                    "pw": {
+                        "displayName": "setContent",
+                        "uiRepresentation": "Label-Label-Button-Button"
+                    },
+                    "srcWgtKUID": "b93fc724d64d48b6bf521b464c28b29e",
+                    "type": "event"
+                }
+            ],
+            "passthrough": []
+        },
+        "events": {
+            "custom": [],
+            "passthrough": []
+        },
+        "groups": {
+            "apis": [
+                "General"
+            ],
+            "events": [],
+            "properties": [],
+            "widgets": []
+        },
+        "properties": {
+            "custom": [],
+            "passthrough": []
+        },
+        "widgets": {
+            "expose": [],
+            "passthrough": []
+        }
+    },
+    "namespace": "quantum",
+    "version": "1.0.0"
+}

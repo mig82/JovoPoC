@@ -15,6 +15,9 @@ define([], function(){
 					kony.router.goTo("login")
 				}, 1)
 				break
+			case 'summary':
+				alert(JSON.stringify(value, undefined, 4))
+				break
 			default:
 				kony.print(`flag-30.C.1: Don't know how to handle custom action '${command}' yet.`)
 		}

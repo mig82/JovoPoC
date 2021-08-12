@@ -140,12 +140,12 @@ define(["./JovoWebClient"], function (JovoWebClient) {
 	function onCustom(callback){ onCustomCallback = callback }
 
 	async function sendText(text){
-		kony.print(`flag: sendText: '${text}'`)
+		//kony.print(`flag: sendText: '${text}'`)
 		await sendRequest(RequestType.Text, text)
 	}
 
 	async function sendIntent(text){
-		kony.print(`flag: sendIntent: '${text}'`)
+		//kony.print(`flag: sendIntent: '${text}'`)
 		await sendRequest(RequestType.Intent, text)
 	}
 

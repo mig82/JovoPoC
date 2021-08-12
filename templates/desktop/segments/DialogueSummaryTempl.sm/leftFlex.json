@@ -2,11 +2,11 @@
     "DNDConfig": null,
     "_height_": {
         "type": "string",
-        "value": "800dp"
+        "value": "100%"
     },
     "_left_": {
         "type": "string",
-        "value": "35%"
+        "value": "4%"
     },
     "_margin_": [
         0,
@@ -23,40 +23,29 @@
     ],
     "_percent_": true,
     "_skin_": "s8641ebade9a4510b0c5dfd47532e348",
-    "_top_": {
-        "type": "string",
-        "value": "0dp"
-    },
     "_width_": {
         "type": "string",
-        "value": "50%"
+        "value": "30%"
     },
-    "actionsInfo": {},
     "allboxes": [],
     "autogrowmode": 0,
     "canUpdateUI": true,
-    "centery": {
-        "type": "string",
-        "value": "50%"
-    },
     "children": [
-        "imgLogin",
-        "tbxuserid",
-        "tbxpassword",
-        "btnLOGIN"
+        "key"
     ],
     "clipbounds": true,
+    "containerId": true,
     "containerweight": 100,
     "enablescrolling": true,
-    "id": "flexlogin",
+    "id": "leftFlex",
     "info": null,
     "iscustomlayout": false,
     "isvisible": true,
-    "kuid": "c425c25a4d3a4436b44f0f19c8ea5518",
-    "layouttype": 4,
+    "kuid": "da3586fe40eb4a5287b8b76e1155c196",
+    "layouttype": 2,
     "name": "kony.ui.FlexContainer",
-    "parent": "LoginForm",
-    "pf": "LoginForm",
+    "parent": "mainFlex",
+    "pf": "DialogueSummaryTempl",
     "retaincontentalignment": false,
     "retainflexpositionproperties": false,
     "retainflowhorizontalalignment": false,

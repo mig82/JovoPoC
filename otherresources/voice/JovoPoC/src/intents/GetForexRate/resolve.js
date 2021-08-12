@@ -16,9 +16,12 @@ async function GetForexRateResolve() {
 	* operation's parameters from the slots of the same name. How do I get the
 	* metadata for an operation? Visualizer does it, so it's possible.
 	*/
-	const base = this.$inputs.ccyFrom.key //e.g. "NOK"
-	const symbols = this.$inputs.ccyTo.key //e.g. "GBP"
+	// const base = this.$inputs.ccyFrom.key //e.g. "NOK"
+	// const symbols = this.$inputs.ccyTo.key //e.g. "GBP"
+	const base = this.getSlotValue("ccyFrom").toUpperCase() //e.g. "NOK"
+	const symbols = this.getSlotValue("ccyTo").toUpperCase() //e.g. "GBP"
 	const payload = { base, symbols }
+	this.resetSlots()
 
 	//It's silly to have the service name hardcoded here. Need a config file for this.
 	//const service = this.$app.getSdk().getIntegrationService("EcbForex")
@@ -28,7 +31,7 @@ async function GetForexRateResolve() {
 	//TODO: How do we generate conditionals for the response?
 	if(!!resp.date && !!resp.rates && !!resp.rates[symbols]){
 
-		/* TODO: How would a user map fields in the service output to the voice
+		/* TODO: How would a developer using Visualizer map fields in the service output to the voice
 		response? e.g. the rate. */
 		const rate = round(resp.rates[symbols])
 		const date = this.ssml.sayDate(resp.date, "ymd")

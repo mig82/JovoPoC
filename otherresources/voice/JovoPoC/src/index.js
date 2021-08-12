@@ -1,5 +1,7 @@
 'use strict';
 
+/*global process */
+
 const { ExpressJS, Lambda, Webhook } = require('jovo-framework');
 const { app } = require('./app.js');
 const cors = require('cors')
@@ -22,7 +24,14 @@ if (process.argv.indexOf('--webhook') > -1) {
   });
 
   Webhook.post('/webhook', async (req, res) => {
-    await app.handle(new ExpressJS(req, res));
+
+    try{
+      await app.handle(new ExpressJS(req, res));
+    }
+    catch(e){
+      console.error(e)
+      this.setSessionAttribute("error", e)
+    }
   });
 }
 

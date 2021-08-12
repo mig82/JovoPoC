@@ -2,10 +2,10 @@
 
 define(["./JovoProxy", "./createDialogueLoad",
 		"./createOutSpeech", "./createInSpeech",
-		"./createSuggestions", "./splitSpeech"],
+		"./createSuggestions", "./createSummary", "./splitSpeech"],
 	function(jovo, createDialogueLoad,
 			createOutSpeech, createInSpeech,
-			createSuggestions, splitSpeech) {
+			createSuggestions, createSummary, splitSpeech) {
 
 	let count = 0;
 	const LAUNCH_DELAY = 1
@@ -50,24 +50,22 @@ define(["./JovoProxy", "./createDialogueLoad",
 			this.view.input.text = ""
 		},
 
-		// TODO: removeSuggestions and removeLoader are duplicates. Implement a generic one
-		// where the class of the item to be removed is a parameter.
-		removeSuggestions: function(){
-			const conversation = this.view.dialogueScroll.widgets()
-			if(conversation.length > 0 && conversation[0].id.startsWith("Suggestions")){
-				this.view.dialogueScroll.removeAt(0)
-			}
-		},
+		removeSuggestions: function(){ this.removeByPrefix("Suggestions") },
 
-		removeLoader: function(){
-			const conversation = this.view.dialogueScroll.widgets()
-			if(conversation.length > 0 && conversation[0].id.startsWith("DialogueLoad")){
-				this.view.dialogueScroll.removeAt(0)
+		removeLoader: function(){ this.removeByPrefix("DialogueLoad") },
+
+		removeByPrefix(prefix){
+			const conversation = this.view.dialogueScroll.widgets() || []
+			for(let k = 0; k < Math.min(6, conversation.length); k++){
+				if(typeof conversation[k].id === "string" && conversation[k].id.startsWith(prefix)){
+					this.view.dialogueScroll.removeAt(k)
+				}
 			}
 		},
 
 		preShow: function(){
 			kony.print(`flag JovoDialogue preShow`)
+			//Clean up the design-time widgets.
 			this.view.dialogueScroll.removeAll()
 		},
 
@@ -124,6 +122,7 @@ define(["./JovoProxy", "./createDialogueLoad",
 						this.add(createOutSpeech(current))
 					}, SENTENCE_DELAY + accumulated_delay)
 				}
+				// this.view.input.setFocus(true) //TODO: Fix setting focus on the text box. It's not working.
 			})
 
 			jovo.onSuggestions((suggestions) => {
@@ -144,7 +143,13 @@ define(["./JovoProxy", "./createDialogueLoad",
 
 			//TODO: Implement what to do when a custom action is received.
 			jovo.onCustom((command, value) => {
-				if(typeof this.onCustomAction === "function"){
+				if(command === "summary"){
+					//alert(JSON.stringify(value, undefined, 4))
+					this.add(createSummary(value))
+				}
+				//TODO: Add here the logic for whatever custom actions the component should handle on its own.
+				//else if(command === "foo") {}
+				else if(typeof this.onCustomAction === "function"){
 					this.onCustomAction(command, value)
 				}
 				else{

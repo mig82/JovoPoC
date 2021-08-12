@@ -5,7 +5,7 @@ const OfferLogin = {
 	async START() {
 
 		if(await this.getAccessToken()){
-			this.$speech.addText(`You're already logged in.`)
+			this.say(`You're already logged in.`)
 			return await this.toNext()
 		}
 		else{

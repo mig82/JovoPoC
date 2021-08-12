@@ -7,6 +7,12 @@ build:
 	jovo build --stage dev_alexa
 	jovo build --stage dev_gactions
 	jovo build --stage dev_dialogflow
+	find platforms/googleAction/dialogflow/entities -name "sys.*" -exec rm {} \;
+
+deploy:
+	jovo deploy --stage dev_alexa
+	jovo deploy --stage dev_gactions
+	jovo deploy --stage dev_dialogflow
 
 google_pull:
 	cd platforms/googleAction && \

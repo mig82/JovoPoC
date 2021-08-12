@@ -31,7 +31,7 @@ define(function() {
 			//The parent's doLayout will execute first.
 			this.view.doLayout = (widget) => {
 				this.maxWidth = widget.frame.width - 2 //-2 to account for 1px borders and avoid clipping.
-				kony.print(`flag InSpeech parent doLayout ${this.view.id} width: ${this.labelWidth} max: ${this.maxWidth}`)
+				//kony.print(`flag InSpeech parent doLayout ${this.view.id} width: ${this.labelWidth} max: ${this.maxWidth}`)
 			}
 
 			this.adjustedWidth = false //Assume the width needs adjusting.

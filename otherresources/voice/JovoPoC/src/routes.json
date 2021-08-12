@@ -8,5 +8,14 @@
 	"OfferLogin.AwaitDecision.YesIntent": "/LINK_ACCOUNT",
 
 	"ON_SIGN_IN": "/AfterSignIn",
-	"AfterSignIn": "/OfferPrivateServices"
+	"AfterSignIn": "/OfferPrivateServices",
+
+	"GetForexRateAgain.AwaitDecision.NoIntent": "OfferPublicServices",
+
+	"OnboardCustomerStart": "/OfferLogin.START",
+	"AccountsStart": "/OfferAccountServices",
+	"OpenAccountStart": "OnboardCustomerStart",
+	"OpenAccountAgain.AwaitDecision.NoIntent": "AccountsStart",
+
+	"ON_ERROR": "Recover"
 }

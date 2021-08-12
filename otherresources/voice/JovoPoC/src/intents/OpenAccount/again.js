@@ -1,10 +1,10 @@
 "use strict"
 
-const GetForexRateAgain = {
+const OpenAccountAgain = {
 	START(){
-		this.say(`Would you like to ask for another rate?`)
-		this.$reprompt.addText(`Sorry, would you like to ask for another exchange rate?`)
-		this.followUpState('GetForexRateAgain.AwaitDecision')
+		this.say(`Would you like to open another account?`)
+		this.$reprompt.addText(`Sorry, would you like to open a new account?`)
+		this.followUpState('OpenAccountAgain.AwaitDecision')
 		this.ask(this.$speech)
 	},
 	AwaitDecision: {
@@ -12,7 +12,7 @@ const GetForexRateAgain = {
 		async YesIntent(){
 			this.say(`Ok! let's go again.`)
 			this.removeState()
-			return await this.toStateIntent("GetForexRateSlots", "START")
+			return await this.toStateIntent("OpenAccountSlots", "START")
 		},
 
 		async NoIntent(){
@@ -25,4 +25,4 @@ const GetForexRateAgain = {
 	}
 }
 
-module.exports = GetForexRateAgain
+module.exports = OpenAccountAgain

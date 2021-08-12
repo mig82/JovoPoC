@@ -1,4 +1,4 @@
-const kony = require('kony-node')
+"use strict"
 
 function OfferPublicServices() {
 
@@ -8,7 +8,7 @@ function OfferPublicServices() {
 		"financial news",
 		"locate ATM's"
 	]
-	let opts_string = opts_array.slice(0, -1).join(", ") + ", or " + opts_array.slice(-1)
+	let opts_string = this.sayOptions(opts_array)
 
 	//this.ask(
 	this.$speech.addText(

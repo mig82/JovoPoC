@@ -2,11 +2,160 @@
 	"invocation": "iron bank",
 	"intents": [
 		{
+			"name": "StateAccountType",
+			"phrases": ["{type}"],
+			"inputs": [
+				{
+					"name": "type",
+					"type": "AccountType"
+				}
+			]
+		},
+		{
+			"name": "StateCurrency",
+			"phrases": [ "{currency}" ],
+			"inputs": [
+				{
+					"name": "currency",
+					"type": {
+						"alexa": "CurrencyType",
+						"googleAssistant": "CurrencyType",
+						"dialogflow": "@sys.currency-name"
+					}
+				}
+			]
+		},
+		{
+			"name": "StateEmployment",
+			"phrases": [
+				"{employment}",
+				"i'm {employment}",
+				"i'm currently {employment}",
+				"i'm {employment} right now",
+				"i'm a {employment}"
+			],
+			"inputs": [
+				{
+					"name": "employment",
+					"type": "EmploymentType"
+				}
+			]
+		},
+		{
+			"name": "StateNationality",
+			"phrases": [
+				"{country}",
+				"I'm from {country}",
+				"I'm {country}",
+				"I'm a {country} citizen",
+				"I'm a {country} national",
+				"I am a citizen of {country}",
+				"I am a national of {country}"
+			],
+			"inputs": [
+				{
+					"name": "country",
+					"type": {
+						"alexa": "AMAZON.Country",
+						"googleAssistant": "CountryType",
+						"dialogflow": "@sys.geo-country"
+					}
+				}
+			]
+		},
+		{
+			"name": "StateBirthDate",
+			"phrases": [
+				"{birth_date}",
+				"on the {birth_date}",
+				"it's {birth_date}",
+				"I was born {birth_date}",
+				"I was born on {birth_date}",
+				"my birth date is {birth_date}",
+				"my birth was on {birth_date}",
+				"my birth day is {birth_date}"
+			],
+			"inputs": [
+				{
+					"name": "birth_date",
+					"type": {
+						"alexa": "AMAZON.DATE",
+						"googleAssistant": "actions.type.Date",
+						"dialogflow": "@sys.date"
+					}
+				}
+			]
+		},
+		{
+			"name": "StateGender",
+			"phrases": [
+				"{gender}",
+				"{gender} please",
+				"i'm {gender}",
+				"i'm a {gender}",
+				"i'm a {gender} please"
+			],
+			"inputs": [
+				{
+					"name": "gender",
+					"type": "GenderType"
+				}
+			]
+		},
+		{
+			"name": "StateTitle",
+			"phrases": [
+				"{title}",
+				"{title} is fine",
+				"call me {title}",
+				"call me {title} please",
+				"{title} should be fine",
+				"call me {title}",
+				"{title} please",
+				"i'm a {title}",
+				"i'm a {title} please"
+			],
+			"inputs": [
+				{
+					"name": "title",
+					"type": "HonorificTitle"
+				}
+			]
+		},
+		{
+			"name": "AccountsStart",
+			"phrases": [
+				"bank accounts", "query bank accounts", "see bank accounts", "go to bank accounts",
+				"accounts", "query accounts", "see accounts", "go to accounts",
+				"savings", "query savings", "see savings", "go to savings",
+				"funds", "query funds", "see funds", "go to funds"
+			]
+		},
+		{
+			"name": "OpenAccountStart",
+			"phrases": [
+				"Open an account",
+				"Open a new account",
+				"Open a new bank account",
+				"Create an account",
+				"Create a new account",
+				"Create a new savings account",
+				"Create a new banking account",
+				"Start an account",
+				"Start a new account",
+				"Set up an account",
+				"Set up a new account",
+				"Set up a savings account",
+				"Set up a new savings account"
+			]
+		},
+		{
 			"name": "SwitchTheme",
 			"phrases": [
 				"{theme}",
-				"switch to {theme} mode",
 				"{theme} mode",
+				"switch to {theme}",
+				"switch to {theme} mode",
 				"enable {theme} mode",
 				"{theme} theme",
 				"switch to the {theme} theme",
@@ -69,7 +218,6 @@
 				"pay someone",
 				"payments",
 				"peer to peer",
-				"p to p",
 				"send money",
 				"send funds",
 				"wire transfer",
@@ -340,6 +488,63 @@
 		}
 	},
 	"inputTypes": [
+		{
+			"name": "AccountType",
+			"values": [
+				{ "value": "savings", "synonyms": [ "saving", "savings", 
+					"savings account", "passbook", "passbook account", "passbook savings", "passbook savings account"
+				]},
+				{ "value": "current", "synonyms": [ "current", "current account",
+					"transaction account", "checking", "checking account", "chequing", "chequing account", "demand deposit", "demand deposit account",
+					"share draft", "share draft account", "draft", "draft account", "on demand", "on demand account" , "overdraft", "overdraft account"
+				]}
+			]
+		},
+		{
+			"name": "EmploymentType",
+			"values": [
+				{ "value": "employed", "synonyms": ["job", "worker", "stable job"]},
+				{ "value": "self employed", "synonyms": ["entrepreneur", "contractor", "independent", "independent worker", "freelance", "freelancer"]},
+				{ "value": "unemployed", "synonyms": ["jobless", "between jobs", "out of work", "redundant", "workless", "out of a job", "laid off", "unengaged", "vacant"]},
+				{ "value": "student", "synonyms": ["study", "studying", "undergraduate", "undergrad", "intern", "internship"]},
+				{ "value": "homemaker", "synonyms": ["housewife", "househusband", "housesitter", "house keeper"]},
+				{ "value": "retired", "synonyms": ["retiree", "pension", "pensioner", "pensionary", "dependent"]}
+			]
+		},
+		{
+			"name": "CountryType",
+			"values": [
+				{ "value": "GBR", "synonyms": [
+					"great britain", "uk", "united kingdom",
+					"british", "united kingdom of great britain",
+					"united kingdom of great britain and northern ireland"
+				]},
+				{ "value": "IRL", "synonyms": [
+					"ireland", "republic of ireland", "irish"
+				]},
+				{ "value": "ESP", "synonyms": [
+					"spain", "kingdom of spain", "spanish", "spaniard"
+				]}
+			]
+		},
+		{
+			"name": "GenderType",
+			"values": [
+				{ "value": "male", "synonyms": [ "man", "masculine" ] },
+				{ "value": "female", "synonyms": [ "woman", "femenine" ] },
+				{ "value": "other", "synonyms": [ "prefer not to say", "non binary" ] }
+			]
+		},
+		{
+			"name": "HonorificTitle",
+			"values": [
+				{ "value": "Mr", "synonyms": [ "mister" ] },
+				{ "value": "Mrs", "synonyms": [ "missis", "missus" ] },
+				{ "value": "Ms", "synonyms": [ "miss" ] },
+				{ "value": "Dr", "synonyms": [ "doctor" ] },
+				{ "value": "Mx", "synonyms": [ "other", "none", "i prefer not to say", "none of the above"] }
+			]
+		},
 		{
 			"name": "ThemeType",
 			"values": [

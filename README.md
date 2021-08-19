@@ -1,170 +1,49 @@
-# Jovo Web Client
+# Quantum Jovo Proof of Concept
 
+This Visualizer project includes two bits of interest.
 
-## Request
+1. A Jovo app —found at `otherresources/voice/JovoPoC`— that integrates with Fabric and covers the following platforms:
 
-```js
-client.on( JovoWebClient.ClientEvent.Request, (request) => {
-	kony.print(`flag-0 onRequest fired: ${JSON.stringify(request, null, 4)}`)
-})
-```
+  * Google Assistant (using Actions on Google as the NLU)
+  * Alexa
+  * Chatbots (using Dialogflow as the NLU).
 
-The `request` is of the form:
+2. A component —found at `userwidgets/quantum.JovoDialogue`— which implements a chatbot wired to talk to the Jovo app mentioned above. It's important to note that:
 
-```json
-{
-	"version": "3.4.0",
-	"type": "jovo-platform-web",
-	"request": {
-		"id": "8eb7cdc1-c935-417b-81ef-04485657c5af",
-		"timestamp": "2021-06-10T17:29:16.713Z",
-		"type": "LAUNCH",
-		"body": {},
-		"locale": "en",
-		"data": {}
-	},
-	"context": {
-		"appId": "",
-		"platform": "",
-		"device": {
-			"id": "",
-			"type": "BROWSER",
-			"capabilities": {
-				"AUDIO": true,
-				"HTML": true,
-				"TEXT": true
-			}
-		},
-		"session": {
-			"id": "6bff964d-ef6e-4128-989c-fe7aa505539a",
-			"data": {
-				"_JOVO_STATE_": "TakeMeToTheDocs"
-			},
-			"new": false,
-			"lastUpdatedAt": "2021-06-10T17:09:01.917Z"
-		},
-		"user": {
-			"id": "42b5aed9-e70d-4fcc-9fbc-4e0446a9d43b",
-			"data": {}
-		}
-	}
-}
-```
+  * This component is made of several other components, such as `quantum.InSpeech`, `quantum.DialogueLoad` and so on, that implement the different elements that can populate a chat box.
+  * This component leverages Jovo's own `JovoWebClient` client library, downloaded in its minified form from its CDN location.
 
-## Response
+The general idea is that we Jovo to build a *single* codebase that covers *all* conversational platforms, including VPA's —such as Alexa, Google Assistant and others in the future— as well as web apps built using Visualizer —and eventually native apps as well.
 
-```js
-client.on( JovoWebClient.ClientEvent.Response, (response) => {
-	kony.print(`flag-1 onResponse fired ${JSON.stringify(response, null, 4)}`)
-})
-```
+# Implementation Notes
 
-The `response` is of the form:
+Find all my notes in the `README.md` file found at `otherresources/voice`, [here](otherresources/voice/README.md)
 
-```json
-{
-    "version": "3.4.0",
-    "actions": [
-        {
-            "plain": "The content of this conversation is fully customizable. Our docs can show you how to update the app logic. Do you want me to take you there?",
-            "ssml": "<speak>The content of this conversation is fully customizable. Our docs can show you how to update the app logic. Do you want me to take you there?</speak>",
-            "type": "SPEECH"
-        },
-        {
-            "replies": [
-                {
-                    "id": "Yes",
-                    "label": "Yes",
-                    "value": "Yes"
-                },
-                {
-                    "id": "No",
-                    "label": "No",
-                    "value": "No"
-                }
-            ],
-            "type": "QUICK_REPLY"
-        }
-    ],
-    "reprompts": [
-        {
-            "plain": "The content of this conversation is fully customizable. Our docs can show you how to update the app logic. Do you want me to take you there?",
-            "ssml": "<speak>The content of this conversation is fully customizable. Our docs can show you how to update the app logic. Do you want me to take you there?</speak>",
-            "type": "SPEECH"
-        }
-    ],
-    "user": {
-        "data": {}
-    },
-    "session": {
-        "data": {
-            "_JOVO_STATE_": "TakeMeToTheDocs"
-        },
-        "end": false
-    },
-    "context": {
-        "request": {
-            "nlu": {
-                "intent": {
-                    "name": "LAUNCH"
-                }
-            }
-        }
-    }
-}
-```
+## Install
 
-## Action
+The Jovo project found at `otherresources/voice/JovoPoC` is a Node application. You should follow Jovo's docs in order to install it. It should be as easy as running `npm install` though.
 
-```js
-client.on( JovoWebClient.ClientEvent.Action, (action) => {
-	kony.print(`flag-2 onAction fired ${JSON.stringify(action, null, 4)}`)
-	if (action.type === JovoWebClient.ActionType.Custom) {
-		switch (action.command) {
-			case 'redirect':
-				setTimeout(() => {
-					window.open(action.value)
-				}, 800)
-				break
-			default:
-				kony.print(`flag-0: Received action ${action.command}`)
-		}
-	}
-})
-```
+**However**, this project in particular depends on another two libraries custom made for the purpose of achieving integration with Fabric.
 
-The `action` is of the form:
+* **Quantum Jovo Base Application:** While a normal Jovo app is an instance of `App` from package `jovo-framework`, this app is instead and instance of `QuantumJovoApp` from  package `quantum-jovo`. The `QuantumJovoApp` class is an extension of Jovo's base `App` that includes a ton of utility features we'll need in order to be able slap low code features around this.
+* **Kony:** Since Jovo applications are built in Node, and JS is already Quantum's programming language, it made sense to try to recreate the old Kony SDK in an NPM package that would allow us to code Node applications that talk to Fabric in the same ways the old Kony SDK does. This `kony` NodeJS library is meant to implement the subset of the old Kony SDK that is responsible for communicating with Fabric —i.e. invoking Identity, Integration, Engagement and Metrics.
 
-```json
-{
-    "plain": "The content of this conversation is fully customizable. Our docs can show you how to update the app logic. Do you want me to take you there?",
-    "ssml": "<speak>The content of this conversation is fully customizable. Our docs can show you how to update the app logic. Do you want me to take you there?</speak>",
-    "type": "SPEECH"
-}
-```
+Since these two packages are not yet published to NPM, you'll have to either `git clone` them into your workstation and install them from their file path —e.g. `npm i path/to/foo`— or install them from Git —e.g. `git+ssh://git@github.com/Temenos-Quantum/[repo]`. See full reference [here](https://docs.npmjs.com/cli/v7/commands/npm-install)
 
-or...
+## Build
 
-```json
-{
-    "replies": [
-        {
-            "id": "Yes",
-            "label": "Yes",
-            "value": "Yes"
-        },
-        {
-            "id": "No",
-            "label": "No",
-            "value": "No"
-        }
-    ],
-    "type": "QUICK_REPLY"
-}
-```
+To build the Jovo project, use the `makefile` found at the root of the JovoPoC project directory, [here](otherresources/voice/JovoPoC/makefile).
 
-The order in which these are fired is:
+To build the models for the three different platforms run:
 
 ```
-onRequest > onAction > onResponse > onAction
+make build
 ```
+
+To deploy the models you'll have to link and install the respective CLI for each (Alexa, GActions and Dialogflow) and then run:
+
+```
+make deploy
+```
+
+**Note** that the reason for using a makefile is to be able to build each platform separately in order to be able to support GActions and Dialogflow in the same project —something which is not possible out of the box with Jovo v3.

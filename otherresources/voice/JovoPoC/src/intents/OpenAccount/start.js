@@ -1,6 +1,6 @@
 "use strict"
 
-const kony = require("kony-node")
+const kony = require("kony")
 
 async function OpenAccountStart() {
 	kony.debug("*************** OpenAccountStart")

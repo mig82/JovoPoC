@@ -1,4 +1,4 @@
-//const kony = require('kony-node')
+//const kony = require('kony')
 
 const OfferLogin = {
 

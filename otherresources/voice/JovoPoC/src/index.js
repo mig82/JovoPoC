@@ -5,7 +5,7 @@
 const { ExpressJS, Lambda, Webhook } = require('jovo-framework');
 const { app } = require('./app.js');
 const cors = require('cors')
-const kony = require('kony-node')
+const kony = require('kony')
 
 // ------------------------------------------------------------------
 // HOST CONFIGURATION

@@ -2,10 +2,12 @@
 
 const GetForexRateAgain = {
 	START(){
-		this.say(`Would you like to ask for another rate?`)
+		const question = `Would you like to ask for another rate?`
+		this.say(question)
 		this.$reprompt.addText(`Sorry, would you like to ask for another exchange rate?`)
 		this.followUpState('GetForexRateAgain.AwaitDecision')
 		this.ask(this.$speech)
+		this.showSuggestions2(["yes", "no"], question)
 	},
 	AwaitDecision: {
 

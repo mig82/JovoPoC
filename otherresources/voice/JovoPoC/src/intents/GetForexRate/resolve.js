@@ -34,7 +34,7 @@ async function GetForexRateResolve() {
 		/* TODO: How would a developer using Visualizer map fields in the service output to the voice
 		response? e.g. the rate. */
 		const rate = round(resp.rates[symbols])
-		const date = this.ssml.sayDate(resp.date, "ymd")
+		const date = this.ssml.sayDate(this.formatDate(resp.date), "ymd")
 		const responses = [
 			//TODO: The user must be able to define different phrases to respond.
 			`As of ${date}, the ${base}/${symbols} exchange rate is approximately ${rate}.`,
